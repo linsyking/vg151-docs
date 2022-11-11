@@ -12,8 +12,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - uses: ammaraskar/sphinx-action@master
-      with:
-        docs-folder: "source/"
-        pre-build-command: "pip3 install furo"
-        build-command: "make html"
+    - name: install furo
+      run: |
+        pip3 install furo
+    - name: Build sphinx documentation
+      run: |
+        make html
