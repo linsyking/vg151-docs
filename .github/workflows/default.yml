@@ -14,5 +14,6 @@ jobs:
     - uses: actions/checkout@v1
     - uses: ammaraskar/sphinx-action@master
       with:
+        docs-folder: "source/"
         pre-build-command: "pip3 install furo"
         build-command: "make html"
