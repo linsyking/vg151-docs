@@ -1,15 +1,5 @@
-ENGR151 Lab 7
-=============
-
-Trees
-
----------
-
-.. note::
-
-   I am still writing this page.
-
-We will talk about trees in this lab.
+ENGR151 Lab 7: Trees
+====================
 
 Group Presentation
 ------------------
@@ -43,7 +33,6 @@ What is tree?
    -- `Wikipedia <https://en.wikipedia.org/wiki/Tree_(data_structure)>`_
 
 .. figure:: /_static/l7/tree.png
-   :align: right
    :height: 230
    :width: 200
 
@@ -61,7 +50,6 @@ The **leaf node** of a tree is the node that doesn't haven any child.
 A **binary tree** is a special tree: every node have at most 2 children nodes.
 
 .. figure:: /_static/l7/binary_tree.png
-   :align: right
    :height: 220
    :width: 200
 
@@ -110,7 +98,6 @@ Here I give two exmaples. Note that the data can be any data type, I use ``int``
 **Linked list**
 
 .. code-block:: c
-    :linenos:
     :emphasize-lines: 4,6
 
     typedef struct _node{
@@ -124,7 +111,6 @@ Here I give two exmaples. Note that the data can be any data type, I use ``int``
 **(Binary) Tree**
 
 .. code-block:: c
-    :linenos:
     :emphasize-lines: 4,5
 
     typedef struct _node{
@@ -143,6 +129,650 @@ In the last lab, we have a fun game which simulates a FIFA world cup.
 However, the method we used last time is not very easy to understand (using array to represent the teams, etc..).
 
 Now we have learned tree. Is it useful in this game?
+
+We use *Post Order* DFS to traverse all the nodes in the tree.
+
+Garbage Collection: Easy Version
+--------------------------------
+
+After we simulate the whole game, we have to carefully collect all the "garbages" generated through the game. (Memory Management)
+
+We will take a look at a simple example. In this example, we only have 2 countries and 3 nodes.
+
+After we finish the game, all the nodes have set the ``country`` variable.
+
+In the simple version, every data in the node is not a pointer. It is directly the ``Country`` data type. Hence, many countries are copied. (eg. Node 1 and Node 2 have the same country, but they don't share the same memory)
+
+.. code-block:: c
+   :emphasize-lines: 3
+
+   struct Node_t {
+        // data
+        Country country;
+        // children
+        Node *left;
+        Node *right;
+    };
+
+.. uml::
+   :align: center
+   :width: 12cm
+
+    skinparam classAttributeIconSize 0
+    package "Resource" as R1 <<Rectangle>> #yellow {
+        object "Country" as Country1
+        Country1 : name = "UFO"
+        Country1 : id = 10
+    }
+
+    package "Resource" as R1c <<Rectangle>> #yellow {
+        object "Country" as Country1c
+        Country1c : name = "UFO"
+        Country1c : id = 10
+    }
+
+    package "Resource" as R2 <<Rectangle>> #yellow {
+        object "Country" as Country2
+        Country2 : name = "ABC"
+        Country2 : id = 3
+    }
+
+    object "Node 1 (Root Node)" as node1
+    node1 : data
+    node1 : *left
+    node1 : *right
+
+    node1::data -> R1c
+
+    object "Node 2" as node2
+    node2 : data
+    node2 : *left
+    node2 : *right
+
+    node2::data -> R1
+
+    object "Node 3" as node3
+    node3 : data
+    node3 : *left
+    node3 : *right
+
+    node3::data -> R2
+
+    node1::left --> node2
+    node1::right --> node3
+
+The :c:func:`Node_create` function is defined by:
+
+.. code-block:: c
+   
+   Node *Node_create() {
+        Node   *new_node = malloc(sizeof(Node));
+        if (!new_code){
+            exit(-1);
+        }
+        Country s;
+        s.rank            = NON;
+        new_node->country = s;
+        new_node->left    = NULL;
+        new_node->right   = NULL;
+        return new_node;
+    }
+
+.. tip::
+
+    Always check the return value of :c:func:`malloc`!
+
+The destroy function should be:
+
+.. code-block:: c
+
+    void tree_destroy(Node *root) {
+        // release memory
+        if (root == NULL) {
+            return;
+        } else {
+            tree_destroy(root->left);
+            tree_destroy(root->right);
+            free(root);
+        }
+    }
+
+As you can see, we don't need to delete any other resources.
+
+When we are destroying the tree, there are three steps:
+
+Step 1
+^^^^^^
+
+We first delete the left child. When we delete Node 2, its country will be automatically destroyed. 
+
+.. uml::
+   :align: center
+   :width: 12cm
+
+    skinparam classAttributeIconSize 0
+    package "Resource" as R1 <<Rectangle>> #grey {
+        object "Country" as Country1 #grey
+        Country1 : name = "UFO"
+        Country1 : id = 10
+    }
+
+    package "Resource" as R1c <<Rectangle>> #yellow {
+        object "Country" as Country1c
+        Country1c : name = "UFO"
+        Country1c : id = 10
+    }
+
+    package "Resource" as R2 <<Rectangle>> #yellow {
+        object "Country" as Country2
+        Country2 : name = "ABC"
+        Country2 : id = 3
+    }
+
+    object "Node 1 (Root Node)" as node1
+    node1 : data
+    node1 : *left
+    node1 : *right
+
+    node1::data -> R1c
+
+    object "Node 2" as node2 #grey
+    node2 : data
+    node2 : *left
+    node2 : *right
+
+    node2::data -> R1
+
+    object "Node 3" as node3
+    node3 : data
+    node3 : *left
+    node3 : *right
+
+    node3::data -> R2
+
+    node1::left --> node2
+    node1::right --> node3
+
+
+Step 2
+^^^^^^
+
+We then delete the right child. When we delete Node 3, its country will also be automatically destroyed. 
+
+.. uml::
+   :align: center
+   :width: 12cm
+
+    skinparam classAttributeIconSize 0
+    package "Resource" as R1 <<Rectangle>> #grey {
+        object "Country" as Country1 #grey
+        Country1 : name = "UFO"
+        Country1 : id = 10
+    }
+
+    package "Resource" as R1c <<Rectangle>> #yellow {
+        object "Country" as Country1c
+        Country1c : name = "UFO"
+        Country1c : id = 10
+    }
+
+    package "Resource" as R2 <<Rectangle>> #grey {
+        object "Country" as Country2 #grey
+        Country2 : name = "ABC"
+        Country2 : id = 3
+    }
+
+    object "Node 1 (Root Node)" as node1
+    node1 : data
+    node1 : *left
+    node1 : *right
+
+    node1::data -> R1c
+
+    object "Node 2" as node2 #grey
+    node2 : data
+    node2 : *left
+    node2 : *right
+
+    node2::data -> R1
+
+    object "Node 3" as node3 #grey
+    node3 : data
+    node3 : *left
+    node3 : *right
+
+    node3::data -> R2
+
+    node1::left --> node2
+    node1::right --> node3
+
+Step 3
+^^^^^^
+
+Finally we destroy all the objects. 
+
+.. uml::
+   :align: center
+   :width: 12cm
+
+    skinparam classAttributeIconSize 0
+    package "Resource" as R1 <<Rectangle>> #grey {
+        object "Country" as Country1 #grey
+        Country1 : name = "UFO"
+        Country1 : id = 10
+    }
+
+    package "Resource" as R1c <<Rectangle>> #grey {
+        object "Country" as Country1c #grey
+        Country1c : name = "UFO"
+        Country1c : id = 10
+    }
+
+    package "Resource" as R2 <<Rectangle>> #grey {
+        object "Country" as Country2 #grey
+        Country2 : name = "ABC"
+        Country2 : id = 3
+    }
+
+    object "Node 1 (Root Node)" as node1 #grey
+    node1 : data
+    node1 : *left
+    node1 : *right
+
+    node1::data -> R1c
+
+    object "Node 2" as node2 #grey
+    node2 : data
+    node2 : *left
+    node2 : *right
+
+    node2::data -> R1
+
+    object "Node 3" as node3 #grey
+    node3 : data
+    node3 : *left
+    node3 : *right
+
+    node3::data -> R2
+
+    node1::left --> node2
+    node1::right --> node3
+
+.. admonition:: Think
+
+    What is the disadvantages of this simple method?
+
+Reference counting
+------------------
+
+In the difficult version, we define a new ``Country_proxy`` type by:
+
+.. code-block:: c
+
+    typedef struct {
+        Country *proxy;
+        unsigned int counter;
+    } Country_proxy;
+
+And then define the ``Node`` by:
+
+.. code-block:: c
+    :emphasize-lines: 3
+
+    struct Node_t {
+        // data
+        Country_proxy *country_proxy;
+        // children
+        Node *left;
+        Node *right;
+    };
+
+Using pointers to store country is actually better when ``Country`` type is a large structure. It will cost less memory.
+
+However, we cannot directly use ``Country *country`` in the definition of ``Node``. Why?
+
+A key trick is to use a "reference counter" to track the number of references to a resource.
+
+Originally, we directly save country inside node:
+
+.. uml::
+   :align: center
+   :width: 5cm
+
+    skinparam classAttributeIconSize 0
+    package "Resource" as R1 <<Rectangle>> #yellow {
+        object "Country" as Country1
+        Country1 : name = "UFO"
+        Country1 : id = 10
+    }
+
+    object "Node" as node1
+    node1 : data
+    node1 : *left
+    node1 : *right
+
+    node1::data -> R1
+
+Now we add a "proxy" (or you can call it a counter) between them:
+
+.. uml::
+   :align: center
+   :width: 7cm
+
+    skinparam classAttributeIconSize 0
+    package "Resource" as R1 <<Rectangle>> #yellow {
+        object "Country" as Country1
+        Country1 : name = "UFO"
+        Country1 : id = 10
+    }
+
+    object "Proxy" as proxy1 #orange
+    proxy1 : *country
+    proxy1 : counter = 1
+
+    object "Node" as node1
+    node1 : *proxy
+    node1 : *left
+    node1 : *right
+
+    node1::proxy -> proxy1
+    proxy1::country -> R1
+
+The ``counter`` in the proxy will remember the count of references. (In the above example, it's 1 because only one node want to point to the resource)
+
+And, one resource will only have one proxy. There shouldn't be other proxies.
+
+When the proxy found that its counter is 0, it will automatically delete the resource it points to and also itself. It is safe because there are no other references.
+
+.. uml::
+   :align: center
+   :width: 7cm
+
+    skinparam classAttributeIconSize 0
+    package "Resource" as R1 <<Rectangle>> #grey {
+        object "Country" as Country1 #grey
+        Country1 : name = "UFO"
+        Country1 : id = 10
+    }
+
+    object "Proxy" as proxy1 #grey
+    proxy1 : *country
+    proxy1 : counter = 0
+
+    object "Node" as node1
+    node1 : *proxy
+    node1 : *left
+    node1 : *right
+
+    node1::proxy .> proxy1
+    proxy1::country -> R1
+
+Now let's try to use this in the example we talked about in the simple version.
+
+After simluation:
+
+.. uml::
+   :align: center
+   :width: 10cm
+
+    skinparam classAttributeIconSize 0
+    package "Resource" as R1 <<Rectangle>> #yellow {
+        object "Country" as Country1
+        Country1 : name = "UFO"
+        Country1 : id = 10
+    }
+
+    package "Resource" as R2 <<Rectangle>> #yellow {
+        object "Country" as Country2
+        Country2 : name = "ABC"
+        Country2 : id = 3
+    }
+
+    object "Node 1 (Root Node)" as node1
+    node1 : *proxy
+    node1 : *left
+    node1 : *right
+
+    object "Node 2" as node2
+    node2 : *proxy
+    node2 : *left
+    node2 : *right
+
+
+    object "Node 3" as node3
+    node3 : *proxy
+    node3 : *left
+    node3 : *right
+
+    node1::left --> node2
+    node1::right --> node3
+
+    object "Proxy" as proxy1 #orange
+    proxy1 : *country
+    proxy1 : counter = 2
+
+    object "Proxy" as proxy2 #orange
+    proxy2 : *country
+    proxy2 : counter = 1
+
+    node2::proxy -> proxy1
+
+    node3::proxy --> proxy2
+    proxy2::country -> R2
+
+    node1::proxy -> proxy1
+    proxy1::country --> R1
+
+Step 1
+^^^^^^
+
+.. uml::
+   :align: center
+   :width: 10cm
+
+    skinparam classAttributeIconSize 0
+    package "Resource" as R1 <<Rectangle>> #yellow {
+        object "Country" as Country1
+        Country1 : name = "UFO"
+        Country1 : id = 10
+    }
+
+    package "Resource" as R2 <<Rectangle>> #yellow {
+        object "Country" as Country2
+        Country2 : name = "ABC"
+        Country2 : id = 3
+    }
+
+    object "Node 1 (Root Node)" as node1
+    node1 : *proxy
+    node1 : *left
+    node1 : *right
+
+    object "Node 2" as node2 #grey
+    node2 : *proxy
+    node2 : *left
+    node2 : *right
+
+
+    object "Node 3" as node3
+    node3 : *proxy
+    node3 : *left
+    node3 : *right
+
+    node1::left --> node2
+    node1::right --> node3
+
+    object "Proxy" as proxy1 #orange
+    proxy1 : *country
+    proxy1 : counter = 1
+
+    object "Proxy" as proxy2 #orange
+    proxy2 : *country
+    proxy2 : counter = 1
+
+    node2::proxy .> proxy1
+
+    node3::proxy --> proxy2
+    proxy2::country -> R2
+
+    node1::proxy -> proxy1
+    proxy1::country --> R1
+
+Step 2
+^^^^^^
+
+.. uml::
+   :align: center
+   :width: 10cm
+
+    skinparam classAttributeIconSize 0
+    package "Resource" as R1 <<Rectangle>> #yellow {
+        object "Country" as Country1
+        Country1 : name = "UFO"
+        Country1 : id = 10
+    }
+
+    package "Resource" as R2 <<Rectangle>> #grey {
+        object "Country" as Country2 #grey
+        Country2 : name = "ABC"
+        Country2 : id = 3
+    }
+
+    object "Node 1 (Root Node)" as node1
+    node1 : *proxy
+    node1 : *left
+    node1 : *right
+
+    object "Node 2" as node2 #grey
+    node2 : *proxy
+    node2 : *left
+    node2 : *right
+
+
+    object "Node 3" as node3 #grey
+    node3 : *proxy
+    node3 : *left
+    node3 : *right
+
+    node1::left --> node2
+    node1::right --> node3
+
+    object "Proxy" as proxy1 #orange
+    proxy1 : *country
+    proxy1 : counter = 1
+
+    object "Proxy" as proxy2 #grey
+    proxy2 : *country
+    proxy2 : counter = 0
+
+    node2::proxy .> proxy1
+
+    node3::proxy ..> proxy2
+    proxy2::country -> R2
+
+    node1::proxy -> proxy1
+    proxy1::country --> R1
+
+Step 3
+^^^^^^
+
+.. uml::
+   :align: center
+   :width: 10cm
+
+    skinparam classAttributeIconSize 0
+    package "Resource" as R1 <<Rectangle>> #grey {
+        object "Country" as Country1 #grey
+        Country1 : name = "UFO"
+        Country1 : id = 10
+    }
+
+    package "Resource" as R2 <<Rectangle>> #grey {
+        object "Country" as Country2 #grey
+        Country2 : name = "ABC"
+        Country2 : id = 3
+    }
+
+    object "Node 1 (Root Node)" as node1 #grey
+    node1 : *proxy
+    node1 : *left
+    node1 : *right
+
+    object "Node 2" as node2 #grey
+    node2 : *proxy
+    node2 : *left
+    node2 : *right
+
+
+    object "Node 3" as node3 #grey
+    node3 : *proxy
+    node3 : *left
+    node3 : *right
+
+    node1::left --> node2
+    node1::right --> node3
+
+    object "Proxy" as proxy1 #grey
+    proxy1 : *country
+    proxy1 : counter = 0
+
+    object "Proxy" as proxy2 #grey
+    proxy2 : *country
+    proxy2 : counter = 0
+
+    node2::proxy .> proxy1
+
+    node3::proxy ..> proxy2
+    proxy2::country -> R2
+
+    node1::proxy .> proxy1
+    proxy1::country --> R1
+
+Reference code to create the node:
+
+.. code-block:: c
+
+    Node *Node_create(Country *country) {
+        // Create a Node with given country
+        // return a new node
+        Node *new_node = malloc(sizeof(Node));
+        if (country) {
+            new_node->country_proxy          = malloc(sizeof(Country_proxy));
+            new_node->country_proxy->counter = 0;
+            new_node->country_proxy->proxy   = country;
+            new_node->country_proxy->counter++;
+        } else {
+            new_node->country_proxy = NULL;
+        }
+        new_node->left  = NULL;
+        new_node->right = NULL;
+        return new_node;
+    }
+
+Reference code for destroying:
+
+.. code-block:: c
+
+    void tree_destroy(Node *root) {
+        // release memory
+        if (root == NULL) {
+            return;
+        } else {
+            // free all resources
+            tree_destroy(root->left);
+            tree_destroy(root->right);
+            if (root->country_proxy && root->country_proxy->counter > 0) {
+                // proxy still alive, decrease the counter by 1
+                root->country_proxy->counter--;
+                if (root->country_proxy->counter == 0) {
+                    // counter is 0, free it!
+                    free(root->country_proxy->proxy);
+                    free(root->country_proxy);
+                }
+            }
+            free(root);
+        }
+    }
 
 Drone Setup Checking
 --------------------

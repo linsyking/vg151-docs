@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Welcome to vg151 lab’s documentation!" href="../index.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Introduction" href="../unfiled/introduction.html" />
 
     <meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
-        <title>ENGR151 Lab 7 - vg151 lab documentation</title>
+        <title>ENGR151 Lab 7: Trees - vg151 lab documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -156,6 +156,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../unfiled/introduction.html">Introduction</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Lab 7</a></li>
 </ul>
 
@@ -191,15 +192,8 @@
           </label>
         </div>
         <article role="main">
-          <section id="engr151-lab-7">
-<h1>ENGR151 Lab 7<a class="headerlink" href="#engr151-lab-7" title="Permalink to this heading">#</a></h1>
-<p>Trees</p>
-<hr class="docutils" />
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>I am still writing this page.</p>
-</div>
-<p>We will talk about trees in this lab.</p>
+          <section id="engr151-lab-7-trees">
+<h1>ENGR151 Lab 7: Trees<a class="headerlink" href="#engr151-lab-7-trees" title="Permalink to this heading">#</a></h1>
 <section id="group-presentation">
 <h2>Group Presentation<a class="headerlink" href="#group-presentation" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -230,10 +224,10 @@
 <div><p>In computer science, a tree is a widely used abstract data type that represents a hierarchical tree structure with a set of connected nodes. Each node in the tree can be connected to many children (depending on the type of tree), but must be connected to exactly one parent, except for the root node, which has no parent.</p>
 <p class="attribution">—<a class="reference external" href="https://en.wikipedia.org/wiki/Tree_(data_structure)">Wikipedia</a></p>
 </div></blockquote>
-<figure class="align-right" id="id1">
+<figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/tree.png"><img alt="../_images/tree.png" src="../_images/tree.png" style="width: 200px; height: 230px;" /></a>
 <figcaption>
-<p><span class="caption-text">A tree with <em>data</em> integers</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">A tree with <em>data</em> integers</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="basic-concepts">
@@ -242,10 +236,10 @@
 <p>The <strong>root node</strong> is the node that has no parent (the ancestor of all the other nodes in a tree).</p>
 <p>The <strong>leaf node</strong> of a tree is the node that doesn’t haven any child.</p>
 <p>A <strong>binary tree</strong> is a special tree: every node have at most 2 children nodes.</p>
-<figure class="align-right" id="id2">
+<figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="../_images/binary_tree.png"><img alt="../_images/binary_tree.png" src="../_images/binary_tree.png" style="width: 200px; height: 220px;" /></a>
 <figcaption>
-<p><span class="caption-text">A binary tree</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">A binary tree</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -285,22 +279,22 @@
 </div>
 <p>Here I give two exmaples. Note that the data can be any data type, I use <code class="docutils literal notranslate"><span class="pre">int</span></code> only for demonstration.</p>
 <p><strong>Linked list</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="p">{</span><span class="w"></span>
-<span class="linenos">2</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">3</span><span class="w">    </span><span class="c1">// other staffs</span>
-<span class="hll"><span class="linenos">4</span><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
-</span><span class="linenos">5</span><span class="w">    </span><span class="c1">// if double linked list</span>
-<span class="hll"><span class="linenos">6</span><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="w"> </span><span class="o">*</span><span class="n">prev</span><span class="p">;</span><span class="w"></span>
-</span><span class="linenos">7</span><span class="p">}</span><span class="w"> </span><span class="n">node</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// other staffs</span>
+<span class="hll"><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+</span><span class="w">    </span><span class="c1">// if double linked list</span>
+<span class="hll"><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="w"> </span><span class="o">*</span><span class="n">prev</span><span class="p">;</span><span class="w"></span>
+</span><span class="p">}</span><span class="w"> </span><span class="n">node</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p><strong>(Binary) Tree</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="p">{</span><span class="w"></span>
-<span class="linenos">2</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">3</span><span class="w">    </span><span class="c1">// other staffs</span>
-<span class="hll"><span class="linenos">4</span><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="w"> </span><span class="o">*</span><span class="n">left</span><span class="p">;</span><span class="w"></span>
-</span><span class="hll"><span class="linenos">5</span><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="w"> </span><span class="o">*</span><span class="n">right</span><span class="p">;</span><span class="w"></span>
-</span><span class="linenos">6</span><span class="p">}</span><span class="w"> </span><span class="n">node</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// other staffs</span>
+<span class="hll"><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="w"> </span><span class="o">*</span><span class="n">left</span><span class="p">;</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="w"> </span><span class="o">*</span><span class="n">right</span><span class="p">;</span><span class="w"></span>
+</span><span class="p">}</span><span class="w"> </span><span class="n">node</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -311,6 +305,603 @@
 <p>In the last lab, we have a fun game which simulates a FIFA world cup.</p>
 <p>However, the method we used last time is not very easy to understand (using array to represent the teams, etc..).</p>
 <p>Now we have learned tree. Is it useful in this game?</p>
+<p>We use <em>Post Order</em> DFS to traverse all the nodes in the tree.</p>
+</section>
+<section id="garbage-collection-easy-version">
+<h2>Garbage Collection: Easy Version<a class="headerlink" href="#garbage-collection-easy-version" title="Permalink to this heading">#</a></h2>
+<p>After we simulate the whole game, we have to carefully collect all the “garbages” generated through the game. (Memory Management)</p>
+<p>We will take a look at a simple example. In this example, we only have 2 countries and 3 nodes.</p>
+<p>After we finish the game, all the nodes have set the <code class="docutils literal notranslate"><span class="pre">country</span></code> variable.</p>
+<p>In the simple version, every data in the node is not a pointer. It is directly the <code class="docutils literal notranslate"><span class="pre">Country</span></code> data type. Hence, many countries are copied. (eg. Node 1 and Node 2 have the same country, but they don’t share the same memory)</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">Node_t</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="c1">// data</span>
+<span class="hll"><span class="w">     </span><span class="n">Country</span><span class="w"> </span><span class="n">country</span><span class="p">;</span><span class="w"></span>
+</span><span class="w">     </span><span class="c1">// children</span>
+<span class="w">     </span><span class="n">Node</span><span class="w"> </span><span class="o">*</span><span class="n">left</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="n">Node</span><span class="w"> </span><span class="o">*</span><span class="n">right</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<figure class="align-center">
+<p class="plantuml">
+<a href="../_images/plantuml-966a57418c495e8fbb08316b1e13475331178517.png"><img src="../_images/plantuml-966a57418c495e8fbb08316b1e13475331178517.png" alt=" skinparam classAttributeIconSize 0
+ package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #yellow {
+     object &quot;Country&quot; as Country1
+     Country1 : name = &quot;UFO&quot;
+     Country1 : id = 10
+ }
+
+ package &quot;Resource&quot; as R1c &lt;&lt;Rectangle&gt;&gt; #yellow {
+     object &quot;Country&quot; as Country1c
+     Country1c : name = &quot;UFO&quot;
+     Country1c : id = 10
+ }
+
+ package &quot;Resource&quot; as R2 &lt;&lt;Rectangle&gt;&gt; #yellow {
+     object &quot;Country&quot; as Country2
+     Country2 : name = &quot;ABC&quot;
+     Country2 : id = 3
+ }
+
+ object &quot;Node 1 (Root Node)&quot; as node1
+ node1 : data
+ node1 : *left
+ node1 : *right
+
+ node1::data -&gt; R1c
+
+ object &quot;Node 2&quot; as node2
+ node2 : data
+ node2 : *left
+ node2 : *right
+
+ node2::data -&gt; R1
+
+ object &quot;Node 3&quot; as node3
+ node3 : data
+ node3 : *left
+ node3 : *right
+
+ node3::data -&gt; R2
+
+ node1::left --&gt; node2
+ node1::right --&gt; node3" style="width: 12.0cm"/></a>
+</p>
+</figure>
+<p>The <code class="xref c c-func docutils literal notranslate"><span class="pre">Node_create()</span></code> function is defined by:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Node</span><span class="w"> </span><span class="o">*</span><span class="nf">Node_create</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="n">Node</span><span class="w">   </span><span class="o">*</span><span class="n">new_node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Node</span><span class="p">));</span><span class="w"></span>
+<span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">new_code</span><span class="p">){</span><span class="w"></span>
+<span class="w">         </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+<span class="w">     </span><span class="n">Country</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="n">s</span><span class="p">.</span><span class="n">rank</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="n">NON</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="n">new_node</span><span class="o">-&gt;</span><span class="n">country</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="n">new_node</span><span class="o">-&gt;</span><span class="n">left</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="n">new_node</span><span class="o">-&gt;</span><span class="n">right</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="n">new_node</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Always check the return value of <code class="xref c c-func docutils literal notranslate"><span class="pre">malloc()</span></code>!</p>
+</div>
+<p>The destroy function should be:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">tree_destroy</span><span class="p">(</span><span class="n">Node</span><span class="w"> </span><span class="o">*</span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// release memory</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">tree_destroy</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">tree_destroy</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">free</span><span class="p">(</span><span class="n">root</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>As you can see, we don’t need to delete any other resources.</p>
+<p>When we are destroying the tree, there are three steps:</p>
+<section id="step-1">
+<h3>Step 1<a class="headerlink" href="#step-1" title="Permalink to this heading">#</a></h3>
+<p>We first delete the left child. When we delete Node 2, its country will be automatically destroyed.</p>
+<figure class="align-center">
+<p class="plantuml">
+<a href="../_images/plantuml-611ef5b1b692d7e3ac8ee1c5f520fb9be2fc311d.png"><img src="../_images/plantuml-611ef5b1b692d7e3ac8ee1c5f520fb9be2fc311d.png" alt=" skinparam classAttributeIconSize 0
+ package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #grey {
+     object &quot;Country&quot; as Country1 #grey
+     Country1 : name = &quot;UFO&quot;
+     Country1 : id = 10
+ }
+
+ package &quot;Resource&quot; as R1c &lt;&lt;Rectangle&gt;&gt; #yellow {
+     object &quot;Country&quot; as Country1c
+     Country1c : name = &quot;UFO&quot;
+     Country1c : id = 10
+ }
+
+ package &quot;Resource&quot; as R2 &lt;&lt;Rectangle&gt;&gt; #yellow {
+     object &quot;Country&quot; as Country2
+     Country2 : name = &quot;ABC&quot;
+     Country2 : id = 3
+ }
+
+ object &quot;Node 1 (Root Node)&quot; as node1
+ node1 : data
+ node1 : *left
+ node1 : *right
+
+ node1::data -&gt; R1c
+
+ object &quot;Node 2&quot; as node2 #grey
+ node2 : data
+ node2 : *left
+ node2 : *right
+
+ node2::data -&gt; R1
+
+ object &quot;Node 3&quot; as node3
+ node3 : data
+ node3 : *left
+ node3 : *right
+
+ node3::data -&gt; R2
+
+ node1::left --&gt; node2
+ node1::right --&gt; node3" style="width: 12.0cm"/></a>
+</p>
+</figure>
+</section>
+<section id="step-2">
+<h3>Step 2<a class="headerlink" href="#step-2" title="Permalink to this heading">#</a></h3>
+<p>We then delete the right child. When we delete Node 3, its country will also be automatically destroyed.</p>
+<figure class="align-center">
+<p class="plantuml">
+<a href="../_images/plantuml-1fb6c0f9c517758081ca7c5ab1fcfc00be28ba94.png"><img src="../_images/plantuml-1fb6c0f9c517758081ca7c5ab1fcfc00be28ba94.png" alt=" skinparam classAttributeIconSize 0
+ package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #grey {
+     object &quot;Country&quot; as Country1 #grey
+     Country1 : name = &quot;UFO&quot;
+     Country1 : id = 10
+ }
+
+ package &quot;Resource&quot; as R1c &lt;&lt;Rectangle&gt;&gt; #yellow {
+     object &quot;Country&quot; as Country1c
+     Country1c : name = &quot;UFO&quot;
+     Country1c : id = 10
+ }
+
+ package &quot;Resource&quot; as R2 &lt;&lt;Rectangle&gt;&gt; #grey {
+     object &quot;Country&quot; as Country2 #grey
+     Country2 : name = &quot;ABC&quot;
+     Country2 : id = 3
+ }
+
+ object &quot;Node 1 (Root Node)&quot; as node1
+ node1 : data
+ node1 : *left
+ node1 : *right
+
+ node1::data -&gt; R1c
+
+ object &quot;Node 2&quot; as node2 #grey
+ node2 : data
+ node2 : *left
+ node2 : *right
+
+ node2::data -&gt; R1
+
+ object &quot;Node 3&quot; as node3 #grey
+ node3 : data
+ node3 : *left
+ node3 : *right
+
+ node3::data -&gt; R2
+
+ node1::left --&gt; node2
+ node1::right --&gt; node3" style="width: 12.0cm"/></a>
+</p>
+</figure>
+</section>
+<section id="step-3">
+<h3>Step 3<a class="headerlink" href="#step-3" title="Permalink to this heading">#</a></h3>
+<p>Finally we destroy all the objects.</p>
+<figure class="align-center">
+<p class="plantuml">
+<a href="../_images/plantuml-99aabd1b0ffb767c56e74dc8462fc563e41216e5.png"><img src="../_images/plantuml-99aabd1b0ffb767c56e74dc8462fc563e41216e5.png" alt=" skinparam classAttributeIconSize 0
+ package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #grey {
+     object &quot;Country&quot; as Country1 #grey
+     Country1 : name = &quot;UFO&quot;
+     Country1 : id = 10
+ }
+
+ package &quot;Resource&quot; as R1c &lt;&lt;Rectangle&gt;&gt; #grey {
+     object &quot;Country&quot; as Country1c #grey
+     Country1c : name = &quot;UFO&quot;
+     Country1c : id = 10
+ }
+
+ package &quot;Resource&quot; as R2 &lt;&lt;Rectangle&gt;&gt; #grey {
+     object &quot;Country&quot; as Country2 #grey
+     Country2 : name = &quot;ABC&quot;
+     Country2 : id = 3
+ }
+
+ object &quot;Node 1 (Root Node)&quot; as node1 #grey
+ node1 : data
+ node1 : *left
+ node1 : *right
+
+ node1::data -&gt; R1c
+
+ object &quot;Node 2&quot; as node2 #grey
+ node2 : data
+ node2 : *left
+ node2 : *right
+
+ node2::data -&gt; R1
+
+ object &quot;Node 3&quot; as node3 #grey
+ node3 : data
+ node3 : *left
+ node3 : *right
+
+ node3::data -&gt; R2
+
+ node1::left --&gt; node2
+ node1::right --&gt; node3" style="width: 12.0cm"/></a>
+</p>
+</figure>
+<div class="admonition-think admonition">
+<p class="admonition-title">Think</p>
+<p>What is the disadvantages of this simple method?</p>
+</div>
+</section>
+</section>
+<section id="reference-counting">
+<h2>Reference counting<a class="headerlink" href="#reference-counting" title="Permalink to this heading">#</a></h2>
+<p>In the difficult version, we define a new <code class="docutils literal notranslate"><span class="pre">Country_proxy</span></code> type by:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Country</span><span class="w"> </span><span class="o">*</span><span class="n">proxy</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">counter</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">Country_proxy</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>And then define the <code class="docutils literal notranslate"><span class="pre">Node</span></code> by:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">Node_t</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// data</span>
+<span class="hll"><span class="w">    </span><span class="n">Country_proxy</span><span class="w"> </span><span class="o">*</span><span class="n">country_proxy</span><span class="p">;</span><span class="w"></span>
+</span><span class="w">    </span><span class="c1">// children</span>
+<span class="w">    </span><span class="n">Node</span><span class="w"> </span><span class="o">*</span><span class="n">left</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Node</span><span class="w"> </span><span class="o">*</span><span class="n">right</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Using pointers to store country is actually better when <code class="docutils literal notranslate"><span class="pre">Country</span></code> type is a large structure. It will cost less memory.</p>
+<p>However, we cannot directly use <code class="docutils literal notranslate"><span class="pre">Country</span> <span class="pre">*country</span></code> in the definition of <code class="docutils literal notranslate"><span class="pre">Node</span></code>. Why?</p>
+<p>A key trick is to use a “reference counter” to track the number of references to a resource.</p>
+<p>Originally, we directly save country inside node:</p>
+<figure class="align-center">
+<p class="plantuml">
+<a href="../_images/plantuml-7f2a0386225813cbb460d199a299492a86955b7c.png"><img src="../_images/plantuml-7f2a0386225813cbb460d199a299492a86955b7c.png" alt=" skinparam classAttributeIconSize 0
+ package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #yellow {
+     object &quot;Country&quot; as Country1
+     Country1 : name = &quot;UFO&quot;
+     Country1 : id = 10
+ }
+
+ object &quot;Node&quot; as node1
+ node1 : data
+ node1 : *left
+ node1 : *right
+
+ node1::data -&gt; R1" style="width: 5.0cm"/></a>
+</p>
+</figure>
+<p>Now we add a “proxy” (or you can call it a counter) between them:</p>
+<figure class="align-center">
+<p class="plantuml">
+<a href="../_images/plantuml-656e22449b84a30b54ee2b8795ab601423770151.png"><img src="../_images/plantuml-656e22449b84a30b54ee2b8795ab601423770151.png" alt=" skinparam classAttributeIconSize 0
+ package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #yellow {
+     object &quot;Country&quot; as Country1
+     Country1 : name = &quot;UFO&quot;
+     Country1 : id = 10
+ }
+
+ object &quot;Proxy&quot; as proxy1 #orange
+ proxy1 : *country
+ proxy1 : counter = 1
+
+ object &quot;Node&quot; as node1
+ node1 : *proxy
+ node1 : *left
+ node1 : *right
+
+ node1::proxy -&gt; proxy1
+ proxy1::country -&gt; R1" style="width: 7.0cm"/></a>
+</p>
+</figure>
+<p>The <code class="docutils literal notranslate"><span class="pre">counter</span></code> in the proxy will remember the count of references. (In the above example, it’s 1 because only one node want to point to the resource)</p>
+<p>And, one resource will only have one proxy. There shouldn’t be other proxies.</p>
+<p>When the proxy found that its counter is 0, it will automatically delete the resource it points to and also itself. It is safe because there are no other references.</p>
+<figure class="align-center">
+<p class="plantuml">
+<a href="../_images/plantuml-39bfb917ac07e61dc00801ce4899eb3fdc8c30c2.png"><img src="../_images/plantuml-39bfb917ac07e61dc00801ce4899eb3fdc8c30c2.png" alt=" skinparam classAttributeIconSize 0
+ package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #grey {
+     object &quot;Country&quot; as Country1 #grey
+     Country1 : name = &quot;UFO&quot;
+     Country1 : id = 10
+ }
+
+ object &quot;Proxy&quot; as proxy1 #grey
+ proxy1 : *country
+ proxy1 : counter = 0
+
+ object &quot;Node&quot; as node1
+ node1 : *proxy
+ node1 : *left
+ node1 : *right
+
+ node1::proxy .&gt; proxy1
+ proxy1::country -&gt; R1" style="width: 7.0cm"/></a>
+</p>
+</figure>
+<p>Now let’s try to use this in the example we talked about in the simple version.</p>
+<p>After simluation:</p>
+<figure class="align-center">
+<p class="plantuml">
+<a href="../_images/plantuml-0ffce282487b8225ac7d6177a85ff2e1cee462c2.png"><img src="../_images/plantuml-0ffce282487b8225ac7d6177a85ff2e1cee462c2.png" alt=" skinparam classAttributeIconSize 0
+ package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #yellow {
+     object &quot;Country&quot; as Country1
+     Country1 : name = &quot;UFO&quot;
+     Country1 : id = 10
+ }
+
+ package &quot;Resource&quot; as R2 &lt;&lt;Rectangle&gt;&gt; #yellow {
+     object &quot;Country&quot; as Country2
+     Country2 : name = &quot;ABC&quot;
+     Country2 : id = 3
+ }
+
+ object &quot;Node 1 (Root Node)&quot; as node1
+ node1 : *proxy
+ node1 : *left
+ node1 : *right
+
+ object &quot;Node 2&quot; as node2
+ node2 : *proxy
+ node2 : *left
+ node2 : *right
+
+
+ object &quot;Node 3&quot; as node3
+ node3 : *proxy
+ node3 : *left
+ node3 : *right
+
+ node1::left --&gt; node2
+ node1::right --&gt; node3
+
+ object &quot;Proxy&quot; as proxy1 #orange
+ proxy1 : *country
+ proxy1 : counter = 2
+
+ object &quot;Proxy&quot; as proxy2 #orange
+ proxy2 : *country
+ proxy2 : counter = 1
+
+ node2::proxy -&gt; proxy1
+
+ node3::proxy --&gt; proxy2
+ proxy2::country -&gt; R2
+
+ node1::proxy -&gt; proxy1
+ proxy1::country --&gt; R1" style="width: 10.0cm"/></a>
+</p>
+</figure>
+<section id="id1">
+<h3>Step 1<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<figure class="align-center">
+<p class="plantuml">
+<a href="../_images/plantuml-992edd47fd6119f58f787943883b85d5e78c38a3.png"><img src="../_images/plantuml-992edd47fd6119f58f787943883b85d5e78c38a3.png" alt=" skinparam classAttributeIconSize 0
+ package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #yellow {
+     object &quot;Country&quot; as Country1
+     Country1 : name = &quot;UFO&quot;
+     Country1 : id = 10
+ }
+
+ package &quot;Resource&quot; as R2 &lt;&lt;Rectangle&gt;&gt; #yellow {
+     object &quot;Country&quot; as Country2
+     Country2 : name = &quot;ABC&quot;
+     Country2 : id = 3
+ }
+
+ object &quot;Node 1 (Root Node)&quot; as node1
+ node1 : *proxy
+ node1 : *left
+ node1 : *right
+
+ object &quot;Node 2&quot; as node2 #grey
+ node2 : *proxy
+ node2 : *left
+ node2 : *right
+
+
+ object &quot;Node 3&quot; as node3
+ node3 : *proxy
+ node3 : *left
+ node3 : *right
+
+ node1::left --&gt; node2
+ node1::right --&gt; node3
+
+ object &quot;Proxy&quot; as proxy1 #orange
+ proxy1 : *country
+ proxy1 : counter = 1
+
+ object &quot;Proxy&quot; as proxy2 #orange
+ proxy2 : *country
+ proxy2 : counter = 1
+
+ node2::proxy .&gt; proxy1
+
+ node3::proxy --&gt; proxy2
+ proxy2::country -&gt; R2
+
+ node1::proxy -&gt; proxy1
+ proxy1::country --&gt; R1" style="width: 10.0cm"/></a>
+</p>
+</figure>
+</section>
+<section id="id2">
+<h3>Step 2<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<figure class="align-center">
+<p class="plantuml">
+<a href="../_images/plantuml-d4a930951bc376bc5f2cb5e6093925a366a76659.png"><img src="../_images/plantuml-d4a930951bc376bc5f2cb5e6093925a366a76659.png" alt=" skinparam classAttributeIconSize 0
+ package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #yellow {
+     object &quot;Country&quot; as Country1
+     Country1 : name = &quot;UFO&quot;
+     Country1 : id = 10
+ }
+
+ package &quot;Resource&quot; as R2 &lt;&lt;Rectangle&gt;&gt; #grey {
+     object &quot;Country&quot; as Country2 #grey
+     Country2 : name = &quot;ABC&quot;
+     Country2 : id = 3
+ }
+
+ object &quot;Node 1 (Root Node)&quot; as node1
+ node1 : *proxy
+ node1 : *left
+ node1 : *right
+
+ object &quot;Node 2&quot; as node2 #grey
+ node2 : *proxy
+ node2 : *left
+ node2 : *right
+
+
+ object &quot;Node 3&quot; as node3 #grey
+ node3 : *proxy
+ node3 : *left
+ node3 : *right
+
+ node1::left --&gt; node2
+ node1::right --&gt; node3
+
+ object &quot;Proxy&quot; as proxy1 #orange
+ proxy1 : *country
+ proxy1 : counter = 1
+
+ object &quot;Proxy&quot; as proxy2 #grey
+ proxy2 : *country
+ proxy2 : counter = 0
+
+ node2::proxy .&gt; proxy1
+
+ node3::proxy ..&gt; proxy2
+ proxy2::country -&gt; R2
+
+ node1::proxy -&gt; proxy1
+ proxy1::country --&gt; R1" style="width: 10.0cm"/></a>
+</p>
+</figure>
+</section>
+<section id="id3">
+<h3>Step 3<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<figure class="align-center">
+<p class="plantuml">
+<a href="../_images/plantuml-a134a701220d9dfcf6e11c2f0bf0c564cf555678.png"><img src="../_images/plantuml-a134a701220d9dfcf6e11c2f0bf0c564cf555678.png" alt=" skinparam classAttributeIconSize 0
+ package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #grey {
+     object &quot;Country&quot; as Country1 #grey
+     Country1 : name = &quot;UFO&quot;
+     Country1 : id = 10
+ }
+
+ package &quot;Resource&quot; as R2 &lt;&lt;Rectangle&gt;&gt; #grey {
+     object &quot;Country&quot; as Country2 #grey
+     Country2 : name = &quot;ABC&quot;
+     Country2 : id = 3
+ }
+
+ object &quot;Node 1 (Root Node)&quot; as node1 #grey
+ node1 : *proxy
+ node1 : *left
+ node1 : *right
+
+ object &quot;Node 2&quot; as node2 #grey
+ node2 : *proxy
+ node2 : *left
+ node2 : *right
+
+
+ object &quot;Node 3&quot; as node3 #grey
+ node3 : *proxy
+ node3 : *left
+ node3 : *right
+
+ node1::left --&gt; node2
+ node1::right --&gt; node3
+
+ object &quot;Proxy&quot; as proxy1 #grey
+ proxy1 : *country
+ proxy1 : counter = 0
+
+ object &quot;Proxy&quot; as proxy2 #grey
+ proxy2 : *country
+ proxy2 : counter = 0
+
+ node2::proxy .&gt; proxy1
+
+ node3::proxy ..&gt; proxy2
+ proxy2::country -&gt; R2
+
+ node1::proxy .&gt; proxy1
+ proxy1::country --&gt; R1" style="width: 10.0cm"/></a>
+</p>
+</figure>
+<p>Reference code to create the node:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Node</span><span class="w"> </span><span class="o">*</span><span class="nf">Node_create</span><span class="p">(</span><span class="n">Country</span><span class="w"> </span><span class="o">*</span><span class="n">country</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Create a Node with given country</span>
+<span class="w">    </span><span class="c1">// return a new node</span>
+<span class="w">    </span><span class="n">Node</span><span class="w"> </span><span class="o">*</span><span class="n">new_node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Node</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">country</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">new_node</span><span class="o">-&gt;</span><span class="n">country_proxy</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Country_proxy</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">new_node</span><span class="o">-&gt;</span><span class="n">country_proxy</span><span class="o">-&gt;</span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">new_node</span><span class="o">-&gt;</span><span class="n">country_proxy</span><span class="o">-&gt;</span><span class="n">proxy</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">country</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">new_node</span><span class="o">-&gt;</span><span class="n">country_proxy</span><span class="o">-&gt;</span><span class="n">counter</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">new_node</span><span class="o">-&gt;</span><span class="n">country_proxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">new_node</span><span class="o">-&gt;</span><span class="n">left</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">new_node</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">new_node</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Reference code for destroying:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">tree_destroy</span><span class="p">(</span><span class="n">Node</span><span class="w"> </span><span class="o">*</span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// release memory</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// free all resources</span>
+<span class="w">        </span><span class="n">tree_destroy</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">tree_destroy</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">country_proxy</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">country_proxy</span><span class="o">-&gt;</span><span class="n">counter</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// proxy still alive, decrease the counter by 1</span>
+<span class="w">            </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">country_proxy</span><span class="o">-&gt;</span><span class="n">counter</span><span class="o">--</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">country_proxy</span><span class="o">-&gt;</span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="c1">// counter is 0, free it!</span>
+<span class="w">                </span><span class="n">free</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">country_proxy</span><span class="o">-&gt;</span><span class="n">proxy</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="n">free</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">country_proxy</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">free</span><span class="p">(</span><span class="n">root</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="drone-setup-checking">
 <h2>Drone Setup Checking<a class="headerlink" href="#drone-setup-checking" title="Permalink to this heading">#</a></h2>
@@ -355,14 +946,14 @@
         
         <div class="related-pages">
           
-          <a class="prev-page" href="../index.html">
+          <a class="prev-page" href="../unfiled/introduction.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Home</div>
+                <div class="title">Introduction</div>
                 
               </div>
             </a>
@@ -398,7 +989,7 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">ENGR151 Lab 7</a><ul>
+<li><a class="reference internal" href="#">ENGR151 Lab 7: Trees</a><ul>
 <li><a class="reference internal" href="#group-presentation">Group Presentation</a></li>
 <li><a class="reference internal" href="#homework-feedback">Homework Feedback</a></li>
 <li><a class="reference internal" href="#tree-structure">Tree Structure</a><ul>
@@ -414,6 +1005,18 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#review-of-the-game">Review of the Game</a></li>
+<li><a class="reference internal" href="#garbage-collection-easy-version">Garbage Collection: Easy Version</a><ul>
+<li><a class="reference internal" href="#step-1">Step 1</a></li>
+<li><a class="reference internal" href="#step-2">Step 2</a></li>
+<li><a class="reference internal" href="#step-3">Step 3</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reference-counting">Reference counting</a><ul>
+<li><a class="reference internal" href="#id1">Step 1</a></li>
+<li><a class="reference internal" href="#id2">Step 2</a></li>
+<li><a class="reference internal" href="#id3">Step 3</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#drone-setup-checking">Drone Setup Checking</a><ul>
 <li><a class="reference internal" href="#explanation-of-the-checks">Explanation of the checks</a><ul>
 <li><a class="reference internal" href="#code-check">Code Check</a></li>
