@@ -1,14 +1,13 @@
 =====================================
 Welcome to vg151 lab's documentation!
 =====================================
------------
-22-FA TA
------------
 
-.. contents::
+A TA's documents.
+
+-----------------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    
    Lab 7 <l7/lab7>
 
@@ -25,7 +24,7 @@ Why are some labs materials missing?
 This is because:
 
 * We have online courses for several weeks at the beginning of this semester
-* I used Revealjs_ to prepare my lab slides for the first half of the semester. However, the effects were not satisfying.
+* I used Revealjs_ to prepare my lab slides for the first half of the semester. However, the result was not satisfying.
 
 Basically, I want the slides/docs to have the following properties:
 
