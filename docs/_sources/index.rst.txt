@@ -7,7 +7,7 @@ A TA's documents.
 -----------------
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    
    Lab 7 <l7/lab7>
 

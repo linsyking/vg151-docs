@@ -9,6 +9,7 @@
         <title>ENGR151 Lab 7 - vg151 lab documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
@@ -134,7 +135,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -184,7 +185,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -192,11 +193,160 @@
         <article role="main">
           <section id="engr151-lab-7">
 <h1>ENGR151 Lab 7<a class="headerlink" href="#engr151-lab-7" title="Permalink to this heading">#</a></h1>
+<p>Trees</p>
+<hr class="docutils" />
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This is a note
-I am still writing this page.</p>
+<p>I am still writing this page.</p>
 </div>
+<p>We will talk about trees in this lab.</p>
+<section id="group-presentation">
+<h2>Group Presentation<a class="headerlink" href="#group-presentation" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>What’s the difference between <code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">**</span></code> and <code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">*</span></code>? Why use <code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">**</span></code> in homework?</p></li>
+<li><p>How to use valgrind to check memory leak?</p></li>
+<li><p>What is a dynamic array, and what are the similarities and differences compared to h6 ex5?</p></li>
+<li><p>What is a double linked list, and what are the similarities and differences compared to h6 ex7?</p></li>
+</ul>
+</section>
+<section id="homework-feedback">
+<h2>Homework Feedback<a class="headerlink" href="#homework-feedback" title="Permalink to this heading">#</a></h2>
+<p>Generally, you did a great job! However, remember the following things:</p>
+<ol class="arabic simple">
+<li><p><strong>Always</strong> indent and format your code. You can use code formatters to do that easily.</p></li>
+<li><p>Push to <code class="docutils literal notranslate"><span class="pre">master</span></code> branch for your final submission. Don’t forget to release.</p></li>
+<li><p>Follow the code quality rules (we’ll talk about that in detail later)</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This lab is quite difficult. If I don’t make something clear, please forgive me.</p>
+</div>
+</section>
+<section id="tree-structure">
+<h2>Tree Structure<a class="headerlink" href="#tree-structure" title="Permalink to this heading">#</a></h2>
+<section id="what-is-tree">
+<h3>What is tree?<a class="headerlink" href="#what-is-tree" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>In computer science, a tree is a widely used abstract data type that represents a hierarchical tree structure with a set of connected nodes. Each node in the tree can be connected to many children (depending on the type of tree), but must be connected to exactly one parent, except for the root node, which has no parent.</p>
+<p class="attribution">—<a class="reference external" href="https://en.wikipedia.org/wiki/Tree_(data_structure)">Wikipedia</a></p>
+</div></blockquote>
+<figure class="align-right" id="id1">
+<a class="reference internal image-reference" href="../_images/tree.png"><img alt="../_images/tree.png" src="../_images/tree.png" style="width: 200px; height: 230px;" /></a>
+<figcaption>
+<p><span class="caption-text">A tree with <em>data</em> integers</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="basic-concepts">
+<h4>Basic Concepts<a class="headerlink" href="#basic-concepts" title="Permalink to this heading">#</a></h4>
+<p>A <strong>node</strong> is a structure which may contain data and connections to other nodes. It forms the most basic elements in a tree.</p>
+<p>The <strong>root node</strong> is the node that has no parent (the ancestor of all the other nodes in a tree).</p>
+<p>The <strong>leaf node</strong> of a tree is the node that doesn’t haven any child.</p>
+<p>A <strong>binary tree</strong> is a special tree: every node have at most 2 children nodes.</p>
+<figure class="align-right" id="id2">
+<a class="reference internal image-reference" href="../_images/binary_tree.png"><img alt="../_images/binary_tree.png" src="../_images/binary_tree.png" style="width: 200px; height: 220px;" /></a>
+<figcaption>
+<p><span class="caption-text">A binary tree</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tree is an abstract data structure, which means that it is not necessarily related to a specific programming language. You can implement tree in any <a class="reference external" href="https://en.wikipedia.org/wiki/Turing_completeness">Turing-Complete</a> language.</p>
+</div>
+</section>
+</section>
+<section id="why-trees">
+<h3>Why trees?<a class="headerlink" href="#why-trees" title="Permalink to this heading">#</a></h3>
+<p>Trees are good because it can represent many data in our real life naturally.</p>
+</section>
+<section id="what-does-tree-look-like-in-c">
+<h3>What does tree look like in C?<a class="headerlink" href="#what-does-tree-look-like-in-c" title="Permalink to this heading">#</a></h3>
+<p>In this part, we will focus on the implementations in C.</p>
+<section id="why-pointers-are-involved">
+<h4>Why pointers are involved?<a class="headerlink" href="#why-pointers-are-involved" title="Permalink to this heading">#</a></h4>
+<p>Pointers are helpful to writing “compound data structure with self-referring” (a self-made word).</p>
+<p><strong>Examples</strong></p>
+<ul class="simple">
+<li><p>Linked list</p></li>
+<li><p>Tree</p></li>
+<li><p>Graph (more general than tree)</p></li>
+<li><p>Recursion</p></li>
+</ul>
+<div class="admonition-think admonition">
+<p class="admonition-title">Think</p>
+<p>Why can recursion also be related to pointers?</p>
+</div>
+<div class="admonition-think admonition">
+<p class="admonition-title">Think</p>
+<p>What’s the common things among those examples?</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Think about what their “nodes” are. Write out the concrete implementations.</p>
+</div>
+<p>Here I give two exmaples. Note that the data can be any data type, I use <code class="docutils literal notranslate"><span class="pre">int</span></code> only for demonstration.</p>
+<p><strong>Linked list</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="p">{</span><span class="w"></span>
+<span class="linenos">2</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">3</span><span class="w">    </span><span class="c1">// other staffs</span>
+<span class="hll"><span class="linenos">4</span><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+</span><span class="linenos">5</span><span class="w">    </span><span class="c1">// if double linked list</span>
+<span class="hll"><span class="linenos">6</span><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="w"> </span><span class="o">*</span><span class="n">prev</span><span class="p">;</span><span class="w"></span>
+</span><span class="linenos">7</span><span class="p">}</span><span class="w"> </span><span class="n">node</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>(Binary) Tree</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="p">{</span><span class="w"></span>
+<span class="linenos">2</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">3</span><span class="w">    </span><span class="c1">// other staffs</span>
+<span class="hll"><span class="linenos">4</span><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="w"> </span><span class="o">*</span><span class="n">left</span><span class="p">;</span><span class="w"></span>
+</span><span class="hll"><span class="linenos">5</span><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="w"> </span><span class="o">*</span><span class="n">right</span><span class="p">;</span><span class="w"></span>
+</span><span class="linenos">6</span><span class="p">}</span><span class="w"> </span><span class="n">node</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="review-of-the-game">
+<h2>Review of the Game<a class="headerlink" href="#review-of-the-game" title="Permalink to this heading">#</a></h2>
+<p>In the last lab, we have a fun game which simulates a FIFA world cup.</p>
+<p>However, the method we used last time is not very easy to understand (using array to represent the teams, etc..).</p>
+<p>Now we have learned tree. Is it useful in this game?</p>
+</section>
+<section id="drone-setup-checking">
+<h2>Drone Setup Checking<a class="headerlink" href="#drone-setup-checking" title="Permalink to this heading">#</a></h2>
+<p>In the last lab we did this in a hurry. Let’s check if everyone has done it!</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you didn’t set up <strong class="program">drone</strong> for your projects, you will not be able to see the compilation results, code quality feedback, etc.. As a result, you may get deductions on your projects.</p>
+</div>
+<section id="explanation-of-the-checks">
+<h3>Explanation of the checks<a class="headerlink" href="#explanation-of-the-checks" title="Permalink to this heading">#</a></h3>
+<p>There are many checks we enabled on the server.</p>
+<section id="code-check">
+<h4>Code Check<a class="headerlink" href="#code-check" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong class="program">clang-tidy</strong> with custom checks. The checks could be found on the <a class="reference external" href="https://focs.ji.sjtu.edu.cn/git/ENGR151-22/materials/src/branch/drone">materials repo</a>.</p></li>
+<li><p>Please follow <code class="file docutils literal notranslate"><span class="pre">code_quality.pdf</span></code> on canvas.</p></li>
+<li><p>Not following it will lead to deductions on exams/projects.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please read the code quality document now (download it from Canvas to get the latest version).</p>
+</div>
+</section>
+<section id="runtime-check">
+<h4>Runtime Check<a class="headerlink" href="#runtime-check" title="Permalink to this heading">#</a></h4>
+<p>This is the check mainly for your p2.</p>
+<p>You have to learn how to manage memory by yourself in p2. (although in the real world it’s <strong>not recommended</strong> to manage the memory by yourself)</p>
+<p>We use <strong class="program">msan, asan, lsan, ubsan</strong> to perform the checks. The feedback is very clear. It shows the trackbacks and tell you where the problem is in your source files.</p>
+<p>Alternative memory checking tools are <strong class="program">valgrind</strong> (not available on Windows). For Windows users, you can either try searching tools online or use WSL.</p>
+</section>
+</section>
+</section>
+<section id="attendence-quiz">
+<h2>Attendence Quiz<a class="headerlink" href="#attendence-quiz" title="Permalink to this heading">#</a></h2>
+<p>Please do the attendence quiz on Canvas now.</p>
+</section>
 </section>
 
         </article>
@@ -236,8 +386,50 @@ I am still writing this page.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">ENGR151 Lab 7</a><ul>
+<li><a class="reference internal" href="#group-presentation">Group Presentation</a></li>
+<li><a class="reference internal" href="#homework-feedback">Homework Feedback</a></li>
+<li><a class="reference internal" href="#tree-structure">Tree Structure</a><ul>
+<li><a class="reference internal" href="#what-is-tree">What is tree?</a><ul>
+<li><a class="reference internal" href="#basic-concepts">Basic Concepts</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#why-trees">Why trees?</a></li>
+<li><a class="reference internal" href="#what-does-tree-look-like-in-c">What does tree look like in C?</a><ul>
+<li><a class="reference internal" href="#why-pointers-are-involved">Why pointers are involved?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#review-of-the-game">Review of the Game</a></li>
+<li><a class="reference internal" href="#drone-setup-checking">Drone Setup Checking</a><ul>
+<li><a class="reference internal" href="#explanation-of-the-checks">Explanation of the checks</a><ul>
+<li><a class="reference internal" href="#code-check">Code Check</a></li>
+<li><a class="reference internal" href="#runtime-check">Runtime Check</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#attendence-quiz">Attendence Quiz</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -249,5 +441,7 @@ I am still writing this page.</p>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
     </body>
 </html>
