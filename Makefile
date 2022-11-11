@@ -13,7 +13,9 @@ help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 deploy:
+	rm -rf ./docs
 	cp -r build/html ./docs
+	touch ./docs/.nojekyll
 
 .PHONY: help Makefile deploy
 
