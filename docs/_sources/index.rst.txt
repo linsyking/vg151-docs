@@ -6,3 +6,4 @@ Welcome to vg151 lab's documentation!
    
    Introduction <unfiled/introduction>
    Lab 7 <l7/lab7>
+   Code Check <unfiled/codecheck>
