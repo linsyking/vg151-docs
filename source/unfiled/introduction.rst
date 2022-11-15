@@ -1,5 +1,5 @@
-Introduction
-============
+Introduction [1]_
+=================
 
 What is this project?
 ---------------------
@@ -24,3 +24,5 @@ Basically, I want the slides/docs to have the following properties:
 * Easy for me to do the lecture
 
 .. _Revealjs: https://revealjs.com/
+   
+.. [1] Web book: https://linsyking.github.io/vg151-docs/index.html
