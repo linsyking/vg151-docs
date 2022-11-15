@@ -230,7 +230,7 @@
 <figure class="align-default" id="id7">
 <a class="reference internal image-reference" href="../_images/tree.png"><img alt="../_images/tree.png" src="../_images/tree.png" style="width: 200px; height: 230px;" /></a>
 <figcaption>
-<p><span class="caption-text">A tree with <em>data</em> integers</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">A tree with data integers</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="basic-concepts">
@@ -595,8 +595,11 @@
 </pre></div>
 </div>
 <p>Using pointers to store country is actually better when <code class="docutils literal notranslate"><span class="pre">Country</span></code> type is a large structure. It will cost less memory.</p>
-<p>However, we cannot directly use <code class="docutils literal notranslate"><span class="pre">Country</span> <span class="pre">*country</span></code> in the definition of <code class="docutils literal notranslate"><span class="pre">Node</span></code>. Why?</p>
-<p>A key trick is to use a “reference counter” to track the number of references to a resource.</p>
+<div class="admonition-think admonition">
+<p class="admonition-title">Think</p>
+<p>Is it possible to use <code class="docutils literal notranslate"><span class="pre">Country</span> <span class="pre">*country</span></code> in the definition of <code class="docutils literal notranslate"><span class="pre">Node</span></code> to implement the simulation. And why?</p>
+</div>
+<p>A key trick is to use a <cite>reference counter</cite> to track the number of references to a resource.</p>
 <p>Originally, we directly save country inside node:</p>
 <figure class="align-center" id="id13">
 <p class="plantuml">
@@ -644,9 +647,9 @@
 <p><span class="caption-text">New Node</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The <code class="docutils literal notranslate"><span class="pre">counter</span></code> in the proxy will remember the count of references. (In the above example, it’s 1 because only one node want to point to the resource)</p>
-<p>And, one resource will only have one proxy. There shouldn’t be other proxies.</p>
-<p>When the proxy found that its counter is 0, it will automatically delete the resource it points to and also itself. It is safe because there are no other references.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">counter</span></code> in the proxy will remember the number of references. (In the above example, it’s 1 because only one node want to point to the resource)</p>
+<p>And, <strong>one resource will only have one proxy</strong>.</p>
+<p>When the proxy found that its counter is 0, it will automatically delete <strong>the resource it points to and also itself</strong>. It is safe because there are no other references.</p>
 <figure class="align-center" id="id15">
 <p class="plantuml">
 <a href="../_images/plantuml-39bfb917ac07e61dc00801ce4899eb3fdc8c30c2.png"><img src="../_images/plantuml-39bfb917ac07e61dc00801ce4899eb3fdc8c30c2.png" alt=" skinparam classAttributeIconSize 0
@@ -1000,7 +1003,7 @@
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Introduction</div>
+                <div class="title">Introduction </div>
                 
               </div>
             </a>
@@ -1008,7 +1011,7 @@
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2022, linsyking
+                Copyright &#169; 2022, Linsy King
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             

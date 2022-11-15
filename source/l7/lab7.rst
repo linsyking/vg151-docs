@@ -38,7 +38,7 @@ What is tree?
    :height: 230
    :width: 200
 
-   A tree with *data* integers
+   A tree with data integers
 
 Basic Concepts
 ~~~~~~~~~~~~~~
@@ -442,9 +442,11 @@ And then define the ``Node`` by:
 
 Using pointers to store country is actually better when ``Country`` type is a large structure. It will cost less memory.
 
-However, we cannot directly use ``Country *country`` in the definition of ``Node``. Why?
+.. admonition:: Think
 
-A key trick is to use a "reference counter" to track the number of references to a resource.
+    Is it possible to use ``Country *country`` in the definition of ``Node`` to implement the simulation. And why?
+
+A key trick is to use a `reference counter` to track the number of references to a resource.
 
 Originally, we directly save country inside node:
 
@@ -493,11 +495,11 @@ Now we add a "proxy" (or you can call it a counter) between them:
     node1::proxy -> proxy1
     proxy1::country -> R1
 
-The ``counter`` in the proxy will remember the count of references. (In the above example, it's 1 because only one node want to point to the resource)
+The ``counter`` in the proxy will remember the number of references. (In the above example, it's 1 because only one node want to point to the resource)
 
-And, one resource will only have one proxy. There shouldn't be other proxies.
+And, **one resource will only have one proxy**.
 
-When the proxy found that its counter is 0, it will automatically delete the resource it points to and also itself. It is safe because there are no other references.
+When the proxy found that its counter is 0, it will automatically delete **the resource it points to and also itself**. It is safe because there are no other references.
 
 .. uml::
    :align: center
