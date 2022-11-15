@@ -1,0 +1,604 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="C Questions" href="rc_part6.html" /><link rel="prev" title="ENGR151 Lab 7: Trees" href="../l7/lab7.html" />
+
+    <meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
+        <title>Basic C - VG151 Documentation documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">VG151 Documentation  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">VG151 Documentation  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../unfiled/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../l7/lab7.html">Lab 7</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Mid 2 RC (Part 3)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rc_part6.html">Mid 2 RC (Part 6)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unfiled/codecheck.html">Code Check</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="basic-c-1">
+<h1>Basic C <a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a><a class="headerlink" href="#basic-c-1" title="Permalink to this heading">#</a></h1>
+<section id="c-types">
+<h2>C Types<a class="headerlink" href="#c-types" title="Permalink to this heading">#</a></h2>
+<section id="scope-of-variables">
+<h3>Scope of Variables<a class="headerlink" href="#scope-of-variables" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><p>Constant variables (make it easier to understand your code)</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">some_magic_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
+<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">my_str</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;List1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;List2&quot;</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>Global variables: defined for all functions (outside the function or <code class="code highlight cin c docutils literal highlight-c"><span class="k">static</span><span class="w"></span></code>)</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Never use non-constant global variables in VG151!</p>
+</div>
+</li>
+<li><p>Local variables: defined only in functions</p></li>
+</ul>
+</section>
+<section id="type-classification-2">
+<h3>Type Classification <a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a><a class="headerlink" href="#type-classification-2" title="Permalink to this heading">#</a></h3>
+<p>The C type system consists of the following types: (excluded some types that we don’t need in VG151)</p>
+<ul class="simple">
+<li><p>the type <code class="code highlight cin c docutils literal highlight-c"><span class="kt">void</span><span class="w"></span></code></p></li>
+<li><p>basic types</p>
+<ul>
+<li><p>the type <code class="code highlight cin c docutils literal highlight-c"><span class="kt">char</span><span class="w"></span></code></p></li>
+<li><p>signed integer types</p>
+<ul>
+<li><p>standard: <code class="code highlight cin c docutils literal highlight-c"><span class="kt">signed</span><span class="w"> </span><span class="kt">char</span><span class="w"></span></code>, <code class="code highlight cin c docutils literal highlight-c"><span class="kt">short</span><span class="w"></span></code>, <code class="code highlight cin c docutils literal highlight-c"><span class="kt">int</span><span class="w"></span></code>, <code class="code highlight cin c docutils literal highlight-c"><span class="kt">long</span><span class="w"></span></code>, <code class="code highlight cin c docutils literal highlight-c"><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"></span></code> (since C99)</p></li>
+</ul>
+</li>
+<li><p>unsigned integer types</p>
+<ul>
+<li><p>standard: <code class="code highlight cin c docutils literal highlight-c"><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"></span></code>, <code class="code highlight cin c docutils literal highlight-c"><span class="kt">unsigned</span><span class="w"> </span><span class="kt">short</span><span class="w"></span></code>, <code class="code highlight cin c docutils literal highlight-c"><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"></span></code>, <code class="code highlight cin c docutils literal highlight-c"><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"></span></code>, <code class="code highlight cin c docutils literal highlight-c"><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"></span></code> (since C99)</p></li>
+</ul>
+</li>
+<li><p>floating-point types</p>
+<ul>
+<li><p>real floating-point types: <code class="code highlight cin c docutils literal highlight-c"><span class="kt">float</span><span class="w"></span></code>, <code class="code highlight cin c docutils literal highlight-c"><span class="kt">double</span><span class="w"></span></code>, <code class="code highlight cin c docutils literal highlight-c"><span class="kt">long</span><span class="w"> </span><span class="kt">double</span><span class="w"></span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>enumerated types</p></li>
+<li><p>derived types</p>
+<ul>
+<li><p>array types</p></li>
+<li><p>structure types</p></li>
+<li><p>union types</p></li>
+<li><p>function types</p></li>
+<li><p>pointer types</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>There is no direct <code class="docutils literal notranslate"><span class="pre">bool</span></code> type support in C11 standard.</p>
+</div>
+</section>
+<section id="arithmetic-types">
+<h3>Arithmetic Types<a class="headerlink" href="#arithmetic-types" title="Permalink to this heading">#</a></h3>
+<p>(See <a class="reference external" href="https://en.cppreference.com/w/c/language/arithmetic_types">arithmetic types</a> for more details)</p>
+<ul class="simple">
+<li><p><code class="code highlight cin c docutils literal highlight-c"><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span></code></p></li>
+<li><p><code class="code highlight cin c docutils literal highlight-c"><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span><span class="w"></span></code> 7 digits of precision</p></li>
+<li><p><code class="code highlight cin c docutils literal highlight-c"><span class="kt">double</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5.5</span><span class="p">;</span><span class="w"></span></code> 13 digits of precision</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When comparing two <code class="code highlight cin c docutils literal highlight-c"><span class="kt">double</span><span class="w"></span></code> or <code class="code highlight cin c docutils literal highlight-c"><span class="kt">float</span><span class="w"></span></code>, it’s safer to allow errors.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="cp">#include</span><span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
+<span class="hll"><span class="linenos">2</span><span class="cp">#include</span><span class="cpf">&lt;limits.h&gt;</span><span class="cp"></span>
+</span><span class="linenos">3</span>
+<span class="linenos">4</span><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">5</span><span class="c1">// ...</span>
+<span class="hll"><span class="linenos">6</span><span class="k">if</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">FLT_EPSILON</span><span class="p">){</span><span class="w"></span>
+</span><span class="linenos">7</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;a and b are equal&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">8</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><code class="xref c c-type docutils literal notranslate"><span class="pre">FLT_EPSILON</span></code> defined in <code class="docutils literal notranslate"><span class="pre">limits.h</span></code> is helpful.</p>
+</div>
+</section>
+<section id="characters">
+<h3>Characters<a class="headerlink" href="#characters" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Characters are enclosed in single quotes: <code class="code highlight cin c docutils literal highlight-c"><span class="kt">char</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="w"></span></code>;</p></li>
+<li><p>Character are encoded using the American Standard Codes for In-formation Interchange (ASCII)</p></li>
+<li><p>No <code class="code highlight cin c docutils literal highlight-c"><span class="n">string</span><span class="w"></span></code> type. A string is viewed as an array of characters.</p></li>
+<li><p>Strings are enclosed in double quotes. Usually a string should ended up with a char <code class="code highlight cin c docutils literal highlight-c"><span class="sc">&#39;0&#39;</span><span class="w"></span></code>.</p></li>
+<li><p>Here are examples about how to initialize strings:</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;abcd&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">2</span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">[</span><span class="mi">50</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;abcd&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">3</span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;a&#39;</span><span class="p">,</span><span class="sc">&#39;b&#39;</span><span class="p">,</span><span class="sc">&#39;c&#39;</span><span class="p">,</span><span class="sc">&#39;d&#39;</span><span class="p">,</span><span class="sc">&#39;\0&#39;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">4</span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;a&#39;</span><span class="p">,</span><span class="sc">&#39;b&#39;</span><span class="p">,</span><span class="sc">&#39;c&#39;</span><span class="p">,</span><span class="sc">&#39;d&#39;</span><span class="p">,</span><span class="sc">&#39;\0&#39;</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="displaying">
+<h3>Displaying<a class="headerlink" href="#displaying" title="Permalink to this heading">#</a></h3>
+<p>Comparing those two code snippets:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="linenos">2</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span><span class="w"></span>
+<span class="hll"><span class="linenos">3</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="mi">7</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="o">/</span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+</span><span class="linenos">4</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="linenos">2</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span><span class="w"></span>
+<span class="hll"><span class="linenos">3</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="mi">7</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mf">7.0</span><span class="o">/</span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+</span><span class="linenos">4</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="code highlight cin c docutils literal highlight-c"><span class="o">%</span><span class="n">d</span><span class="w"></span></code> means a signed integer here and <code class="code highlight cin c docutils literal highlight-c"><span class="o">%</span><span class="n">f</span><span class="w"></span></code> means a floating-point number here.</p></li>
+<li><p>The compiler would take <code class="docutils literal notranslate"><span class="pre">7/3</span></code> as an integer, and take <code class="docutils literal notranslate"><span class="pre">7.0/3</span></code> as a floating-point number.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can use suffix, if present, is one of <code class="docutils literal notranslate"><span class="pre">f</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">F</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code> to define a “floating-point literal”.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">f</span></code>, <code class="docutils literal notranslate"><span class="pre">F</span></code> defines <code class="code highlight cin c docutils literal highlight-c"><span class="kt">float</span><span class="w"></span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code> defines <code class="code highlight cin c docutils literal highlight-c"><span class="kt">long</span><span class="w"> </span><span class="kt">double</span><span class="w"></span></code></p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="mf">7f</span><span class="o">/</span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="type-casting">
+<h3>Type Casting<a class="headerlink" href="#type-casting" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Basic syntax: <code class="code highlight cin c docutils literal highlight-c"><span class="p">(</span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="n">variable</span><span class="w"></span></code></p></li>
+<li><p><code class="code highlight cin c docutils literal highlight-c"><span class="kt">char</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="w"> </span><span class="mf">100.111</span><span class="p">;</span><span class="w"></span></code> Then <code class="code highlight cin c docutils literal highlight-c"><span class="n">a</span><span class="w"></span></code> becomes <code class="code highlight cin c docutils literal highlight-c"><span class="sc">&#39;d&#39;</span><span class="w"></span></code></p></li>
+<li><p>Pay attention to the size and precision especially when dealing with mathematical operations.</p></li>
+</ul>
+</section>
+</section>
+<section id="structures">
+<h2>Structures<a class="headerlink" href="#structures" title="Permalink to this heading">#</a></h2>
+<p>Basic <code class="code highlight cin c docutils literal highlight-c"><span class="k">struct</span><span class="w"></span></code> usage:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_person</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="p">}</span><span class="w"> </span><span class="n">person</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="n">person</span><span class="w"> </span><span class="n">al</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;albert&quot;</span><span class="p">,</span><span class="mi">32</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">    </span><span class="n">person</span><span class="w"> </span><span class="n">gil</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">    </span><span class="n">gil</span><span class="p">.</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;gilbert&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">12</span><span class="w">    </span><span class="n">gil</span><span class="p">.</span><span class="n">age</span><span class="o">=</span><span class="mi">23</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">13</span><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_person</span><span class="w"> </span><span class="n">so</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;sophie&quot;</span><span class="p">,</span><span class="mi">56</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">14</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">al</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">al</span><span class="p">.</span><span class="n">age</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">15</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">gil</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">gil</span><span class="p">.</span><span class="n">age</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">16</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">so</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">so</span><span class="p">.</span><span class="n">age</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">17</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Combine with functions:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="linenos"> 2</span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_person</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="p">}</span><span class="w"> </span><span class="n">person</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="n">person</span><span class="w"> </span><span class="nf">older</span><span class="p">(</span><span class="n">person</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">    </span><span class="n">person</span><span class="w"> </span><span class="n">al</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;albert&quot;</span><span class="p">,</span><span class="mi">32</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">    </span><span class="n">al</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">older</span><span class="p">(</span><span class="n">al</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">12</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">al</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">al</span><span class="p">.</span><span class="n">age</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">13</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="n">person</span><span class="w"> </span><span class="nf">older</span><span class="p">(</span><span class="n">person</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">16</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">age</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">17</span><span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="n">age</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="c1">// A C function can only have one output.</span>
+<span class="linenos">19</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="control-statements">
+<h2>Control Statements<a class="headerlink" href="#control-statements" title="Permalink to this heading">#</a></h2>
+<section id="basics-on-conditional-statements">
+<h3>Basics on Conditional Statements<a class="headerlink" href="#basics-on-conditional-statements" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>No boolean type, 0 means False, anything else True</strong></p></li>
+<li><p>Boolean evaluation: <code class="code highlight cin c docutils literal highlight-c"><span class="o">&lt;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;=</span><span class="p">,</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="o">&gt;=</span><span class="p">,</span><span class="w"> </span><span class="o">==</span><span class="p">,</span><span class="w"> </span><span class="o">!=</span><span class="w"></span></code></p></li>
+<li><p>Not: <code class="code highlight cin c docutils literal highlight-c"><span class="o">!</span><span class="w"></span></code>, short-circuit operators: and: <code class="code highlight cin c docutils literal highlight-c"><span class="o">&amp;&amp;</span><span class="w"></span></code>, or: <code class="code highlight cin c docutils literal highlight-c"><span class="o">||</span><span class="w"></span></code></p></li>
+<li><p>Bit operations: <code class="code highlight cin c docutils literal highlight-c"><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="p">,</span><span class="w"> </span><span class="o">^</span><span class="w"></span></code></p></li>
+</ul>
+</section>
+<section id="conditional-ternary-operator">
+<h3>Conditional Ternary Operator<a class="headerlink" href="#conditional-ternary-operator" title="Permalink to this heading">#</a></h3>
+<p>(Fewer lines, but not recommended in exams)</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">condition</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">expression1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">expression2</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define MAX(a,b) a&gt;=b ? a : b</span>
+</pre></div>
+</div>
+</section>
+<section id="if-and-switch">
+<h3><code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">switch</span></code><a class="headerlink" href="#if-and-switch" title="Permalink to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;zero</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;one or two</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="k">else</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;not zero or one</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="k">switch</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;zero</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="c1">// Don&#39;t forget the break!!!</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;one or two</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">12</span><span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">13</span><span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="linenos">14</span><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;not zero or one or two</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">15</span><span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">16</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="random-numbers">
+<h3>Random numbers<a class="headerlink" href="#random-numbers" title="Permalink to this heading">#</a></h3>
+<p>When generating random numbers, usually we should add these two lines:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>To make the random number “random”, we could use <code class="code highlight cin c docutils literal highlight-c"><span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">))</span><span class="w"></span></code>.</p>
+<p><code class="code highlight cin c docutils literal highlight-c"><span class="n">srand</span><span class="p">()</span><span class="w"></span></code> seeds the pseudo-random number generator used by <code class="code highlight cin c docutils literal highlight-c"><span class="n">rand</span><span class="p">()</span><span class="w"></span></code>.</p>
+<p>If <code class="code highlight cin c docutils literal highlight-c"><span class="n">rand</span><span class="p">()</span><span class="w"></span></code> is used before any calls to <code class="code highlight cin c docutils literal highlight-c"><span class="n">srand</span><span class="p">()</span><span class="w"></span></code>, <code class="code highlight cin c docutils literal highlight-c"><span class="n">rand</span><span class="p">()</span><span class="w"></span></code> behaves as if it was seeded with <code class="code highlight cin c docutils literal highlight-c"><span class="n">srand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"></span></code>.</p>
+<p>Each time <code class="code highlight cin c docutils literal highlight-c"><span class="n">rand</span><span class="p">()</span><span class="w"></span></code> is seeded with <code class="code highlight cin c docutils literal highlight-c"><span class="n">srand</span><span class="p">()</span><span class="w"></span></code>, it must produce the same sequence of values.</p>
+<p>Pseudo-random integer value between 0 and <code class="code highlight cin c docutils literal highlight-c"><span class="n">RAND_MAX</span><span class="w"></span></code>, inclusive.</p>
+</section>
+<section id="loops">
+<h3>Loops<a class="headerlink" href="#loops" title="Permalink to this heading">#</a></h3>
+<section id="while-and-do-while-loops">
+<h4><code class="docutils literal notranslate"><span class="pre">while</span></code> and <code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">...</span> <span class="pre">while</span></code> loops<a class="headerlink" href="#while-and-do-while-loops" title="Permalink to this heading">#</a></h4>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">2</span><span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="n">i</span><span class="o">++</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">3</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">4</span><span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="o">++</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">5</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">6</span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">++</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);}</span><span class="w"></span>
+<span class="linenos">7</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">8</span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">++</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="for-loops">
+<h4><code class="docutils literal notranslate"><span class="pre">for</span></code> loops<a class="headerlink" href="#for-loops" title="Permalink to this heading">#</a></h4>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="k">for</span><span class="p">(;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;){</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="n">i</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">10</span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;)</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="n">i</span><span class="o">++</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="break-and-continue">
+<h5><code class="docutils literal notranslate"><span class="pre">break</span></code> and <code class="docutils literal notranslate"><span class="pre">continue</span></code><a class="headerlink" href="#break-and-continue" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Early exit of a loop: <code class="code highlight cin c docutils literal highlight-c"><span class="k">break</span><span class="w"></span></code></p></li>
+<li><p>Skip to the next loop iteration: <code class="code highlight cin c docutils literal highlight-c"><span class="k">continue</span><span class="w"></span></code></p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+<section id="good-luck">
+<h2>Good Luck<a class="headerlink" href="#good-luck" title="Permalink to this heading">#</a></h2>
+<p>Hope you can do well!</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>VG151 Mid2 Big RC Part 3, 2021. Jiache, Zhang.</p>
+</aside>
+<aside class="footnote brackets" id="id5" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>C Reference. <a class="reference external" href="https://en.cppreference.com/w/c/language/type">https://en.cppreference.com/w/c/language/type</a></p>
+</aside>
+</aside>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="rc_part6.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">C Questions </div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../l7/lab7.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">ENGR151 Lab 7: Trees</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, linsyking
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Basic C </a><ul>
+<li><a class="reference internal" href="#c-types">C Types</a><ul>
+<li><a class="reference internal" href="#scope-of-variables">Scope of Variables</a></li>
+<li><a class="reference internal" href="#type-classification-2">Type Classification </a></li>
+<li><a class="reference internal" href="#arithmetic-types">Arithmetic Types</a></li>
+<li><a class="reference internal" href="#characters">Characters</a></li>
+<li><a class="reference internal" href="#displaying">Displaying</a></li>
+<li><a class="reference internal" href="#type-casting">Type Casting</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#structures">Structures</a></li>
+<li><a class="reference internal" href="#control-statements">Control Statements</a><ul>
+<li><a class="reference internal" href="#basics-on-conditional-statements">Basics on Conditional Statements</a></li>
+<li><a class="reference internal" href="#conditional-ternary-operator">Conditional Ternary Operator</a></li>
+<li><a class="reference internal" href="#if-and-switch"><code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">switch</span></code></a></li>
+<li><a class="reference internal" href="#random-numbers">Random numbers</a></li>
+<li><a class="reference internal" href="#loops">Loops</a><ul>
+<li><a class="reference internal" href="#while-and-do-while-loops"><code class="docutils literal notranslate"><span class="pre">while</span></code> and <code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">...</span> <span class="pre">while</span></code> loops</a></li>
+<li><a class="reference internal" href="#for-loops"><code class="docutils literal notranslate"><span class="pre">for</span></code> loops</a><ul>
+<li><a class="reference internal" href="#break-and-continue"><code class="docutils literal notranslate"><span class="pre">break</span></code> and <code class="docutils literal notranslate"><span class="pre">continue</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#good-luck">Good Luck</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    </body>
+</html>

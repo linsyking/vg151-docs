@@ -7,7 +7,7 @@ Group Presentation
 * What's the difference between ``Type **`` and ``Type *``? Why use ``Type **`` in homework?
 * How to use valgrind to check memory leak?
 * What is a dynamic array, and what are the similarities and differences compared to h6 ex5?
-* What is a double linked list, and what are the similarities and differences compared to h6 ex7?
+* What is a doubly linked list, and what are the similarities and differences compared to h6 ex7?
 
 Homework Feedback
 -----------------
@@ -21,6 +21,8 @@ Generally, you did a great job! However, remember the following things:
 .. warning::
 
    This lab is quite difficult. If I don't make something clear, please forgive me.
+
+.. _tree-structure:
 
 Tree Structure
 --------------
@@ -93,22 +95,25 @@ Pointers are helpful to writing "compound data structure with self-referring" (a
 
    Think about what their "nodes" are. Write out the concrete implementations.
 
-Here I give two exmaples. Note that the data can be any data type, I use ``int`` only for demonstration.
+Here I give two examples. Note that the data can be any data type, I use ``int`` only for demonstration.
 
-**Linked list**
+.. _doubly-linked-list:
+
+Doubly Linked list
+**********************
 
 .. code-block:: c
-    :emphasize-lines: 4,6
+    :emphasize-lines: 4,5
 
     typedef struct _node{
         int data;
         // other staffs
         struct _node *next;
-        // if double linked list
         struct _node *prev;
     } node;
 
-**(Binary) Tree**
+Binary Tree
+***********
 
 .. code-block:: c
     :emphasize-lines: 4,5
@@ -131,6 +136,8 @@ However, the method we used last time is not very easy to understand (using arra
 Now we have learned tree. Is it useful in this game?
 
 We use *Post Order* DFS to traverse all the nodes in the tree.
+
+.. _gc-easy:
 
 Garbage Collection: Easy Version
 --------------------------------
@@ -402,6 +409,8 @@ Finally we destroy all the objects.
 
     What is the disadvantages of this simple method?
 
+.. _reference-counting:
+
 Reference counting
 ------------------
 
@@ -509,7 +518,7 @@ When the proxy found that its counter is 0, it will automatically delete the res
 
 Now let's try to use this in the example we talked about in the simple version.
 
-After simluation:
+After simulation:
 
 .. uml::
    :align: center
@@ -806,11 +815,11 @@ This is the check mainly for your p2.
 
 You have to learn how to manage memory by yourself in p2. (although in the real world it's **not recommended** to manage the memory by yourself)
 
-We use :program:`msan, asan, lsan, ubsan` to perform the checks. The feedback is very clear. It shows the trackbacks and tell you where the problem is in your source files.
+We use :program:`msan, asan, lsan, ubsan` to perform the checks. The feedback is very clear. It shows the track-back and tell you where the problem is in your source files.
 
 Alternative memory checking tools are :program:`valgrind` (not available on Windows). For Windows users, you can either try searching tools online or use WSL.
 
-Attendence Quiz
+Attendance Quiz
 ---------------
 
-Please do the attendence quiz on Canvas now.
+Please do the attendance quiz on Canvas now.

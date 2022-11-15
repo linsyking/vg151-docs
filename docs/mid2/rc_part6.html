@@ -1,0 +1,710 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Code Check" href="../unfiled/codecheck.html" /><link rel="prev" title="Basic C" href="rc_part3.html" />
+
+    <meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
+        <title>C Questions - VG151 Documentation documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">VG151 Documentation  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">VG151 Documentation  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../unfiled/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../l7/lab7.html">Lab 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rc_part3.html">Mid 2 RC (Part 3)</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Mid 2 RC (Part 6)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unfiled/codecheck.html">Code Check</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="c-questions-1">
+<h1>C Questions <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a><a class="headerlink" href="#c-questions-1" title="Permalink to this heading">#</a></h1>
+<section id="guide-for-e2-r">
+<h2>Guide for <code class="docutils literal notranslate"><span class="pre">e2_r</span></code><a class="headerlink" href="#guide-for-e2-r" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>I’m only choosing part of the questions to discuss.</p></li>
+<li><p>Those are NOT standard answers. As long as your own answer is correct and complete it’s fine.</p></li>
+<li><p>It’s NO USE reciting my sample answer and sample codes. You need to understand and remember the theory so that you can explain in your own words.</p></li>
+<li><p>If you haven’t done <code class="docutils literal notranslate"><span class="pre">e2_r</span></code> on your own I suggest you do it before you look into my answer and codes in detail.</p></li>
+</ul>
+</section>
+<section id="basic-c-questions">
+<h2>Basic C Questions<a class="headerlink" href="#basic-c-questions" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>What is a macro?</p>
+<p>Macros are defined by using <code class="code highlight cin c docutils literal highlight-c"><span class="cp">#define</span></code>. They are handled first when compiling.</p>
+<p>We usually use macros to define constant global variables and header guards.</p>
+</li>
+<li><p>What are the five main data types?</p>
+<p><code class="code highlight cin c docutils literal highlight-c"><span class="kt">int</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="kt">void</span><span class="w"></span></code></p>
+<p>(C does not have <code class="code highlight cin c docutils literal highlight-c"><span class="kt">bool</span><span class="w"></span></code>)</p>
+</li>
+<li><p>What should upper-cases variable names reserved for?</p>
+<p>Constant variables (including macros)</p>
+</li>
+<li><p>What is the length of a char?</p>
+<p>8 bits/1 byte.</p>
+<p>For some other data types(such as int), they depend on the computer and OS.</p>
+</li>
+<li><p>Can you list and use all the shorthand operators?</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">a</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">a</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">a</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">a</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">a</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="n">a</span><span class="o">--</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>Should goto be used and why?</p>
+<p>No. <code class="code highlight cin c docutils literal highlight-c"><span class="k">goto</span><span class="w"></span></code> makes your code messy. Codes with <code class="code highlight cin c docutils literal highlight-c"><span class="k">goto</span><span class="w"></span></code> are hard to read, understand and debug.</p>
+<p>What’s more, using <code class="code highlight cin c docutils literal highlight-c"><span class="k">goto</span><span class="w"></span></code> breaks code quality and means deduction!</p>
+</li>
+<li><p>How to use the conditional ternary operator?</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">condition</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">expression1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">expression2</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">bigger_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>What is the difference between switch in MATLAB and in C?</p>
+<p><code class="code highlight cin c docutils literal highlight-c"><span class="k">default</span><span class="w"></span></code> vs. <code class="docutils literal notranslate"><span class="pre">otherwise</span></code></p>
+<p>Effect of <code class="code highlight cin c docutils literal highlight-c"><span class="k">break</span><span class="w"></span></code> at the end of each case. (usually necessary)</p>
+</li>
+<li><p>Why should for loops be preferred over while loops?</p>
+<p><code class="code highlight cin c docutils literal highlight-c"><span class="k">for</span><span class="w"></span></code> loops are easier to write and read, especially when the loop needs a counter.</p>
+</li>
+<li><p>Should global variables be used or not?</p>
+<p>No. Global variables are not safe since they can be accessed every where.</p>
+<p>They also makes debugging harder because it’s difficult to locate where this variable is changed and go wrong.</p>
+<p>Also please think of code quality deductions.</p>
+</li>
+<li><p>What is a pointer?</p>
+<p>Pointer is special type that points to the address of a memory, in which another variable is stored.</p>
+</li>
+<li><p>Given a pointer on a structure, how to access the different fields of the structure?</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Card</span><span class="o">*</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span><span class="w">   </span><span class="c1">//Initialize</span>
+<span class="n">c</span><span class="o">-&gt;</span><span class="n">rank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">    </span><span class="c1">//Preferred</span>
+<span class="p">(</span><span class="o">*</span><span class="n">c</span><span class="p">).</span><span class="n">rank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span><span class="c1">//OK</span>
+</pre></div>
+</div>
+</li>
+<li><p>What is dynamic memory allocation?</p>
+<p>It’s asking computer for a block of memory, whose lifespan is controlled by us. (Not auto freed when leaving a block.)</p>
+<p>The size of that data structure (in dynamic memory) can be defined and changed in runtime. (while size of static data structures are defined when compiling and can not be changed.)</p>
+</li>
+<li><p>For each <code class="docutils literal notranslate"><span class="pre">malloc</span></code> or <code class="docutils literal notranslate"><span class="pre">calloc</span></code> function in a program what function should also appear?</p>
+<p><code class="code highlight cin c docutils literal highlight-c"><span class="n">free</span><span class="p">();</span><span class="w"></span></code> (Code quality!)</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>According to the latest version of <code class="docutils literal notranslate"><span class="pre">code_quality.pdf</span></code>, you should also check the return value of <code class="xref c c-func docutils literal notranslate"><span class="pre">malloc()</span></code> and <code class="xref c c-func docutils literal notranslate"><span class="pre">calloc()</span></code>.</p>
+</div>
+</li>
+<li><p>How to go through an array using pointers?</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span><span class="w"></span>
+<span class="hll"><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span><span class="w"></span>
+</span></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code class="code highlight cin c docutils literal highlight-c"><span class="n">a</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="w"></span></code> is equivalent to <code class="code highlight cin c docutils literal highlight-c"><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"></span></code> and <code class="code highlight cin c docutils literal highlight-c"><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"></span></code> and <code class="code highlight cin c docutils literal highlight-c"><span class="n">b</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="w"></span></code> (never use this).</p>
+</div>
+<div class="admonition-think admonition">
+<p class="admonition-title">Think</p>
+<p>What is the equivalent representation for <code class="code highlight cin c docutils literal highlight-c"><span class="n">a</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="n">c</span><span class="p">]</span><span class="w"></span></code>?</p>
+</div>
+</li>
+<li><p>Can you solve all the questions at the end of Chapter 11?</p>
+<ul>
+<li><p>How to use external libraries?</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">main.c</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
+<span class="c1">// other code</span>
+</pre></div>
+</div>
+</div>
+<p>Then, <code class="code highlight bash docutils literal highlight-bash">gcc main.c -lm</code>.</p>
+</li>
+<li><p>How to write a <code class="docutils literal notranslate"><span class="pre">Makefile/CMakeLists.txt</span></code>?</p>
+<p>Turn to the <a class="reference external" href="https://focs.ji.sjtu.edu.cn/git/ENGR151-22/materials/src/branch/master/templates">materials repository</a> to see a simple template!</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Since we don’t have strict rules on which one you should choose between <cite>Makefile</cite> or <cite>CMakeLists.txt</cite>, you only need to know how to write one of them.</p>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="a-simple-investigation-game">
+<h2>A Simple Investigation Game<a class="headerlink" href="#a-simple-investigation-game" title="Permalink to this heading">#</a></h2>
+<section id="ex2-task-1">
+<h3>Ex2. Task 1<a class="headerlink" href="#ex2-task-1" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>Define a structure composed of the fields suspect, location, and weapon.</p>
+</div></blockquote>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_scene</span><span class="p">{</span><span class="w"></span>
+<span class="linenos">2</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">suspect</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">3</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">location</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">4</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">weapon</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">5</span><span class="p">}</span><span class="w"> </span><span class="n">scene</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">sus_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;Butcher&quot;</span><span class="p">,</span><span class="s">&quot;Hairdresser&quot;</span><span class="p">,</span><span class="s">&quot;Salesman&quot;</span><span class="p">,</span><span class="s">&quot;Banker&quot;</span><span class="p">,</span><span class="s">&quot;Student&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">8</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">loc_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;lounge&quot;</span><span class="p">,</span><span class="s">&quot;lobby&quot;</span><span class="p">,</span><span class="s">&quot;reception&quot;</span><span class="p">,</span><span class="s">&quot;restaurant&quot;</span><span class="p">,</span><span class="s">&quot;coffee shop&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">9</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">weap_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;hammer&quot;</span><span class="p">,</span><span class="s">&quot;scissors&quot;</span><span class="p">,</span><span class="s">&quot;knife&quot;</span><span class="p">,</span><span class="s">&quot;poison&quot;</span><span class="p">,</span><span class="s">&quot;candlestick&quot;</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="ex2-task-2">
+<h3>Ex2. Task 2<a class="headerlink" href="#ex2-task-2" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>Write a function which selects a random suspect, a random location, and a random weapon.</p>
+</div></blockquote>
+<p>The function does not have return value, so we need to give it a pointer.</p>
+<p>Also, when passing large variables (such as structures and arrays) to functions, using pointers saves time and memory to copy the variable.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">void</span><span class="w"> </span><span class="nf">generateScene</span><span class="p">(</span><span class="n">scene</span><span class="o">*</span><span class="w"> </span><span class="n">answer</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">2</span><span class="w">    </span><span class="n">srand</span><span class="p">((</span><span class="kt">unsigned</span><span class="p">)</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span><span class="w"></span>
+<span class="linenos">3</span><span class="w">    </span><span class="n">answer</span><span class="o">-&gt;</span><span class="n">suspect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="mi">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">4</span><span class="w">    </span><span class="n">answer</span><span class="o">-&gt;</span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="mi">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">5</span><span class="w">    </span><span class="n">answer</span><span class="o">-&gt;</span><span class="n">weapon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="mi">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">6</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="ex2-task-3-4">
+<h3>Ex2. Task 3, 4<a class="headerlink" href="#ex2-task-3-4" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>The game is then composed of rounds where the user constructs guesses, which are assessed by the program.</p>
+<p>Use dynamic memory allocation to save each step taken by the player and print the whole list of guesses.</p>
+</div></blockquote>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kt">int</span><span class="w"> </span><span class="nf">compareGuess</span><span class="p">(</span><span class="n">scene</span><span class="w"> </span><span class="o">*</span><span class="n">answer</span><span class="p">,</span><span class="w"> </span><span class="n">scene</span><span class="w"> </span><span class="o">*</span><span class="n">guess</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">correct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">answer</span><span class="o">-&gt;</span><span class="n">suspect</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">guess</span><span class="o">-&gt;</span><span class="n">suspect</span><span class="p">)</span><span class="w"> </span><span class="n">correct</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">answer</span><span class="o">-&gt;</span><span class="n">location</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">guess</span><span class="o">-&gt;</span><span class="n">location</span><span class="p">)</span><span class="w"> </span><span class="n">correct</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">answer</span><span class="o">-&gt;</span><span class="n">weapon</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">guess</span><span class="o">-&gt;</span><span class="n">weapon</span><span class="p">)</span><span class="w"> </span><span class="n">correct</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">correct</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="kt">int</span><span class="w">    </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">10</span><span class="n">scene</span><span class="w"> </span><span class="o">*</span><span class="n">guess</span><span class="p">,</span><span class="w"> </span><span class="n">answer</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">11</span><span class="kt">int</span><span class="w">    </span><span class="n">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">12</span><span class="n">guess</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">13</span><span class="n">generateScene</span><span class="p">(</span><span class="n">answer</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">16</span><span class="w">    </span><span class="n">guess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">scene</span><span class="o">*</span><span class="p">)</span><span class="n">realloc</span><span class="p">(</span><span class="n">guess</span><span class="p">,(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="n">scene</span><span class="p">)));</span><span class="w"></span>
+<span class="linenos">17</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">suspect</span><span class="p">,</span><span class="w"> </span><span class="n">location</span><span class="p">,</span><span class="w"> </span><span class="n">weapon</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">suspect</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">location</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">weapon</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">19</span><span class="w">    </span><span class="p">(</span><span class="n">guess</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">suspect</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">suspect</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">    </span><span class="p">(</span><span class="n">guess</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">location</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">21</span><span class="w">    </span><span class="p">(</span><span class="n">guess</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">weapon</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">weapon</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">22</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">correct_num</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">compareGuess</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span><span class="w"> </span><span class="n">guess</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">23</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;You made %d correct guess(es)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">correct_num</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">24</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">correct_num</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">        </span><span class="n">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">26</span><span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">27</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">28</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">flag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">31</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Congratulations...&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">32</span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">33</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Game over...&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">34</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">35</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">36</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d. You suspected the %s...&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">sus_name</span><span class="p">[(</span><span class="n">guess</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">suspect</span><span class="p">]);</span><span class="w"></span>
+<span class="linenos">37</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">38</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Conclusion: the %s...&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sus_name</span><span class="p">[</span><span class="n">answer</span><span class="o">-&gt;</span><span class="n">suspect</span><span class="p">]);</span><span class="w"></span>
+<span class="linenos">39</span><span class="n">free</span><span class="p">(</span><span class="n">guess</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="the-students-grades">
+<h2>The Students’ Grades<a class="headerlink" href="#the-students-grades" title="Permalink to this heading">#</a></h2>
+<section id="ex3-task-1">
+<h3>Ex3. Task 1<a class="headerlink" href="#ex3-task-1" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>Write a structure composed of three fields: name, grades and mean.</p>
+</div></blockquote>
+<p>Students have the same amount of scores, so we’d better use static arrays to save efforts…</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_student</span><span class="p">{</span><span class="w"></span>
+<span class="linenos">2</span><span class="w">    </span><span class="kt">char</span><span class="w">  </span><span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w"></span>
+<span class="linenos">3</span><span class="w">    </span><span class="kt">int</span><span class="w">   </span><span class="n">score</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span><span class="w"></span>
+<span class="linenos">4</span><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">mean</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">5</span><span class="p">}</span><span class="w"> </span><span class="n">student</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="ex3-task-2">
+<h3>Ex3. Task 2<a class="headerlink" href="#ex3-task-2" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>Write a function called avg that computes the mean grade for each student.</p>
+</div></blockquote>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">void</span><span class="w"> </span><span class="nf">avg</span><span class="p">(</span><span class="n">student</span><span class="o">*</span><span class="w"> </span><span class="n">stu</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">2</span><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">3</span><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">4</span><span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">stu</span><span class="o">-&gt;</span><span class="n">score</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<span class="linenos">5</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">6</span><span class="w">    </span><span class="n">stu</span><span class="o">-&gt;</span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="o">/</span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">7</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="ex3-task-3">
+<h3>Ex3. Task 3<a class="headerlink" href="#ex3-task-3" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>Write a function which writes in a file called <code class="docutils literal notranslate"><span class="pre">final_grades.txt</span></code> the name, grades, and mean for each student.</p>
+</div></blockquote>
+<p>Here I designed a function to write a single student into a arbitrary file. I will call this function in a loop.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">void</span><span class="w"> </span><span class="nf">writeFile</span><span class="p">(</span><span class="n">student</span><span class="o">*</span><span class="w"> </span><span class="n">stu</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="o">*</span><span class="w"> </span><span class="n">fd</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">2</span><span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="s">&quot;%s;&quot;</span><span class="p">,</span><span class="n">stu</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">3</span><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">4</span><span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="s">&quot; %d&quot;</span><span class="p">,</span><span class="n">stu</span><span class="o">-&gt;</span><span class="n">score</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w"></span>
+<span class="linenos">5</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">6</span><span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="s">&quot;; %.1f;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">stu</span><span class="o">-&gt;</span><span class="n">mean</span><span class="p">);</span><span class="w"> </span><span class="c1">//One decimal</span>
+<span class="linenos">7</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="ex3-task-4">
+<h3>Ex3. Task 4<a class="headerlink" href="#ex3-task-4" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>Write a function called best that returns the name of the student with the highest mean.</p>
+</div></blockquote>
+<p>Dealing with arrays is always annoying. Why I use <code class="docutils literal notranslate"><span class="pre">malloc</span></code> here? Any alternatives?</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">best</span><span class="p">(</span><span class="n">student</span><span class="o">*</span><span class="w"> </span><span class="n">stu</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">));</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">high</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">stu</span><span class="o">+</span><span class="n">i</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">mean</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">high</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="w">            </span><span class="n">high</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">stu</span><span class="o">+</span><span class="n">i</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">mean</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="w">            </span><span class="n">strcpy</span><span class="p">(</span><span class="n">name</span><span class="p">,(</span><span class="n">stu</span><span class="o">+</span><span class="n">i</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">11</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>Arrays can only pass in and out functions by pointers.</p></li>
+<li><p>Returning the address of local variables can cause undefined behaviors.</p></li>
+</ul>
+<p>Wrong example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">ArrayPtr</span><span class="p">(){</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;This is a string&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">str</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Alternatives:</p>
+<ul>
+<li><p>Pass in a pointer and modify it.(<code class="code highlight cin c docutils literal highlight-c"><span class="n">strcpy</span><span class="p">()</span><span class="w"></span></code> works the same way.)</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">ArrayPtr</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">str</span><span class="p">){</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">temp</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;This is a string&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">strcpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="n">temp</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>Pass in a pointer and modify it. Then return it.(<code class="code highlight cin c docutils literal highlight-c"><span class="n">realloc</span><span class="p">()</span><span class="w"></span></code> works the same way.)</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">ArrayPtr</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">str</span><span class="p">){</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">temp</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;This is a string&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">strcpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="n">temp</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">str</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section id="ex3-task-5">
+<h3>Ex3. Task 5<a class="headerlink" href="#ex3-task-5" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>Read the file <code class="docutils literal notranslate"><span class="pre">grades.txt</span></code> and load the different fields for each student.</p>
+</div></blockquote>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kt">FILE</span><span class="w">    </span><span class="o">*</span><span class="n">input</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="s">&quot;grades.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;r&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="kt">FILE</span><span class="w">    </span><span class="o">*</span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="s">&quot;final_grades.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;w&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="kt">char</span><span class="w">     </span><span class="n">line</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="kt">int</span><span class="w">      </span><span class="n">i</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="n">student</span><span class="w"> </span><span class="o">*</span><span class="n">stu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">fgets</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w">  </span><span class="c1">// Operate until EOF</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">        </span><span class="n">stu</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">student</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">realloc</span><span class="p">(</span><span class="n">stu</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">student</span><span class="p">));</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">        </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strtok</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// Separate the name out</span>
+<span class="linenos">12</span><span class="w">        </span><span class="n">strcpy</span><span class="p">((</span><span class="n">stu</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">13</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">14</span><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">score</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="n">atoi</span><span class="p">(</span><span class="n">strtok</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">));</span><span class="w">  </span><span class="c1">// Separate each score</span>
+<span class="linenos">15</span><span class="w">            </span><span class="p">(</span><span class="n">stu</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">score</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">16</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">17</span><span class="w">        </span><span class="n">avg</span><span class="p">(</span><span class="n">stu</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">        </span><span class="n">writeFile</span><span class="p">(</span><span class="n">stu</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">output</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">19</span><span class="w">        </span><span class="n">i</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">best_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">best</span><span class="p">(</span><span class="n">stu</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">23</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The student with best score is %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">best_name</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">24</span><span class="w">    </span><span class="c1">// DO NOT forget the following part!!!</span>
+<span class="linenos">25</span><span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">best_name</span><span class="p">);</span><span class="w">  </span><span class="c1">// This was allocated in function best()</span>
+<span class="linenos">26</span><span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">stu</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">27</span><span class="w">    </span><span class="n">fclose</span><span class="p">(</span><span class="n">input</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">28</span><span class="w">    </span><span class="n">fclose</span><span class="p">(</span><span class="n">output</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">29</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="other-suggestions">
+<h2>Other Suggestions<a class="headerlink" href="#other-suggestions" title="Permalink to this heading">#</a></h2>
+<p>Mid 2 is very likely to be related to pointers and data structures that need it.</p>
+<p>I recommend you to review how to use pointers and review related data structures, like <a class="reference internal" href="../l7/lab7.html#tree-structure"><span class="std std-ref">Tree Structure</span></a> and <a class="reference internal" href="../l7/lab7.html#doubly-linked-list"><span class="std std-ref">Doubly Linked list</span></a>.</p>
+<p>If you have time, I also recommend you to implement some operations on doubly linked lists and trees, like <cite>insert</cite>, <cite>delete</cite>, <cite>combine</cite>.</p>
+<p>For memory management, my Lab 7 <a class="reference internal" href="../l7/lab7.html#gc-easy"><span class="std std-ref">Garbage Collection: Easy Version</span></a> and <a class="reference internal" href="../l7/lab7.html#reference-counting"><span class="std std-ref">Reference counting</span></a> is a good material.</p>
+<p>When you are lost with pointers, draw diagrams like below. It will help you understand what is happening.</p>
+<figure class="align-center">
+<p class="plantuml">
+<a href="../_images/plantuml-c5cc0323f8049e2796c23b7be02afcafd26fdec4.png"><img src="../_images/plantuml-c5cc0323f8049e2796c23b7be02afcafd26fdec4.png" alt=" skinparam classAttributeIconSize 0
+ package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #yellow {
+     object &quot;Country&quot; as Country1
+     Country1 : name = &quot;UFO&quot;
+     Country1 : id = 10
+ }
+
+ package &quot;Resource&quot; as R2 &lt;&lt;Rectangle&gt;&gt; #yellow {
+     object &quot;Country&quot; as Country2
+     Country2 : name = &quot;ABC&quot;
+     Country2 : id = 3
+ }
+
+ object &quot;Node 1 (Root Node)&quot; as node1
+ node1 : *proxy
+ node1 : *left
+ node1 : *right
+
+ object &quot;Node 2&quot; as node2
+ node2 : *proxy
+ node2 : *left
+ node2 : *right
+
+
+ object &quot;Node 3&quot; as node3
+ node3 : *proxy
+ node3 : *left
+ node3 : *right
+
+ node1::left --&gt; node2
+ node1::right --&gt; node3
+
+ object &quot;Proxy&quot; as proxy1 #orange
+ proxy1 : *country
+ proxy1 : counter = 2
+
+ object &quot;Proxy&quot; as proxy2 #orange
+ proxy2 : *country
+ proxy2 : counter = 1
+
+ node2::proxy -&gt; proxy1
+
+ node3::proxy --&gt; proxy2
+ proxy2::country -&gt; R2
+
+ node1::proxy -&gt; proxy1
+ proxy1::country --&gt; R1" style="width: 10.0cm"/></a>
+</p>
+</figure>
+</section>
+<section id="good-luck">
+<h2>Good Luck<a class="headerlink" href="#good-luck" title="Permalink to this heading">#</a></h2>
+<p>Hope you can do well!</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>VG151 Mid2 Big RC Part 6, 2021. Jiache, Zhang.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../unfiled/codecheck.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Code Check</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="rc_part3.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Basic C </div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, linsyking
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">C Questions </a><ul>
+<li><a class="reference internal" href="#guide-for-e2-r">Guide for <code class="docutils literal notranslate"><span class="pre">e2_r</span></code></a></li>
+<li><a class="reference internal" href="#basic-c-questions">Basic C Questions</a></li>
+<li><a class="reference internal" href="#a-simple-investigation-game">A Simple Investigation Game</a><ul>
+<li><a class="reference internal" href="#ex2-task-1">Ex2. Task 1</a></li>
+<li><a class="reference internal" href="#ex2-task-2">Ex2. Task 2</a></li>
+<li><a class="reference internal" href="#ex2-task-3-4">Ex2. Task 3, 4</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-students-grades">The Students’ Grades</a><ul>
+<li><a class="reference internal" href="#ex3-task-1">Ex3. Task 1</a></li>
+<li><a class="reference internal" href="#ex3-task-2">Ex3. Task 2</a></li>
+<li><a class="reference internal" href="#ex3-task-3">Ex3. Task 3</a></li>
+<li><a class="reference internal" href="#ex3-task-4">Ex3. Task 4</a></li>
+<li><a class="reference internal" href="#ex3-task-5">Ex3. Task 5</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-suggestions">Other Suggestions</a></li>
+<li><a class="reference internal" href="#good-luck">Good Luck</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    </body>
+</html>
