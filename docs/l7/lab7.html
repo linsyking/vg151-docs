@@ -328,7 +328,7 @@
 <span class="w"> </span><span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
-<figure class="align-center">
+<figure class="align-center" id="id9">
 <p class="plantuml">
 <a href="../_images/plantuml-966a57418c495e8fbb08316b1e13475331178517.png"><img src="../_images/plantuml-966a57418c495e8fbb08316b1e13475331178517.png" alt=" skinparam classAttributeIconSize 0
  package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #yellow {
@@ -373,6 +373,9 @@
  node1::left --&gt; node2
  node1::right --&gt; node3" style="width: 12.0cm"/></a>
 </p>
+<figcaption>
+<p><span class="caption-text">Simple Node</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
 </figure>
 <p>The <code class="xref c c-func docutils literal notranslate"><span class="pre">Node_create()</span></code> function is defined by:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Node</span><span class="w"> </span><span class="o">*</span><span class="nf">Node_create</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -411,7 +414,7 @@
 <section id="step-1">
 <h3>Step 1<a class="headerlink" href="#step-1" title="Permalink to this heading">#</a></h3>
 <p>We first delete the left child. When we delete Node 2, its country will be automatically destroyed.</p>
-<figure class="align-center">
+<figure class="align-center" id="id10">
 <p class="plantuml">
 <a href="../_images/plantuml-611ef5b1b692d7e3ac8ee1c5f520fb9be2fc311d.png"><img src="../_images/plantuml-611ef5b1b692d7e3ac8ee1c5f520fb9be2fc311d.png" alt=" skinparam classAttributeIconSize 0
  package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #grey {
@@ -456,12 +459,15 @@
  node1::left --&gt; node2
  node1::right --&gt; node3" style="width: 12.0cm"/></a>
 </p>
+<figcaption>
+<p><span class="caption-text">Step 1</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
 </figure>
 </section>
 <section id="step-2">
 <h3>Step 2<a class="headerlink" href="#step-2" title="Permalink to this heading">#</a></h3>
 <p>We then delete the right child. When we delete Node 3, its country will also be automatically destroyed.</p>
-<figure class="align-center">
+<figure class="align-center" id="id11">
 <p class="plantuml">
 <a href="../_images/plantuml-1fb6c0f9c517758081ca7c5ab1fcfc00be28ba94.png"><img src="../_images/plantuml-1fb6c0f9c517758081ca7c5ab1fcfc00be28ba94.png" alt=" skinparam classAttributeIconSize 0
  package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #grey {
@@ -506,12 +512,15 @@
  node1::left --&gt; node2
  node1::right --&gt; node3" style="width: 12.0cm"/></a>
 </p>
+<figcaption>
+<p><span class="caption-text">Step 2</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
 </figure>
 </section>
 <section id="step-3">
 <h3>Step 3<a class="headerlink" href="#step-3" title="Permalink to this heading">#</a></h3>
 <p>Finally we destroy all the objects.</p>
-<figure class="align-center">
+<figure class="align-center" id="id12">
 <p class="plantuml">
 <a href="../_images/plantuml-99aabd1b0ffb767c56e74dc8462fc563e41216e5.png"><img src="../_images/plantuml-99aabd1b0ffb767c56e74dc8462fc563e41216e5.png" alt=" skinparam classAttributeIconSize 0
  package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #grey {
@@ -556,6 +565,9 @@
  node1::left --&gt; node2
  node1::right --&gt; node3" style="width: 12.0cm"/></a>
 </p>
+<figcaption>
+<p><span class="caption-text">Step 3</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
 </figure>
 <div class="admonition-think admonition">
 <p class="admonition-title">Think</p>
@@ -586,7 +598,7 @@
 <p>However, we cannot directly use <code class="docutils literal notranslate"><span class="pre">Country</span> <span class="pre">*country</span></code> in the definition of <code class="docutils literal notranslate"><span class="pre">Node</span></code>. Why?</p>
 <p>A key trick is to use a “reference counter” to track the number of references to a resource.</p>
 <p>Originally, we directly save country inside node:</p>
-<figure class="align-center">
+<figure class="align-center" id="id13">
 <p class="plantuml">
 <a href="../_images/plantuml-7f2a0386225813cbb460d199a299492a86955b7c.png"><img src="../_images/plantuml-7f2a0386225813cbb460d199a299492a86955b7c.png" alt=" skinparam classAttributeIconSize 0
  package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #yellow {
@@ -602,9 +614,12 @@
 
  node1::data -&gt; R1" style="width: 5.0cm"/></a>
 </p>
+<figcaption>
+<p><span class="caption-text">Original Node</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
 </figure>
 <p>Now we add a “proxy” (or you can call it a counter) between them:</p>
-<figure class="align-center">
+<figure class="align-center" id="id14">
 <p class="plantuml">
 <a href="../_images/plantuml-656e22449b84a30b54ee2b8795ab601423770151.png"><img src="../_images/plantuml-656e22449b84a30b54ee2b8795ab601423770151.png" alt=" skinparam classAttributeIconSize 0
  package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #yellow {
@@ -625,11 +640,14 @@
  node1::proxy -&gt; proxy1
  proxy1::country -&gt; R1" style="width: 7.0cm"/></a>
 </p>
+<figcaption>
+<p><span class="caption-text">New Node</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
 </figure>
 <p>The <code class="docutils literal notranslate"><span class="pre">counter</span></code> in the proxy will remember the count of references. (In the above example, it’s 1 because only one node want to point to the resource)</p>
 <p>And, one resource will only have one proxy. There shouldn’t be other proxies.</p>
 <p>When the proxy found that its counter is 0, it will automatically delete the resource it points to and also itself. It is safe because there are no other references.</p>
-<figure class="align-center">
+<figure class="align-center" id="id15">
 <p class="plantuml">
 <a href="../_images/plantuml-39bfb917ac07e61dc00801ce4899eb3fdc8c30c2.png"><img src="../_images/plantuml-39bfb917ac07e61dc00801ce4899eb3fdc8c30c2.png" alt=" skinparam classAttributeIconSize 0
  package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #grey {
@@ -650,11 +668,14 @@
  node1::proxy .&gt; proxy1
  proxy1::country -&gt; R1" style="width: 7.0cm"/></a>
 </p>
+<figcaption>
+<p><span class="caption-text">Proxy is deleted</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
 </figure>
 <p>Now let’s try to use this in the example we talked about in the simple version.</p>
 <p>After simulation:</p>
-<figure class="align-center">
-<p class="plantuml">
+<figure class="align-center" id="id16">
+<span id="after-simulation"></span><p class="plantuml">
 <a href="../_images/plantuml-0ffce282487b8225ac7d6177a85ff2e1cee462c2.png"><img src="../_images/plantuml-0ffce282487b8225ac7d6177a85ff2e1cee462c2.png" alt=" skinparam classAttributeIconSize 0
  package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #yellow {
      object &quot;Country&quot; as Country1
@@ -703,10 +724,13 @@
  node1::proxy -&gt; proxy1
  proxy1::country --&gt; R1" style="width: 10.0cm"/></a>
 </p>
+<figcaption>
+<p><span class="caption-text">After Simulation</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
 </figure>
 <section id="id4">
 <h3>Step 1<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
-<figure class="align-center">
+<figure class="align-center" id="id17">
 <p class="plantuml">
 <a href="../_images/plantuml-992edd47fd6119f58f787943883b85d5e78c38a3.png"><img src="../_images/plantuml-992edd47fd6119f58f787943883b85d5e78c38a3.png" alt=" skinparam classAttributeIconSize 0
  package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #yellow {
@@ -756,11 +780,14 @@
  node1::proxy -&gt; proxy1
  proxy1::country --&gt; R1" style="width: 10.0cm"/></a>
 </p>
+<figcaption>
+<p><span class="caption-text">Step 1</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
 </figure>
 </section>
 <section id="id5">
 <h3>Step 2<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
-<figure class="align-center">
+<figure class="align-center" id="id18">
 <p class="plantuml">
 <a href="../_images/plantuml-d4a930951bc376bc5f2cb5e6093925a366a76659.png"><img src="../_images/plantuml-d4a930951bc376bc5f2cb5e6093925a366a76659.png" alt=" skinparam classAttributeIconSize 0
  package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #yellow {
@@ -810,11 +837,14 @@
  node1::proxy -&gt; proxy1
  proxy1::country --&gt; R1" style="width: 10.0cm"/></a>
 </p>
+<figcaption>
+<p><span class="caption-text">Step 2</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</figcaption>
 </figure>
 </section>
 <section id="id6">
 <h3>Step 3<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
-<figure class="align-center">
+<figure class="align-center" id="id19">
 <p class="plantuml">
 <a href="../_images/plantuml-a134a701220d9dfcf6e11c2f0bf0c564cf555678.png"><img src="../_images/plantuml-a134a701220d9dfcf6e11c2f0bf0c564cf555678.png" alt=" skinparam classAttributeIconSize 0
  package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #grey {
@@ -864,6 +894,9 @@
  node1::proxy .&gt; proxy1
  proxy1::country --&gt; R1" style="width: 10.0cm"/></a>
 </p>
+<figcaption>
+<p><span class="caption-text">Step 3</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+</figcaption>
 </figure>
 <p>Reference code to create the node:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Node</span><span class="w"> </span><span class="o">*</span><span class="nf">Node_create</span><span class="p">(</span><span class="n">Country</span><span class="w"> </span><span class="o">*</span><span class="n">country</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>

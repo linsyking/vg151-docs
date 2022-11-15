@@ -52,7 +52,7 @@ Basic C Questions
       a++;
       a--;
   
-- Should goto be used and why?
+- Should :cin:`goto` be used and why?
 
   No. :cin:`goto` makes your code messy. Codes with :cin:`goto` are hard to read, understand and debug.
 
@@ -398,59 +398,7 @@ If you have time, I also recommend you to implement some operations on doubly li
 
 For memory management, my Lab 7 :ref:`gc-easy` and :ref:`reference-counting` is a good material.
 
-When you are lost with pointers, draw diagrams like below. It will help you understand what is happening.
-
-.. uml::
-   :align: center
-   :width: 10cm
-
-    skinparam classAttributeIconSize 0
-    package "Resource" as R1 <<Rectangle>> #yellow {
-        object "Country" as Country1
-        Country1 : name = "UFO"
-        Country1 : id = 10
-    }
-
-    package "Resource" as R2 <<Rectangle>> #yellow {
-        object "Country" as Country2
-        Country2 : name = "ABC"
-        Country2 : id = 3
-    }
-
-    object "Node 1 (Root Node)" as node1
-    node1 : *proxy
-    node1 : *left
-    node1 : *right
-
-    object "Node 2" as node2
-    node2 : *proxy
-    node2 : *left
-    node2 : *right
-
-
-    object "Node 3" as node3
-    node3 : *proxy
-    node3 : *left
-    node3 : *right
-
-    node1::left --> node2
-    node1::right --> node3
-
-    object "Proxy" as proxy1 #orange
-    proxy1 : *country
-    proxy1 : counter = 2
-
-    object "Proxy" as proxy2 #orange
-    proxy2 : *country
-    proxy2 : counter = 1
-
-    node2::proxy -> proxy1
-
-    node3::proxy --> proxy2
-    proxy2::country -> R2
-
-    node1::proxy -> proxy1
-    proxy1::country --> R1
+When you are lost with pointers, draw diagrams like :ref:`after-simulation`. It will help you understand what is happening.
 
 Good Luck
 ---------

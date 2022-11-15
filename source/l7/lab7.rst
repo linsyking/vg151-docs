@@ -164,6 +164,7 @@ In the simple version, every data in the node is not a pointer. It is directly t
 .. uml::
    :align: center
    :width: 12cm
+   :caption: Simple Node
 
     skinparam classAttributeIconSize 0
     package "Resource" as R1 <<Rectangle>> #yellow {
@@ -256,6 +257,7 @@ We first delete the left child. When we delete Node 2, its country will be autom
 .. uml::
    :align: center
    :width: 12cm
+   :caption: Step 1
 
     skinparam classAttributeIconSize 0
     package "Resource" as R1 <<Rectangle>> #grey {
@@ -309,6 +311,7 @@ We then delete the right child. When we delete Node 3, its country will also be 
 .. uml::
    :align: center
    :width: 12cm
+   :caption: Step 2
 
     skinparam classAttributeIconSize 0
     package "Resource" as R1 <<Rectangle>> #grey {
@@ -361,6 +364,7 @@ Finally we destroy all the objects.
 .. uml::
    :align: center
    :width: 12cm
+   :caption: Step 3
 
     skinparam classAttributeIconSize 0
     package "Resource" as R1 <<Rectangle>> #grey {
@@ -447,6 +451,7 @@ Originally, we directly save country inside node:
 .. uml::
    :align: center
    :width: 5cm
+   :caption: Original Node
 
     skinparam classAttributeIconSize 0
     package "Resource" as R1 <<Rectangle>> #yellow {
@@ -467,6 +472,7 @@ Now we add a "proxy" (or you can call it a counter) between them:
 .. uml::
    :align: center
    :width: 7cm
+   :caption: New Node
 
     skinparam classAttributeIconSize 0
     package "Resource" as R1 <<Rectangle>> #yellow {
@@ -496,6 +502,7 @@ When the proxy found that its counter is 0, it will automatically delete the res
 .. uml::
    :align: center
    :width: 7cm
+   :caption: Proxy is deleted
 
     skinparam classAttributeIconSize 0
     package "Resource" as R1 <<Rectangle>> #grey {
@@ -520,9 +527,12 @@ Now let's try to use this in the example we talked about in the simple version.
 
 After simulation:
 
+.. _after-simulation:
+
 .. uml::
    :align: center
    :width: 10cm
+   :caption: After Simulation
 
     skinparam classAttributeIconSize 0
     package "Resource" as R1 <<Rectangle>> #yellow {
@@ -578,6 +588,7 @@ Step 1
 .. uml::
    :align: center
    :width: 10cm
+   :caption: Step 1
 
     skinparam classAttributeIconSize 0
     package "Resource" as R1 <<Rectangle>> #yellow {
@@ -633,6 +644,7 @@ Step 2
 .. uml::
    :align: center
    :width: 10cm
+   :caption: Step 2
 
     skinparam classAttributeIconSize 0
     package "Resource" as R1 <<Rectangle>> #yellow {
@@ -688,6 +700,7 @@ Step 3
 .. uml::
    :align: center
    :width: 10cm
+   :caption: Step 3
 
     skinparam classAttributeIconSize 0
     package "Resource" as R1 <<Rectangle>> #grey {

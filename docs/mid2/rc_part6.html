@@ -235,7 +235,7 @@
 </pre></div>
 </div>
 </li>
-<li><p>Should goto be used and why?</p>
+<li><p>Should <code class="code highlight cin c docutils literal highlight-c"><span class="k">goto</span><span class="w"></span></code> be used and why?</p>
 <p>No. <code class="code highlight cin c docutils literal highlight-c"><span class="k">goto</span><span class="w"></span></code> makes your code messy. Codes with <code class="code highlight cin c docutils literal highlight-c"><span class="k">goto</span><span class="w"></span></code> are hard to read, understand and debug.</p>
 <p>What’s more, using <code class="code highlight cin c docutils literal highlight-c"><span class="k">goto</span><span class="w"></span></code> breaks code quality and means deduction!</p>
 </li>
@@ -545,58 +545,7 @@
 <p>I recommend you to review how to use pointers and review related data structures, like <a class="reference internal" href="../l7/lab7.html#tree-structure"><span class="std std-ref">Tree Structure</span></a> and <a class="reference internal" href="../l7/lab7.html#doubly-linked-list"><span class="std std-ref">Doubly Linked list</span></a>.</p>
 <p>If you have time, I also recommend you to implement some operations on doubly linked lists and trees, like <cite>insert</cite>, <cite>delete</cite>, <cite>combine</cite>.</p>
 <p>For memory management, my Lab 7 <a class="reference internal" href="../l7/lab7.html#gc-easy"><span class="std std-ref">Garbage Collection: Easy Version</span></a> and <a class="reference internal" href="../l7/lab7.html#reference-counting"><span class="std std-ref">Reference counting</span></a> is a good material.</p>
-<p>When you are lost with pointers, draw diagrams like below. It will help you understand what is happening.</p>
-<figure class="align-center">
-<p class="plantuml">
-<a href="../_images/plantuml-c5cc0323f8049e2796c23b7be02afcafd26fdec4.png"><img src="../_images/plantuml-c5cc0323f8049e2796c23b7be02afcafd26fdec4.png" alt=" skinparam classAttributeIconSize 0
- package &quot;Resource&quot; as R1 &lt;&lt;Rectangle&gt;&gt; #yellow {
-     object &quot;Country&quot; as Country1
-     Country1 : name = &quot;UFO&quot;
-     Country1 : id = 10
- }
-
- package &quot;Resource&quot; as R2 &lt;&lt;Rectangle&gt;&gt; #yellow {
-     object &quot;Country&quot; as Country2
-     Country2 : name = &quot;ABC&quot;
-     Country2 : id = 3
- }
-
- object &quot;Node 1 (Root Node)&quot; as node1
- node1 : *proxy
- node1 : *left
- node1 : *right
-
- object &quot;Node 2&quot; as node2
- node2 : *proxy
- node2 : *left
- node2 : *right
-
-
- object &quot;Node 3&quot; as node3
- node3 : *proxy
- node3 : *left
- node3 : *right
-
- node1::left --&gt; node2
- node1::right --&gt; node3
-
- object &quot;Proxy&quot; as proxy1 #orange
- proxy1 : *country
- proxy1 : counter = 2
-
- object &quot;Proxy&quot; as proxy2 #orange
- proxy2 : *country
- proxy2 : counter = 1
-
- node2::proxy -&gt; proxy1
-
- node3::proxy --&gt; proxy2
- proxy2::country -&gt; R2
-
- node1::proxy -&gt; proxy1
- proxy1::country --&gt; R1" style="width: 10.0cm"/></a>
-</p>
-</figure>
+<p>When you are lost with pointers, draw diagrams like <a class="reference internal" href="../l7/lab7.html#after-simulation"><span class="std std-ref">After Simulation</span></a>. It will help you understand what is happening.</p>
 </section>
 <section id="good-luck">
 <h2>Good Luck<a class="headerlink" href="#good-luck" title="Permalink to this heading">#</a></h2>
