@@ -98,7 +98,6 @@ Characters
 - Here are examples about how to initialize strings:
 
 .. code-block:: c
-    
 
     char c[] = "abcd";
     char c[50] = "abcd";
@@ -111,7 +110,6 @@ Displaying
 Comparing those two code snippets:
 
 .. code-block:: c
-    
     :emphasize-lines: 3
 
     #include <stdio.h>
@@ -120,7 +118,6 @@ Comparing those two code snippets:
     }
 
 .. code-block:: c
-    
     :emphasize-lines: 3
 
     #include <stdio.h>
