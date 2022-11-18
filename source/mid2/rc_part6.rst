@@ -156,7 +156,6 @@ Ex2. Task 1
     Define a structure composed of the fields suspect, location, and weapon.
 
 .. code-block:: c
-    :linenos:
 
     typedef struct _scene{
         int suspect;
@@ -178,7 +177,7 @@ The function does not have return value, so we need to give it a pointer.
 Also, when passing large variables (such as structures and arrays) to functions, using pointers saves time and memory to copy the variable.
 
 .. code-block:: c
-    :linenos:
+    
 
     void generateScene(scene* answer){
         srand((unsigned)time(NULL));
@@ -194,7 +193,6 @@ Ex2. Task 3, 4
     Use dynamic memory allocation to save each step taken by the player and print the whole list of guesses.
 
 .. code-block:: c
-    :linenos:
 
     int compareGuess(scene *answer, scene *guess) {
         int correct = 0;
@@ -249,7 +247,6 @@ Ex3. Task 1
 Students have the same amount of scores, so we'd better use static arrays to save efforts...
 
 .. code-block:: c
-    :linenos:
 
     typedef struct _student{
         char  name[10];
@@ -263,7 +260,6 @@ Ex3. Task 2
     Write a function called avg that computes the mean grade for each student.
 
 .. code-block:: c
-    :linenos:
 
     void avg(student* stu){
         float sum = 0;
@@ -281,7 +277,6 @@ Ex3. Task 3
 Here I designed a function to write a single student into a arbitrary file. I will call this function in a loop.
 
 .. code-block:: c
-    :linenos:
 
     void writeFile(student* stu, FILE* fd){
         fprintf(fd,"%s;",stu->name);
@@ -299,7 +294,6 @@ Ex3. Task 4
 Dealing with arrays is always annoying. Why I use ``malloc`` here? Any alternatives?
 
 .. code-block:: c
-    :linenos:
 
     char* best(student* stu,int num){
         char* name = malloc(10*sizeof(char));
@@ -354,7 +348,6 @@ Ex3. Task 5
     Read the file ``grades.txt`` and load the different fields for each student.
 
 .. code-block:: c
-    :linenos:
 
     int main() {
         FILE    *input  = fopen("grades.txt", "r");

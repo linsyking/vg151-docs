@@ -32,7 +32,6 @@ Checks we enabled
 The ``.clang-tidy`` file we enabled is the following:
 
 .. code-block::
-    :linenos:
     
     ---
     Checks: 'clang-diagnostic-*,clang-analyzer-*,-*,misc-*,performance-*,readability-function-size,readability-identifier-naming,readability-named-parameter, readability-redundant-*,readability-simplify-boolean-expr,readability-mis*,-clang-analyzer-security*,-misc-no-recursion,bugprone-assignment-in-if-condition,bugprone-integer-division,bugprone-suspicious-string-compare,cppcoreguidelines-init-variables,llvm-header-guard,google-global-names-in-headers,codequality-*'

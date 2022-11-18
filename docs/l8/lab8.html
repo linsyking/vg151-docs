@@ -242,34 +242,34 @@
 <p>Copy the following code and save it to <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="id10">
 <div class="code-block-caption"><span class="caption-text">main.cpp</span><a class="headerlink" href="#id10" title="Permalink to this code">#</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cm">/* macos */</span><span class="w"></span>
-<span class="linenos"> 2</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;GLUT/glut.h&gt;</span><span class="cp"></span>
-<span class="linenos"> 3</span><span class="cm">/* windows */</span><span class="w"></span>
-<span class="linenos"> 4</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;GL/freeglut.h&gt;</span><span class="cp"></span>
-<span class="linenos"> 5</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;windows.h&gt;</span><span class="cp"></span>
-<span class="linenos"> 6</span><span class="cm">/* linux */</span><span class="w"></span>
-<span class="linenos"> 7</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;GL/freeglut.h&gt;</span><span class="cp"></span>
-<span class="linenos"> 8</span><span class="kt">void</span><span class="w"> </span><span class="nf">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="linenos"> 9</span><span class="w">    </span><span class="cm">/* clear window */</span><span class="w"></span>
-<span class="linenos">10</span><span class="w">    </span><span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">11</span><span class="w">    </span><span class="cm">/* draw scene */</span><span class="w"></span>
-<span class="linenos">12</span><span class="w">    </span><span class="n">glutWireTeapot</span><span class="p">(</span><span class="mf">.5</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">13</span><span class="w">    </span><span class="cm">/* flush drawing routines to the window */</span><span class="w"></span>
-<span class="linenos">14</span><span class="w">    </span><span class="n">glFlush</span><span class="p">();</span><span class="w"></span>
-<span class="linenos">15</span><span class="p">}</span><span class="w"></span>
-<span class="linenos">16</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">17</span><span class="w">    </span><span class="cm">/* initialize GLUT, using any command line parameters passed to the program */</span><span class="w"></span>
-<span class="linenos">18</span><span class="w">    </span><span class="n">glutInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">19</span><span class="w">    </span><span class="cm">/* setup the size, position, and display mode for new windows */</span><span class="w"></span>
-<span class="linenos">20</span><span class="w">    </span><span class="n">glutInitWindowSize</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">21</span><span class="w">    </span><span class="n">glutInitWindowPosition</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">22</span><span class="w">    </span><span class="n">glutInitDisplayMode</span><span class="p">(</span><span class="n">GLUT_RGB</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">23</span><span class="w">    </span><span class="cm">/* create and set up a window */</span><span class="w"></span>
-<span class="linenos">24</span><span class="w">    </span><span class="n">glutCreateWindow</span><span class="p">(</span><span class="s">&quot;hello, teapot!&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">25</span><span class="w">    </span><span class="n">glutDisplayFunc</span><span class="p">(</span><span class="n">display</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">26</span><span class="w">    </span><span class="cm">/* tell GLUT to wait for events */</span><span class="w"></span>
-<span class="linenos">27</span><span class="w">    </span><span class="n">glutMainLoop</span><span class="p">();</span><span class="w"></span>
-<span class="linenos">28</span><span class="p">}</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/* macos */</span><span class="w"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;GLUT/glut.h&gt;</span><span class="cp"></span>
+<span class="cm">/* windows */</span><span class="w"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;GL/freeglut.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;windows.h&gt;</span><span class="cp"></span>
+<span class="cm">/* linux */</span><span class="w"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;GL/freeglut.h&gt;</span><span class="cp"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* clear window */</span><span class="w"></span>
+<span class="w">    </span><span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* draw scene */</span><span class="w"></span>
+<span class="w">    </span><span class="n">glutWireTeapot</span><span class="p">(</span><span class="mf">.5</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* flush drawing routines to the window */</span><span class="w"></span>
+<span class="w">    </span><span class="n">glFlush</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* initialize GLUT, using any command line parameters passed to the program */</span><span class="w"></span>
+<span class="w">    </span><span class="n">glutInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* setup the size, position, and display mode for new windows */</span><span class="w"></span>
+<span class="w">    </span><span class="n">glutInitWindowSize</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">glutInitWindowPosition</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">glutInitDisplayMode</span><span class="p">(</span><span class="n">GLUT_RGB</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* create and set up a window */</span><span class="w"></span>
+<span class="w">    </span><span class="n">glutCreateWindow</span><span class="p">(</span><span class="s">&quot;hello, teapot!&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">glutDisplayFunc</span><span class="p">(</span><span class="n">display</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* tell GLUT to wait for events */</span><span class="w"></span>
+<span class="w">    </span><span class="n">glutMainLoop</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -301,40 +301,41 @@
 <p>But, how to add different <code class="docutils literal notranslate"><span class="pre">CFLAGS</span></code> for different OS?</p>
 <div class="literal-block-wrapper docutils container" id="id11">
 <div class="code-block-caption"><span class="caption-text">Makefile</span><a class="headerlink" href="#id11" title="Permalink to this code">#</a></div>
-<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nv">CC</span><span class="o">=</span>g++
-<span class="linenos"> 2</span><span class="nv">CFLAGS</span><span class="o">=</span>-Wall -Wextra -Wpedantic -Werror -std<span class="o">=</span>c++17 -lglut -lGL -lGLU
-<span class="linenos"> 3</span><span class="nv">OUTPUT</span><span class="o">=</span>teapot
-<span class="linenos"> 4</span><span class="nv">SOURCE</span><span class="o">=</span>main.cpp
-<span class="linenos"> 5</span>
-<span class="linenos"> 6</span><span class="cp">ifeq ($(OS),Windows_NT)</span>
-<span class="linenos"> 7</span><span class="c">    # Windows</span>
-<span class="linenos"> 8</span>    <span class="nv">CFLAGS</span><span class="o">+=</span> -lglu32 -lfreeglut -lopengl32
-<span class="linenos"> 9</span><span class="cp">else</span>
-<span class="linenos">10</span><span class="c">    # Others</span>
-<span class="linenos">11</span>    OS :<span class="o">=</span> <span class="k">$(</span>shell uname<span class="k">)</span>
-<span class="linenos">12</span><span class="cp">    ifeq ($(OS),Linux)</span>
-<span class="linenos">13</span><span class="c">        # Linux</span>
-<span class="linenos">14</span>        <span class="nv">CFLAGS</span><span class="o">+=</span> -lglut -lGL -lGLU
-<span class="linenos">15</span><span class="cp">    endif</span>
-<span class="linenos">16</span><span class="cp">    ifeq ($(OS),Darwin)</span>
-<span class="linenos">17</span><span class="c">        # Mac</span>
-<span class="linenos">18</span>        <span class="nv">CFLAGS</span><span class="o">+=</span> -framework OpenGL -framework GLUT
-<span class="linenos">19</span><span class="cp">    endif</span>
-<span class="linenos">20</span><span class="cp">endif</span>
-<span class="linenos">21</span>
-<span class="linenos">22</span><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">clean</span>
-<span class="linenos">23</span>
-<span class="linenos">24</span><span class="nf">teapot</span><span class="o">:</span><span class="k">$(</span><span class="nv">SOURCE</span><span class="k">)</span>
-<span class="linenos">25</span>    <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> -o <span class="k">$(</span>OUTPUT<span class="k">)</span> <span class="k">$(</span>SOURCE<span class="k">)</span>
-<span class="linenos">26</span>
-<span class="linenos">27</span><span class="nf">clean</span><span class="o">:</span>
-<span class="linenos">28</span>    rm -rf <span class="k">$(</span>OUTPUT<span class="k">)</span>
-<span class="linenos">29</span>
-<span class="linenos">30</span><span class="nf">run</span><span class="o">:</span><span class="n">teapot</span>
-<span class="linenos">31</span>    ./<span class="k">$(</span>OUTPUT<span class="k">)</span>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nv">CC</span><span class="o">=</span>g++
+<span class="nv">CFLAGS</span><span class="o">=</span>-Wall -Wextra -Wpedantic -Werror -std<span class="o">=</span>c++17
+<span class="nv">OUTPUT</span><span class="o">=</span>teapot
+<span class="nv">SOURCE</span><span class="o">=</span>main.cpp
+
+<span class="cp">ifeq ($(OS),Windows_NT)</span>
+<span class="c">    # Windows</span>
+    <span class="nv">CFLAGS</span><span class="o">+=</span> -lglu32 -lfreeglut -lopengl32
+<span class="cp">else</span>
+<span class="c">    # Others</span>
+    OS :<span class="o">=</span> <span class="k">$(</span>shell uname<span class="k">)</span>
+<span class="cp">    ifeq ($(OS),Linux)</span>
+<span class="c">        # Linux</span>
+        <span class="nv">CFLAGS</span><span class="o">+=</span> -lglut -lGL -lGLU
+<span class="cp">    endif</span>
+<span class="cp">    ifeq ($(OS),Darwin)</span>
+<span class="c">        # Mac</span>
+        <span class="nv">CFLAGS</span><span class="o">+=</span> -framework OpenGL -framework GLUT
+<span class="cp">    endif</span>
+<span class="cp">endif</span>
+
+<span class="nf">.PHONY</span><span class="o">:</span> <span class="n">clean</span>
+
+<span class="nf">teapot</span><span class="o">:</span><span class="k">$(</span><span class="nv">SOURCE</span><span class="k">)</span>
+    <span class="k">$(</span>CC<span class="k">)</span> -o <span class="k">$(</span>OUTPUT<span class="k">)</span> <span class="k">$(</span>SOURCE<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span>
+
+<span class="nf">clean</span><span class="o">:</span>
+    rm -rf <span class="k">$(</span>OUTPUT<span class="k">)</span>
+
+<span class="nf">run</span><span class="o">:</span><span class="n">teapot</span>
+    ./<span class="k">$(</span>OUTPUT<span class="k">)</span>
 </pre></div>
 </div>
 </div>
+<p>(Please download this file from <code class="docutils literal notranslate"><span class="pre">materials</span></code> repository)</p>
 </section>
 <section id="cmakelists-txt">
 <h2><code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code><a class="headerlink" href="#cmakelists-txt" title="Permalink to this heading">#</a></h2>
@@ -342,26 +343,26 @@
 <p>An example:</p>
 <div class="literal-block-wrapper docutils container" id="id12">
 <div class="code-block-caption"><span class="caption-text">CMakeLists.txt</span><a class="headerlink" href="#id12" title="Permalink to this code">#</a></div>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.5</span><span class="p">)</span>
-<span class="linenos"> 2</span><span class="nb">project</span><span class="p">(</span><span class="s">helloteapot</span><span class="p">)</span>
-<span class="linenos"> 3</span><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span><span class="w"> </span><span class="s">17</span><span class="p">)</span>
-<span class="linenos"> 4</span>
-<span class="linenos"> 5</span><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_FLAGS</span><span class="w"> </span><span class="s2">&quot;-pedantic -Wall -Wextra -Wvla&quot;</span><span class="p">)</span>
-<span class="linenos"> 6</span>
-<span class="linenos"> 7</span><span class="nb">set</span><span class="p">(</span><span class="s">OpenGL_GL_PREFERENCE</span><span class="w"> </span><span class="s2">&quot;GLVND&quot;</span><span class="p">)</span>
-<span class="linenos"> 8</span>
-<span class="linenos"> 9</span><span class="c"># Find the OpenGL library</span>
-<span class="linenos">10</span><span class="nb">find_package</span><span class="p">(</span><span class="s">OpenGL</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
-<span class="linenos">11</span><span class="nb">include_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">OPENGL_INCLUDE_DIR</span><span class="o">}</span><span class="p">)</span>
-<span class="linenos">12</span>
-<span class="linenos">13</span><span class="c"># Find the GLUT library</span>
-<span class="linenos">14</span><span class="nb">find_package</span><span class="p">(</span><span class="s">GLUT</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
-<span class="linenos">15</span><span class="nb">include_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">GLUT_INCLUDE_DIR</span><span class="o">}</span><span class="p">)</span>
-<span class="linenos">16</span>
-<span class="linenos">17</span><span class="nb">add_executable</span><span class="p">(</span><span class="s">teapot</span><span class="w"> </span><span class="s">main.cpp</span><span class="p">)</span>
-<span class="linenos">18</span>
-<span class="linenos">19</span><span class="c"># Link OpenGL, GLUT</span>
-<span class="linenos">20</span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">teapot</span><span class="w"> </span><span class="o">${</span><span class="nv">GLUT_LIBRARIES</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nv">OPENGL_LIBRARY</span><span class="o">}</span><span class="p">)</span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.5</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">helloteapot</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span><span class="w"> </span><span class="s">17</span><span class="p">)</span>
+
+<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_FLAGS</span><span class="w"> </span><span class="s2">&quot;-pedantic -Wall -Wextra -Wvla&quot;</span><span class="p">)</span>
+
+<span class="nb">set</span><span class="p">(</span><span class="s">OpenGL_GL_PREFERENCE</span><span class="w"> </span><span class="s2">&quot;GLVND&quot;</span><span class="p">)</span>
+
+<span class="c"># Find the OpenGL library</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">OpenGL</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">include_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">OPENGL_INCLUDE_DIR</span><span class="o">}</span><span class="p">)</span>
+
+<span class="c"># Find the GLUT library</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">GLUT</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">include_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">GLUT_INCLUDE_DIR</span><span class="o">}</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">teapot</span><span class="w"> </span><span class="s">main.cpp</span><span class="p">)</span>
+
+<span class="c"># Link OpenGL, GLUT</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">teapot</span><span class="w"> </span><span class="o">${</span><span class="nv">GLUT_LIBRARIES</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nv">OPENGL_LIBRARY</span><span class="o">}</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -411,49 +412,49 @@
 <p>See the following example:</p>
 <div class="literal-block-wrapper docutils container" id="id13">
 <div class="code-block-caption"><span class="caption-text">main.cpp</span><a class="headerlink" href="#id13" title="Permalink to this code">#</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="kt">void</span><span class="w"> </span><span class="nf">timer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-</span><span class="hll"><span class="linenos"> 2</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-</span><span class="hll"><span class="linenos"> 3</span><span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
-</span><span class="hll"><span class="linenos"> 4</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
-</span><span class="hll"><span class="linenos"> 5</span><span class="w">    </span><span class="n">glutPostRedisplay</span><span class="p">();</span><span class="w"></span>
-</span><span class="hll"><span class="linenos"> 6</span><span class="w">    </span><span class="n">glutTimerFunc</span><span class="p">(</span><span class="mi">1000</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="n">timer</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-</span><span class="hll"><span class="linenos"> 7</span><span class="p">}</span><span class="w"></span>
-</span><span class="linenos"> 8</span>
-<span class="linenos"> 9</span><span class="kt">void</span><span class="w"> </span><span class="nf">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">10</span><span class="w">    </span><span class="cm">/* clear window */</span><span class="w"></span>
-<span class="linenos">11</span><span class="w">    </span><span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">12</span><span class="w">    </span><span class="cm">/* draw scene */</span><span class="w"></span>
-<span class="linenos">13</span><span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="o">&amp;</span><span class="n">num</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">test</span><span class="o">::</span><span class="n">get_instance</span><span class="p">().</span><span class="n">get_number</span><span class="p">();</span><span class="w"></span>
-<span class="linenos">14</span><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">num_f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">15</span>
-<span class="linenos">16</span><span class="w">    </span><span class="n">glColor3f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">17</span><span class="w">    </span><span class="n">glBegin</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">18</span><span class="w">    </span><span class="n">glVertex2d</span><span class="p">(</span><span class="mf">-0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">19</span><span class="w">    </span><span class="n">glVertex2d</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cos</span><span class="p">(</span><span class="n">num_f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">sin</span><span class="p">(</span><span class="n">num_f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">20</span><span class="w">    </span><span class="n">glVertex2d</span><span class="p">(</span><span class="mf">-0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.5</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">21</span><span class="w">    </span><span class="n">glEnd</span><span class="p">();</span><span class="w"></span>
-<span class="linenos">22</span>
-<span class="linenos">23</span><span class="w">    </span><span class="n">num</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">24</span><span class="w">    </span><span class="n">glFlush</span><span class="p">();</span><span class="w"></span>
-<span class="linenos">25</span><span class="w">    </span><span class="n">glutSwapBuffers</span><span class="p">();</span><span class="w"></span>
-<span class="linenos">26</span><span class="p">}</span><span class="w"></span>
-<span class="linenos">27</span>
-<span class="linenos">28</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">29</span><span class="w">    </span><span class="cm">/* initialize GLUT, using any command line parameters passed to the program */</span><span class="w"></span>
-<span class="linenos">30</span><span class="w">    </span><span class="n">glutInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">31</span><span class="w">    </span><span class="cm">/* setup the size, position, and display mode for new windows */</span><span class="w"></span>
-<span class="linenos">32</span><span class="w">    </span><span class="n">glutInitWindowSize</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">33</span><span class="w">    </span><span class="n">glutInitWindowPosition</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">34</span><span class="w">    </span><span class="n">glutInitDisplayMode</span><span class="p">(</span><span class="n">GLUT_DOUBLE</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">35</span>
-<span class="linenos">36</span><span class="w">    </span><span class="cm">/* create and set up a window */</span><span class="w"></span>
-<span class="linenos">37</span><span class="w">    </span><span class="n">glutCreateWindow</span><span class="p">(</span><span class="s">&quot;hello, teapot!&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">38</span><span class="w">    </span><span class="n">glutDisplayFunc</span><span class="p">(</span><span class="n">display</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">39</span><span class="w">    </span><span class="n">glClearColor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">40</span><span class="w">    </span><span class="cm">/* tell GLUT to wait for events */</span><span class="w"></span>
-<span class="hll"><span class="linenos">41</span><span class="w">    </span><span class="n">timer</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-</span><span class="hll"><span class="linenos">42</span><span class="w">    </span><span class="n">glutMainLoop</span><span class="p">();</span><span class="w"></span>
-</span><span class="linenos">43</span><span class="p">}</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="kt">void</span><span class="w"> </span><span class="nf">timer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="p">}</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="n">glutPostRedisplay</span><span class="p">();</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="n">glutTimerFunc</span><span class="p">(</span><span class="mi">1000</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="n">timer</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+</span><span class="hll"><span class="p">}</span><span class="w"></span>
+</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* clear window */</span><span class="w"></span>
+<span class="w">    </span><span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* draw scene */</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="o">&amp;</span><span class="n">num</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">test</span><span class="o">::</span><span class="n">get_instance</span><span class="p">().</span><span class="n">get_number</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">num_f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">glColor3f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">glBegin</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">glVertex2d</span><span class="p">(</span><span class="mf">-0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">glVertex2d</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cos</span><span class="p">(</span><span class="n">num_f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">sin</span><span class="p">(</span><span class="n">num_f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">glVertex2d</span><span class="p">(</span><span class="mf">-0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.5</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">glEnd</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">num</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">glFlush</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">glutSwapBuffers</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* initialize GLUT, using any command line parameters passed to the program */</span><span class="w"></span>
+<span class="w">    </span><span class="n">glutInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* setup the size, position, and display mode for new windows */</span><span class="w"></span>
+<span class="w">    </span><span class="n">glutInitWindowSize</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">glutInitWindowPosition</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">glutInitDisplayMode</span><span class="p">(</span><span class="n">GLUT_DOUBLE</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="cm">/* create and set up a window */</span><span class="w"></span>
+<span class="w">    </span><span class="n">glutCreateWindow</span><span class="p">(</span><span class="s">&quot;hello, teapot!&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">glutDisplayFunc</span><span class="p">(</span><span class="n">display</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">glClearColor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* tell GLUT to wait for events */</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="n">timer</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="n">glutMainLoop</span><span class="p">();</span><span class="w"></span>
+</span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>

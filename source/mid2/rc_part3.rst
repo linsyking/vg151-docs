@@ -74,7 +74,7 @@ Arithmetic Types
     When comparing two :cin:`double` or :cin:`float`, it's safer to allow errors.
 
     .. code-block:: c
-        :linenos:
+        
         :emphasize-lines: 2,6
 
         #include<math.h>
@@ -98,7 +98,7 @@ Characters
 - Here are examples about how to initialize strings:
 
 .. code-block:: c
-    :linenos:
+    
 
     char c[] = "abcd";
     char c[50] = "abcd";
@@ -111,7 +111,7 @@ Displaying
 Comparing those two code snippets:
 
 .. code-block:: c
-    :linenos:
+    
     :emphasize-lines: 3
 
     #include <stdio.h>
@@ -120,7 +120,7 @@ Comparing those two code snippets:
     }
 
 .. code-block:: c
-    :linenos:
+    
     :emphasize-lines: 3
 
     #include <stdio.h>
@@ -157,7 +157,6 @@ Structures
 Basic :cin:`struct` usage:
 
 .. code-block:: c
-    :linenos:
 
     #include <stdio.h> 
 
@@ -180,7 +179,6 @@ Basic :cin:`struct` usage:
 Combine with functions:
 
 .. code-block:: c
-    :linenos:
 
     #include<stdio.h>
     typedef struct _person {
@@ -232,7 +230,6 @@ Example:
 ^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: c
-    :linenos:
 
     if(x == 0) printf("zero\n");
     else if(x == 1 || x == 2) printf("one or two\n");
@@ -278,7 +275,6 @@ Loops
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: c
-    :linenos:
 
     int i = 0;
     do {printf("%d",i);} while(i++ < 1);
@@ -293,7 +289,6 @@ Loops
 ~~~~~~~~~~~~~
 
 .. code-block:: c
-    :linenos:
 
     for(i = 0; i < n; i++)
         printf("%d ",i);

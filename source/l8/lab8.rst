@@ -56,7 +56,6 @@ In this part, we will try to figure out how to write a Hello world program for O
 Copy the following code and save it to ``main.cpp``.
 
 .. code-block:: c++
-    :linenos:
     :caption: main.cpp
 
     /* macos */
@@ -124,10 +123,9 @@ But, how to add different ``CFLAGS`` for different OS?
 
 .. code-block:: make
     :caption: Makefile
-    :linenos:
 
     CC=g++
-    CFLAGS=-Wall -Wextra -Wpedantic -Werror -std=c++17 -lglut -lGL -lGLU
+    CFLAGS=-Wall -Wextra -Wpedantic -Werror -std=c++17
     OUTPUT=teapot
     SOURCE=main.cpp
 
@@ -150,13 +148,15 @@ But, how to add different ``CFLAGS`` for different OS?
     .PHONY: clean
 
     teapot:$(SOURCE)
-        $(CC) $(CFLAGS) -o $(OUTPUT) $(SOURCE)
+        $(CC) -o $(OUTPUT) $(SOURCE) $(CFLAGS)
 
     clean:
         rm -rf $(OUTPUT)
 
     run:teapot
         ./$(OUTPUT)
+
+(Please download this file from ``materials`` repository)
 
 ``CMakeLists.txt``
 ------------------
@@ -167,7 +167,6 @@ An example:
 
 .. code-block:: cmake
     :caption: CMakeLists.txt
-    :linenos:
 
     cmake_minimum_required(VERSION 3.5)
     project(helloteapot)
@@ -250,7 +249,6 @@ See the following example:
 
 .. code-block:: c++
     :caption: main.cpp
-    :linenos:
     :emphasize-lines: 1-7,41-42
 
     void timer(int v) {
