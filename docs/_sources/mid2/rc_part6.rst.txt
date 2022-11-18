@@ -400,6 +400,21 @@ For memory management, my Lab 7 :ref:`gc-easy` and :ref:`reference-counting` is 
 
 When you are lost with pointers, draw diagrams like :ref:`after-simulation`. It will help you understand what is happening.
 
+.. tip::
+
+    In the exam, please think of the exercise as a whole. Functions written in the first question can be helpful to the following ones.
+
+
+.. tip::
+    
+    In the exam, please first read through all the exercises and make sure you start from the easiest one rather than from the start.
+
+    This works for both Part 1 and Part 2.
+
+.. tip::
+
+    Review the homework carefullt. Part 1 will have a homework question.
+
 Good Luck
 ---------
 

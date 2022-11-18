@@ -14,6 +14,7 @@ Scope of Variables
 
   .. code-block:: c
   
+      #define PI 3.1415926  // #define derective
       const int some_magic_number = 100;
       const char *const my_str[2] = {"List1", "List2"};
 

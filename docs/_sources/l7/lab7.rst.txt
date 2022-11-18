@@ -446,7 +446,11 @@ Using pointers to store country is actually better when ``Country`` type is a la
 
     Is it possible to use ``Country *country`` in the definition of ``Node`` to implement the simulation. And why?
 
-A key trick is to use a `reference counter` to track the number of references to a resource.
+    (Definitely `yes`! But some solutions may need the special property of this tree and cannot generalize)
+
+Here I want to introduce a general solution to those kinds of problems.
+
+The key trick is to use a `reference counter` to track the number of references to a resource.
 
 Originally, we directly save country inside node:
 
