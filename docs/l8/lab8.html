@@ -307,35 +307,34 @@
 <span class="nv">SOURCE</span><span class="o">=</span>main.cpp
 
 <span class="cp">ifeq ($(OS),Windows_NT)</span>
-<span class="c">    # Windows</span>
-    <span class="nv">CFLAGS</span><span class="o">+=</span> -lglu32 -lfreeglut -lopengl32
+<span class="c">	# Windows</span>
+	<span class="nv">CFLAGS</span><span class="o">+=</span> -lglu32 -lfreeglut -lopengl32
 <span class="cp">else</span>
-<span class="c">    # Others</span>
-    OS :<span class="o">=</span> <span class="k">$(</span>shell uname<span class="k">)</span>
-<span class="cp">    ifeq ($(OS),Linux)</span>
-<span class="c">        # Linux</span>
-        <span class="nv">CFLAGS</span><span class="o">+=</span> -lglut -lGL -lGLU
-<span class="cp">    endif</span>
-<span class="cp">    ifeq ($(OS),Darwin)</span>
-<span class="c">        # Mac</span>
-        <span class="nv">CFLAGS</span><span class="o">+=</span> -framework OpenGL -framework GLUT
-<span class="cp">    endif</span>
+<span class="c">	# Others</span>
+	OS :<span class="o">=</span> <span class="k">$(</span>shell uname<span class="k">)</span>
+<span class="cp">	ifeq ($(OS),Linux)</span>
+<span class="c">		# Linux</span>
+		<span class="nv">CFLAGS</span><span class="o">+=</span> -lglut -lGL -lGLU
+<span class="cp">	endif</span>
+<span class="cp">	ifeq ($(OS),Darwin)</span>
+<span class="c">		# Mac</span>
+		<span class="nv">CFLAGS</span><span class="o">+=</span> -framework OpenGL -framework GLUT
+<span class="cp">	endif</span>
 <span class="cp">endif</span>
 
 <span class="nf">.PHONY</span><span class="o">:</span> <span class="n">clean</span>
 
 <span class="nf">teapot</span><span class="o">:</span><span class="k">$(</span><span class="nv">SOURCE</span><span class="k">)</span>
-    <span class="k">$(</span>CC<span class="k">)</span> -o <span class="k">$(</span>OUTPUT<span class="k">)</span> <span class="k">$(</span>SOURCE<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span>
+	<span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> -o <span class="k">$(</span>OUTPUT<span class="k">)</span> <span class="k">$(</span>SOURCE<span class="k">)</span>
 
 <span class="nf">clean</span><span class="o">:</span>
-    rm -rf <span class="k">$(</span>OUTPUT<span class="k">)</span>
+	rm -rf <span class="k">$(</span>OUTPUT<span class="k">)</span>
 
 <span class="nf">run</span><span class="o">:</span><span class="n">teapot</span>
-    ./<span class="k">$(</span>OUTPUT<span class="k">)</span>
+	./<span class="k">$(</span>OUTPUT<span class="k">)</span>
 </pre></div>
 </div>
 </div>
-<p>(Please download this file from <code class="docutils literal notranslate"><span class="pre">materials</span></code> repository)</p>
 </section>
 <section id="cmakelists-txt">
 <h2><code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code><a class="headerlink" href="#cmakelists-txt" title="Permalink to this heading">#</a></h2>

@@ -121,42 +121,9 @@ Since we have to compile the program on different OS, we have to change the ``CF
 
 But, how to add different ``CFLAGS`` for different OS?
 
-.. code-block:: make
+.. literalinclude:: Makefile
     :caption: Makefile
-
-    CC=g++
-    CFLAGS=-Wall -Wextra -Wpedantic -Werror -std=c++17
-    OUTPUT=teapot
-    SOURCE=main.cpp
-
-    ifeq ($(OS),Windows_NT)
-        # Windows
-        CFLAGS+= -lglu32 -lfreeglut -lopengl32
-    else
-        # Others
-        OS := $(shell uname)
-        ifeq ($(OS),Linux)
-            # Linux
-            CFLAGS+= -lglut -lGL -lGLU
-        endif
-        ifeq ($(OS),Darwin)
-            # Mac
-            CFLAGS+= -framework OpenGL -framework GLUT
-        endif
-    endif
-
-    .PHONY: clean
-
-    teapot:$(SOURCE)
-        $(CC) -o $(OUTPUT) $(SOURCE) $(CFLAGS)
-
-    clean:
-        rm -rf $(OUTPUT)
-
-    run:teapot
-        ./$(OUTPUT)
-
-(Please download this file from ``materials`` repository)
+    :language: make
 
 ``CMakeLists.txt``
 ------------------
