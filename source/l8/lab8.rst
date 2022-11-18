@@ -197,8 +197,6 @@ Understanding the Code
 
 This function will initialize GLUT.
 
------
-
 .. code-block:: c++
 
     glutInitWindowSize(500, 500);
@@ -214,8 +212,6 @@ These two lines set the size, position and display mode. Generally, using ``GLUT
     When using ``GLUT_DOUBLE``, your picture will have two buffers. One of them is always visible, the other one is not. You always render to the buffer that is not currently visible. When you're done rendering the frame, you swap the two buffers, making the one you just rendered visible. The one that was previously visible is now invisible, and you use it for rendering the next frame. So the role of the two buffers is reversed each frame. [3]_
 
     In short, you will need to add :cpp:`glutSwapBuffers();` after :cpp:`glFlush();`.
-
------
 
 .. code-block:: c++
 

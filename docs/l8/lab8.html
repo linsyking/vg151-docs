@@ -370,7 +370,6 @@
 <h2>Understanding the Code<a class="headerlink" href="#understanding-the-code" title="Permalink to this heading">#</a></h2>
 <p><code class="code highlight cpp c++ docutils literal highlight-c++"><span class="n">glutInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span></code></p>
 <p>This function will initialize GLUT.</p>
-<hr class="docutils" />
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">glutInitWindowSize</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
 <span class="n">glutInitWindowPosition</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
 <span class="n">glutInitDisplayMode</span><span class="p">(</span><span class="n">GLUT_RGB</span><span class="p">);</span><span class="w"></span>
@@ -384,7 +383,6 @@
 <p>When using <code class="docutils literal notranslate"><span class="pre">GLUT_DOUBLE</span></code>, your picture will have two buffers. One of them is always visible, the other one is not. You always render to the buffer that is not currently visible. When you’re done rendering the frame, you swap the two buffers, making the one you just rendered visible. The one that was previously visible is now invisible, and you use it for rendering the next frame. So the role of the two buffers is reversed each frame. <a class="footnote-reference brackets" href="#id9" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
 <p>In short, you will need to add <code class="code highlight cpp c++ docutils literal highlight-c++"><span class="n">glutSwapBuffers</span><span class="p">();</span><span class="w"></span></code> after <code class="code highlight cpp c++ docutils literal highlight-c++"><span class="n">glFlush</span><span class="p">();</span><span class="w"></span></code>.</p>
 </div>
-<hr class="docutils" />
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">glutCreateWindow</span><span class="p">(</span><span class="s">&quot;hello, teapot!&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="n">glutDisplayFunc</span><span class="p">(</span><span class="n">display</span><span class="p">);</span><span class="w"></span>
 <span class="n">glutMainLoop</span><span class="p">();</span><span class="w"></span>
