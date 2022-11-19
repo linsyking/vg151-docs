@@ -105,8 +105,8 @@ Arithmetic Types
     .. code-block:: c
         :emphasize-lines: 2,6
 
-        #include<math.h>
-        #include<limits.h>
+        #include <math.h>
+        #include <limits.h>
 
         float a,b;
         // ...
@@ -205,7 +205,7 @@ Combine with functions:
 
 .. code-block:: c
 
-    #include<stdio.h>
+    #include <stdio.h>
     typedef struct _person {
         char* name;
         int age;
