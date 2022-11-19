@@ -81,7 +81,6 @@ The C type system consists of the following types: (excluded some types that we 
 
   - array types
   - structure types
-  - union types
   - function types
   - pointer types
 
