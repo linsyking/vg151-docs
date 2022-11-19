@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'VG151 Documentation'
+project = 'VG151'
 copyright = '2022, Linsy King'
 author = 'Yiming Xiang'
 

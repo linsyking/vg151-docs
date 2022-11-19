@@ -34,11 +34,11 @@ Basic C Questions
 
   Constant variables (including macros)
 
-- What is the length of a char?
+- What is the length of a :cin:`char`?
 
   8 bits/1 byte.
   
-  For some other data types(such as int), they depend on the computer and OS.
+  For some other data types(such as :cin:`int`), they depend on the computer and OS.
 
 - Can you list and use all the shorthand operators?
 
@@ -59,7 +59,7 @@ Basic C Questions
   What's more, using :cin:`goto` breaks code quality and means deduction!
 
  
-- How to use the conditional ternary operator?
+- How to use the `conditional ternary operator`?
 
   .. code-block:: c
 
@@ -73,13 +73,13 @@ Basic C Questions
   
   Effect of :cin:`break` at the end of each case. (usually necessary)
   
-- Why should for loops be preferred over while loops?
+- Why should :cin:`for` loops be preferred over while loops?
 
   :cin:`for` loops are easier to write and read, especially when the loop needs a counter.
 
-- Should global variables be used or not?
+- Should (non-constant) global variables be used or not?
 
-  No. Global variables are not safe since they can be accessed every where.
+  No. They are not safe since they can be accessed every where.
   
   They also makes debugging harder because it's difficult to locate where this variable is changed and go wrong.
 
@@ -163,9 +163,17 @@ Ex2. Task 1
         int weapon;
     } scene;
     
-    const char *const sus_name = {"Butcher","Hairdresser","Salesman","Banker","Student"};
-    const char *const loc_name = {"lounge","lobby","reception","restaurant","coffee shop"};
-    const char *const weap_name = {"hammer","scissors","knife","poison","candlestick"};
+    const char *const sus_name[] = {"Butcher","Hairdresser","Salesman","Banker","Student"};
+    const char *const loc_name[] = {"lounge","lobby","reception","restaurant","coffee shop"};
+    const char *const weap_name[] = {"hammer","scissors","knife","poison","candlestick"};
+
+.. tip::
+
+    Another alternative way is to use :cin:`enum`. For example,
+
+    .. code-block:: c
+
+        typedef enum {Butcher, Hairdresser, Salesman, Student} Suspect;
 
 Ex2. Task 2
 ^^^^^^^^^^^
@@ -178,9 +186,13 @@ Also, when passing large variables (such as structures and arrays) to functions,
 
 .. code-block:: c
     
+    // In your main function:
+    int main(){
+        srand((unsigned)time(NULL));
+        // Other staffs
+    }
 
     void generateScene(scene* answer){
-        srand((unsigned)time(NULL));
         answer->suspect = rand()%5 + 1;
         answer->location = rand()%5 + 1;
         answer->weapon = rand()%5 + 1;
@@ -192,7 +204,23 @@ Ex2. Task 3, 4
 
     Use dynamic memory allocation to save each step taken by the player and print the whole list of guesses.
 
+Whole reference program:
+
 .. code-block:: c
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <time.h>
+
+    typedef struct _scene {
+        int suspect;
+        int location;
+        int weapon;
+    } scene;
+
+    const char *const sus_name[]  = {"Butcher", "Hairdresser", "Salesman", "Banker", "Student"};
+    const char *const loc_name[]  = {"lounge", "lobby", "reception", "restaurant", "coffee shop"};
+    const char *const weap_name[] = {"hammer", "scissors", "knife", "poison", "candlestick"};
 
     int compareGuess(scene *answer, scene *guess) {
         int correct = 0;
@@ -202,39 +230,49 @@ Ex2. Task 3, 4
         return correct;
     }
 
-    int    i;
-    scene *guess, answer;
-    int    flag = 0;
-    guess       = malloc(0);
-    generateScene(answer);
+    void generateScene(scene *answer) {
+        answer->suspect  = rand() % 5 + 1;
+        answer->location = rand() % 5 + 1;
+        answer->weapon   = rand() % 5 + 1;
+    }
 
-    for (i = 0; i < 10; i++) {
-        guess = (scene*)realloc(guess,(i+1)*sizeof(scene)));
-        int suspect, location, weapon;
-        scanf("%d%d%d", &suspect, &location, &weapon);
-        (guess + i)->suspect  = suspect;
-        (guess + i)->location = location;
-        (guess + i)->weapon   = weapon;
-        int correct_num       = compareGuess(answer, guess + i);
-        printf("You made %d correct guess(es)\n", correct_num);
-        if (correct_num == 3) {
-            flag = 1;
-            break;
+    int main() {
+        srand((unsigned)time(NULL));
+        // Other staffs
+        int    i     = 0;
+        scene *guess = NULL, *answer = NULL;
+        guess        = (scene *)malloc(0);
+        int flag     = 0;
+        generateScene(answer);
+
+        for (i = 0; i < 10; i++) {
+            guess       = (scene *)realloc(guess, (i + 1) * sizeof(scene));
+            int suspect = 0, location = 0, weapon = 0;
+            if(scanf("%d%d%d", &suspect, &location, &weapon)!=3){
+                printf("Wrong input, bye");
+                return EXIT_FAILURE;
+            }
+            (guess + i)->suspect  = suspect;
+            (guess + i)->location = location;
+            (guess + i)->weapon   = weapon;
+            int correct_num       = compareGuess(answer, guess + i);
+            printf("You made %d correct guess(es)\n", correct_num);
+            if (correct_num == 3) {
+                flag = 1;
+                break;
+            }
+            if (flag) {
+                printf("Congratulations...");
+            } else {
+                printf("Game over...");
+            }
+            for (int j = 0; j < i; j++) {
+                printf("%d. You suspected the %s...", j + 1, sus_name[(guess + j)->suspect]);
+            }
+            printf("Conclusion: the %s...", sus_name[answer->suspect]);
+            free(guess);
         }
     }
-
-    if (flag) {
-        printf("Congratulations...");
-    } else {
-        printf("Game over...");
-    }
-    for (int j = 0; j < i; j++) {
-        printf("%d. You suspected the %s...", j + 1, sus_name[(guess + j)->suspect]);
-    }
-    printf("Conclusion: the %s...", sus_name[answer->suspect]);
-    free(guess);
-
-
 
 The Students' Grades
 --------------------
@@ -242,7 +280,7 @@ The Students' Grades
 Ex3. Task 1
 ^^^^^^^^^^^
 
-    Write a structure composed of three fields: name, grades and mean.
+    Write a structure composed of three fields: ``name``, ``grades`` and ``mean``.
 
 Students have the same amount of scores, so we'd better use static arrays to save efforts...
 
@@ -257,7 +295,7 @@ Students have the same amount of scores, so we'd better use static arrays to sav
 Ex3. Task 2
 ^^^^^^^^^^^
 
-    Write a function called avg that computes the mean grade for each student.
+    Write a function called ``avg`` that computes the mean grade for each student.
 
 .. code-block:: c
 
@@ -289,7 +327,7 @@ Here I designed a function to write a single student into a arbitrary file. I wi
 Ex3. Task 4
 ^^^^^^^^^^^
 
-    Write a function called best that returns the name of the student with the highest mean.
+    Write a function called ``best`` that returns the name of the student with the highest mean.
 
 Dealing with arrays is always annoying. Why I use ``malloc`` here? Any alternatives?
 
@@ -406,7 +444,7 @@ When you are lost with pointers, draw diagrams like :ref:`after-simulation`. It 
 
 .. tip::
 
-    Review the homework carefullt. Part 1 will have a homework question.
+    Review the homework carefully. Part 1 will have a homework question.
 
 Good Luck
 ---------

@@ -4,19 +4,44 @@ Basic C [1]_
 .. role:: cin(code)
    :language: c
 
+P2M3 Requirements Clarification
+-------------------------------
+
+Some students are asking if they can use other methods to implement `players` and `stock, piles`.
+
+Please follow the requirements listed on :file:`p2.pdf` (Selected):
+
+    ...
+
+    Use a **circular double linked list** for the players;
+
+    Use a **dynamic array** to handle the stock and discard piles;
+
+    ...
+
 C Types
 -------
 
+Type Qualifier
+^^^^^^^^^^^^^^
+
+The most commonly-used qualifier in C is the `const type qualifier`.
+
+`Constant type qualifier` can make one variable constant and it may help in some cases.
+
+.. code-block:: c
+
+    const int some_magic_number = 100;
+    const char *const my_str[2] = {"List1", "List2"};
+
+You can also use the `#define directive` to define a constant:
+
+.. code-block:: c
+
+    #define PI 3.1415926
+
 Scope of Variables
 ^^^^^^^^^^^^^^^^^^
-
-- Constant variables (make it easier to understand your code)
-
-  .. code-block:: c
-  
-      #define PI 3.1415926  // #define derective
-      const int some_magic_number = 100;
-      const char *const my_str[2] = {"List1", "List2"};
 
 - Global variables: defined for all functions (outside the function or :cin:`static`)
 
@@ -24,9 +49,13 @@ Scope of Variables
   
       Never use non-constant global variables in VG151!
 
+  .. admonition:: Further Reading: Static storage duration [2]_      
+      
+      The storage duration is the entire execution of the program, and the value stored in the object is initialized only **once**, prior to main function. All objects declared static and all objects with either internal or external linkage that aren't declared :cin:`_Thread_local` (since C11) have this storage duration.
+
 - Local variables: defined only in functions
 
-Type Classification [2]_
+Type Classification [3]_
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The C type system consists of the following types: (excluded some types that we don't need in VG151)
@@ -74,7 +103,6 @@ Arithmetic Types
     When comparing two :cin:`double` or :cin:`float`, it's safer to allow errors.
 
     .. code-block:: c
-        
         :emphasize-lines: 2,6
 
         #include<math.h>
@@ -305,6 +333,100 @@ Loops
 - Early exit of a loop: :cin:`break`
 - Skip to the next loop iteration: :cin:`continue`
 
+Initialization [4]_
+-------------------
+
+`(Removed some advanced usage)`
+
+Initialization is quite complicated in C. (of course less complicated comparing to C++)
+
+A declaration of an object may provide its initial value through the process known as initialization.
+
+For each declarator, the initializer, if not omitted, may be one of the following:
+
+- ``= expression``	
+- ``= { initializer-list }``
+
+where ``initializer-list`` is a `non-empty comma-separated list of initializers` (with an optional trailing comma), where each initializer has one of three possible forms:
+
+- ``expression``
+- ``{ initializer-list }``
+
+Explicit Initialization
+^^^^^^^^^^^^^^^^^^^^^^^
+Examples:
+
+.. code-block:: c
+
+    int y[4][3] = { // array of 4 arrays of 3 ints each (4x3 matrix)
+        { 1 },      // row 0 initialized to {1, 0, 0}
+        { 0, 1 },   // row 1 initialized to {0, 1, 0}
+        { [2]=1 },  // row 2 initialized to {0, 0, 1} (advanced usage)
+    };              // row 3 initialized to {0, 0, 0}
+
+    char str[3] = "abc"; // str has type char[3] and holds 'a', 'b', 'c'
+    char str[] = "abc"; // str has type char[4] and holds 'a', 'b', 'c', '\0'
+
+    int a[3] = {0}; // valid C and C++ way to zero-out a block-scope array
+    int a[3] = {}; // valid C++ way to zero-out a block-scope array; valid in C since C23 (not valid in C11)
+
+    const char *const my_str[] = {"List1", "List2"}; // my_str is a const array of string
+
+    struct point {double x,y,z;} p = {1.2, 1.3}; // p.x=1.2, p.y=1.3, p.z=0.0
+    struct point {double x,y,z;} p = {.y=1.3}; // p.x=0.0, p.y=1.3, p.z=0.0
+
+Implicit Initialization
+^^^^^^^^^^^^^^^^^^^^^^^
+
+If an initializer is not provided:
+
+- objects with :cin:`static` storage duration are empty-initialized
+- other objects are initialized to `indeterminate values`
+
+For example, consider the result of the following code:
+
+.. code-block:: c
+
+    #include <stdio.h>
+
+    int glb_array2[10];
+
+    int main(){
+        int local_array[10];
+        static int glb_array1[10];
+        printf("%d\n", local_array[0]);
+        printf("%d\n", glb_array1[0]);
+        printf("%d\n", glb_array2[0]);
+    }
+
+The result would be:
+
+.. code-block:: bash
+
+    1826935528
+    0
+    0
+
+Apparently the first result is undetermined.
+
+It's a good habit to initialize variables when declaring them.
+
+Dynamically allocate a 2D array [5]_
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Like this:
+
+.. code-block:: c
+    
+    int (*arr)[M] = NULL;
+    arr = malloc(sizeof(int[N][M]));
+
+:cin:`arr` is pointer to :cin:`int[M]`.
+
+Use like :cin:`arr[0][M-1];`.
+
+And :cin:`free(arr);`.
+
 Good Luck
 ---------
 
@@ -312,5 +434,10 @@ Hope you can do well!
 
 .. [1] VG151 Mid2 Big RC Part 3, 2021. Jiache, Zhang.
 
-.. [2] C Reference. https://en.cppreference.com/w/c/language/type
+.. [2] C Reference: Storage Duration. https://en.cppreference.com/w/c/language/storage_duration
 
+.. [3] C Reference: Type. https://en.cppreference.com/w/c/language/type
+
+.. [4] C Reference: Initialization. https://en.cppreference.com/w/c/language/initialization
+
+.. [5] C Reference: Malloc a 2d array in c. https://stackoverflow.com/questions/36890624/malloc-a-2d-array-in-c

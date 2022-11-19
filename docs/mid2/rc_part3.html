@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="C Questions" href="rc_part6.html" /><link rel="prev" title="ENGR151 Lab 8: OpenGL" href="../l8/lab8.html" />
 
     <meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
-        <title>Basic C - VG151 Documentation documentation</title>
+        <title>Basic C - VG151 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">VG151 Documentation  documentation</div></a>
+      <a href="../index.html"><div class="brand">VG151  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -147,7 +147,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   
-  <span class="sidebar-brand-text">VG151 Documentation  documentation</span>
+  <span class="sidebar-brand-text">VG151  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -197,30 +197,51 @@
         </div>
         <article role="main">
           <section id="basic-c-1">
-<h1>Basic C <a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a><a class="headerlink" href="#basic-c-1" title="Permalink to this heading">#</a></h1>
+<h1>Basic C <a class="footnote-reference brackets" href="#id7" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a><a class="headerlink" href="#basic-c-1" title="Permalink to this heading">#</a></h1>
+<section id="p2m3-requirements-clarification">
+<h2>P2M3 Requirements Clarification<a class="headerlink" href="#p2m3-requirements-clarification" title="Permalink to this heading">#</a></h2>
+<p>Some students are asking if they can use other methods to implement <cite>players</cite> and <cite>stock, piles</cite>.</p>
+<p>Please follow the requirements listed on <code class="file docutils literal notranslate"><span class="pre">p2.pdf</span></code> (Selected):</p>
+<blockquote>
+<div><p>…</p>
+<p>Use a <strong>circular double linked list</strong> for the players;</p>
+<p>Use a <strong>dynamic array</strong> to handle the stock and discard piles;</p>
+<p>…</p>
+</div></blockquote>
+</section>
 <section id="c-types">
 <h2>C Types<a class="headerlink" href="#c-types" title="Permalink to this heading">#</a></h2>
-<section id="scope-of-variables">
-<h3>Scope of Variables<a class="headerlink" href="#scope-of-variables" title="Permalink to this heading">#</a></h3>
-<ul>
-<li><p>Constant variables (make it easier to understand your code)</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define PI 3.1415926  </span><span class="c1">// #define derective</span>
-<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">some_magic_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
+<section id="type-qualifier">
+<h3>Type Qualifier<a class="headerlink" href="#type-qualifier" title="Permalink to this heading">#</a></h3>
+<p>The most commonly-used qualifier in C is the <cite>const type qualifier</cite>.</p>
+<p><cite>Constant type qualifier</cite> can make one variable constant and it may help in some cases.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">some_magic_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
 <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">my_str</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;List1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;List2&quot;</span><span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
-</li>
+<p>You can also use the <cite>#define directive</cite> to define a constant:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define PI 3.1415926</span>
+</pre></div>
+</div>
+</section>
+<section id="scope-of-variables">
+<h3>Scope of Variables<a class="headerlink" href="#scope-of-variables" title="Permalink to this heading">#</a></h3>
+<ul>
 <li><p>Global variables: defined for all functions (outside the function or <code class="code highlight cin c docutils literal highlight-c"><span class="k">static</span><span class="w"></span></code>)</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Never use non-constant global variables in VG151!</p>
 </div>
+<div class="admonition-further-reading-static-storage-duration-2 admonition">
+<p class="admonition-title">Further Reading: Static storage duration <a class="footnote-reference brackets" href="#id8" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
+<p>The storage duration is the entire execution of the program, and the value stored in the object is initialized only <strong>once</strong>, prior to main function. All objects declared static and all objects with either internal or external linkage that aren’t declared <code class="code highlight cin c docutils literal highlight-c"><span class="k">_Thread_local</span><span class="w"></span></code> (since C11) have this storage duration.</p>
+</div>
 </li>
 <li><p>Local variables: defined only in functions</p></li>
 </ul>
 </section>
-<section id="type-classification-2">
-<h3>Type Classification <a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a><a class="headerlink" href="#type-classification-2" title="Permalink to this heading">#</a></h3>
+<section id="type-classification-3">
+<h3>Type Classification <a class="footnote-reference brackets" href="#id9" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a><a class="headerlink" href="#type-classification-3" title="Permalink to this heading">#</a></h3>
 <p>The C type system consists of the following types: (excluded some types that we don’t need in VG151)</p>
 <ul class="simple">
 <li><p>the type <code class="code highlight cin c docutils literal highlight-c"><span class="kt">void</span><span class="w"></span></code></p></li>
@@ -271,15 +292,13 @@
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>When comparing two <code class="code highlight cin c docutils literal highlight-c"><span class="kt">double</span><span class="w"></span></code> or <code class="code highlight cin c docutils literal highlight-c"><span class="kt">float</span><span class="w"></span></code>, it’s safer to allow errors.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">:</span><span class="n">emphasize</span><span class="o">-</span><span class="n">lines</span><span class="o">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="w"></span>
-
-<span class="cp">#include</span><span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="cpf">&lt;limits.h&gt;</span><span class="cp"></span>
-
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
+<span class="hll"><span class="cp">#include</span><span class="cpf">&lt;limits.h&gt;</span><span class="cp"></span>
+</span>
 <span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">;</span><span class="w"></span>
 <span class="c1">// ...</span>
-<span class="k">if</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">FLT_EPSILON</span><span class="p">){</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;a and b are equal&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="hll"><span class="k">if</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">FLT_EPSILON</span><span class="p">){</span><span class="w"></span>
+</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;a and b are equal&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
@@ -484,17 +503,108 @@
 </section>
 </section>
 </section>
+<section id="initialization-4">
+<h2>Initialization <a class="footnote-reference brackets" href="#id10" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a><a class="headerlink" href="#initialization-4" title="Permalink to this heading">#</a></h2>
+<p><cite>(Removed some advanced usage)</cite></p>
+<p>Initialization is quite complicated in C. (of course less complicated comparing to C++)</p>
+<p>A declaration of an object may provide its initial value through the process known as initialization.</p>
+<p>For each declarator, the initializer, if not omitted, may be one of the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">expression</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">{</span> <span class="pre">initializer-list</span> <span class="pre">}</span></code></p></li>
+</ul>
+<p>where <code class="docutils literal notranslate"><span class="pre">initializer-list</span></code> is a <cite>non-empty comma-separated list of initializers</cite> (with an optional trailing comma), where each initializer has one of three possible forms:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">expression</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">initializer-list</span> <span class="pre">}</span></code></p></li>
+</ul>
+<section id="explicit-initialization">
+<h3>Explicit Initialization<a class="headerlink" href="#explicit-initialization" title="Permalink to this heading">#</a></h3>
+<p>Examples:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// array of 4 arrays of 3 ints each (4x3 matrix)</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">},</span><span class="w">      </span><span class="c1">// row 0 initialized to {1, 0, 0}</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">},</span><span class="w">   </span><span class="c1">// row 1 initialized to {0, 1, 0}</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="p">},</span><span class="w">  </span><span class="c1">// row 2 initialized to {0, 0, 1} (advanced usage)</span>
+<span class="p">};</span><span class="w">              </span><span class="c1">// row 3 initialized to {0, 0, 0}</span>
+
+<span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;abc&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// str has type char[3] and holds &#39;a&#39;, &#39;b&#39;, &#39;c&#39;</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;abc&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// str has type char[4] and holds &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;\0&#39;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="c1">// valid C and C++ way to zero-out a block-scope array</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span><span class="w"> </span><span class="c1">// valid C++ way to zero-out a block-scope array; valid in C since C23 (not valid in C11)</span>
+
+<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">my_str</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;List1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;List2&quot;</span><span class="p">};</span><span class="w"> </span><span class="c1">// my_str is a const array of string</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">point</span><span class="w"> </span><span class="p">{</span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">;}</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">1.3</span><span class="p">};</span><span class="w"> </span><span class="c1">// p.x=1.2, p.y=1.3, p.z=0.0</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">point</span><span class="w"> </span><span class="p">{</span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">;}</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">y</span><span class="o">=</span><span class="mf">1.3</span><span class="p">};</span><span class="w"> </span><span class="c1">// p.x=0.0, p.y=1.3, p.z=0.0</span>
+</pre></div>
+</div>
+</section>
+<section id="implicit-initialization">
+<h3>Implicit Initialization<a class="headerlink" href="#implicit-initialization" title="Permalink to this heading">#</a></h3>
+<p>If an initializer is not provided:</p>
+<ul class="simple">
+<li><p>objects with <code class="code highlight cin c docutils literal highlight-c"><span class="k">static</span><span class="w"></span></code> storage duration are empty-initialized</p></li>
+<li><p>other objects are initialized to <cite>indeterminate values</cite></p></li>
+</ul>
+<p>For example, consider the result of the following code:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">glb_array2</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">local_array</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">glb_array1</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">local_array</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">glb_array1</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">glb_array2</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The result would be:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">1826935528</span>
+<span class="m">0</span>
+<span class="m">0</span>
+</pre></div>
+</div>
+<p>Apparently the first result is undetermined.</p>
+<p>It’s a good habit to initialize variables when declaring them.</p>
+</section>
+<section id="dynamically-allocate-a-2d-array-5">
+<h3>Dynamically allocate a 2D array <a class="footnote-reference brackets" href="#id11" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a><a class="headerlink" href="#dynamically-allocate-a-2d-array-5" title="Permalink to this heading">#</a></h3>
+<p>Like this:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">arr</span><span class="p">)[</span><span class="n">M</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="n">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">M</span><span class="p">]));</span><span class="w"></span>
+</pre></div>
+</div>
+<p><code class="code highlight cin c docutils literal highlight-c"><span class="n">arr</span><span class="w"></span></code> is pointer to <code class="code highlight cin c docutils literal highlight-c"><span class="kt">int</span><span class="p">[</span><span class="n">M</span><span class="p">]</span><span class="w"></span></code>.</p>
+<p>Use like <code class="code highlight cin c docutils literal highlight-c"><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">M</span><span class="mi">-1</span><span class="p">];</span><span class="w"></span></code>.</p>
+<p>And <code class="code highlight cin c docutils literal highlight-c"><span class="n">free</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span><span class="w"></span></code>.</p>
+</section>
+</section>
 <section id="good-luck">
 <h2>Good Luck<a class="headerlink" href="#good-luck" title="Permalink to this heading">#</a></h2>
 <p>Hope you can do well!</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id4" role="note">
+<aside class="footnote brackets" id="id7" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>VG151 Mid2 Big RC Part 3, 2021. Jiache, Zhang.</p>
 </aside>
-<aside class="footnote brackets" id="id5" role="note">
+<aside class="footnote brackets" id="id8" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
-<p>C Reference. <a class="reference external" href="https://en.cppreference.com/w/c/language/type">https://en.cppreference.com/w/c/language/type</a></p>
+<p>C Reference: Storage Duration. <a class="reference external" href="https://en.cppreference.com/w/c/language/storage_duration">https://en.cppreference.com/w/c/language/storage_duration</a></p>
+</aside>
+<aside class="footnote brackets" id="id9" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>C Reference: Type. <a class="reference external" href="https://en.cppreference.com/w/c/language/type">https://en.cppreference.com/w/c/language/type</a></p>
+</aside>
+<aside class="footnote brackets" id="id10" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
+<p>C Reference: Initialization. <a class="reference external" href="https://en.cppreference.com/w/c/language/initialization">https://en.cppreference.com/w/c/language/initialization</a></p>
+</aside>
+<aside class="footnote brackets" id="id11" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">5</a><span class="fn-bracket">]</span></span>
+<p>C Reference: Malloc a 2d array in c. <a class="reference external" href="https://stackoverflow.com/questions/36890624/malloc-a-2d-array-in-c">https://stackoverflow.com/questions/36890624/malloc-a-2d-array-in-c</a></p>
 </aside>
 </aside>
 </section>
@@ -558,9 +668,11 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Basic C </a><ul>
+<li><a class="reference internal" href="#p2m3-requirements-clarification">P2M3 Requirements Clarification</a></li>
 <li><a class="reference internal" href="#c-types">C Types</a><ul>
+<li><a class="reference internal" href="#type-qualifier">Type Qualifier</a></li>
 <li><a class="reference internal" href="#scope-of-variables">Scope of Variables</a></li>
-<li><a class="reference internal" href="#type-classification-2">Type Classification </a></li>
+<li><a class="reference internal" href="#type-classification-3">Type Classification </a></li>
 <li><a class="reference internal" href="#arithmetic-types">Arithmetic Types</a></li>
 <li><a class="reference internal" href="#characters">Characters</a></li>
 <li><a class="reference internal" href="#displaying">Displaying</a></li>
@@ -581,6 +693,12 @@
 </li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a class="reference internal" href="#initialization-4">Initialization </a><ul>
+<li><a class="reference internal" href="#explicit-initialization">Explicit Initialization</a></li>
+<li><a class="reference internal" href="#implicit-initialization">Implicit Initialization</a></li>
+<li><a class="reference internal" href="#dynamically-allocate-a-2d-array-5">Dynamically allocate a 2D array </a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#good-luck">Good Luck</a></li>
