@@ -440,4 +440,4 @@ Hope you can do well!
 
 .. [4] C Reference: Initialization. https://en.cppreference.com/w/c/language/initialization
 
-.. [5] C Reference: Malloc a 2d array in c. https://stackoverflow.com/questions/36890624/malloc-a-2d-array-in-c
+.. [5] Malloc a 2d array in c. https://stackoverflow.com/questions/36890624/malloc-a-2d-array-in-c
