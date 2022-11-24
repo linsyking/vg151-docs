@@ -167,7 +167,9 @@ Comparing those two code snippets:
     .. code-block:: c
 
         printf("%f\n",7f/3);
-    
+
+For the `format specifiers`, see `fprintf documentation <https://en.cppreference.com/w/c/io/fprintf>`_. 
+
 Type Casting
 ^^^^^^^^^^^^
 

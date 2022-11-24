@@ -9,4 +9,5 @@ Welcome to the VG151 Documentation!
    Lab 8 <l8/lab8>
    Mid 2 RC (Part 3) <mid2/rc_part3>
    Mid 2 RC (Part 6) <mid2/rc_part6>
+   Lab 9 <l9/lab9>
    Code Check <unfiled/codecheck>
