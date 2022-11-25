@@ -129,10 +129,11 @@ The simplified version of the `Shunting Yard Algorithm` is as follows:
       - a number:
           put it into the output queue
       - an operator o1:
-          while (o2 has greater precedence than o1
-              or they have the same precedence and o1 is left-associative):
+          while (there is an operator o2 at the top of the operator stack, and
+          (o2 has greater precedence than o1 or they have the same precedence)):
               pop o2 from the operator stack into the output queue
           push o1 onto the operator stack
+          
   /* After the while loop, pop the remaining items from the operator stack into the output queue. */
   while there are tokens on the operator stack:
       pop the operator from the operator stack onto the output queue
