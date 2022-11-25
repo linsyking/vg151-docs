@@ -349,9 +349,11 @@
 <li><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">isdigit</span><span class="w"></span></code></p></li>
 </ul>
 </section>
-<section id="reference-c-code">
-<h3>Reference C++ Code<a class="headerlink" href="#reference-c-code" title="Permalink to this heading">#</a></h3>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<section id="fill-all-the-todos-to-complete-the-calculator">
+<h3>Fill all the TODOs to complete the calculator<a class="headerlink" href="#fill-all-the-todos-to-complete-the-calculator" title="Permalink to this heading">#</a></h3>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">calculator.cpp</span><a class="headerlink" href="#id8" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;queue&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stack&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
@@ -360,7 +362,6 @@
 <span class="kt">bool</span><span class="w"> </span><span class="nf">is_greater</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// Judge the priority of the two operators</span>
 <span class="w">    </span><span class="c1">// Return true if a is greater thean b</span>
-
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;*&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;/&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;+&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;-&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
@@ -371,33 +372,15 @@
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">move_op</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">op1</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">queue</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">stack</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ops</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// op1 is the incoming operator</span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ops</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">is_greater</span><span class="p">(</span><span class="n">ops</span><span class="p">.</span><span class="n">top</span><span class="p">(),</span><span class="w"> </span><span class="n">op1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">output</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">ops</span><span class="p">.</span><span class="n">top</span><span class="p">());</span><span class="w"></span>
-<span class="w">        </span><span class="n">ops</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
 <span class="kt">void</span><span class="w"> </span><span class="nf">get_suffix</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">queue</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">output</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Generate the suffix expression and store it in output</span>
+
+<span class="w">    </span><span class="c1">// ops is the stack of operators</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">stack</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ops</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="c1">// Iterate the string</span>
+<span class="w">        </span><span class="c1">// Iterate each char in the string</span>
 <span class="w">        </span><span class="c1">// std::cout &lt;&lt; c;</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">isdigit</span><span class="p">(</span><span class="n">c</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="n">output</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">c</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ops</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="n">ops</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">c</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="n">move_op</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="n">ops</span><span class="p">);</span><span class="w"></span>
-<span class="w">                </span><span class="n">ops</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">c</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ops</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">output</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">ops</span><span class="p">.</span><span class="n">top</span><span class="p">());</span><span class="w"></span>
-<span class="w">        </span><span class="n">ops</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// TODO</span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
@@ -412,33 +395,9 @@
 <span class="p">}</span><span class="w"></span>
 
 <span class="kt">float</span><span class="w"> </span><span class="nf">evaluate_suffix</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">queue</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">suffix</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">stack</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">nums</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">suffix</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">isdigit</span><span class="p">(</span><span class="n">suffix</span><span class="p">.</span><span class="n">front</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="n">nums</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">suffix</span><span class="p">.</span><span class="n">front</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="p">.</span><span class="n">top</span><span class="p">();</span><span class="w"></span>
-<span class="w">            </span><span class="n">nums</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span><span class="w"></span>
-<span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="p">.</span><span class="n">top</span><span class="p">();</span><span class="w"></span>
-<span class="w">            </span><span class="n">nums</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span><span class="w"></span>
-<span class="w">            </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">suffix</span><span class="p">.</span><span class="n">front</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;+&#39;</span><span class="p">:</span><span class="w"></span>
-<span class="w">                    </span><span class="n">nums</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"></span>
-<span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
-<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;-&#39;</span><span class="p">:</span><span class="w"></span>
-<span class="w">                    </span><span class="n">nums</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">);</span><span class="w"></span>
-<span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
-<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;*&#39;</span><span class="p">:</span><span class="w"></span>
-<span class="w">                    </span><span class="n">nums</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"></span>
-<span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
-<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;/&#39;</span><span class="p">:</span><span class="w"></span>
-<span class="w">                    </span><span class="n">nums</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">a</span><span class="p">);</span><span class="w"></span>
-<span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="n">suffix</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">nums</span><span class="p">.</span><span class="n">top</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Evaluate Suffix Expression</span>
+<span class="w">    </span><span class="c1">// Return the result</span>
+<span class="w">    </span><span class="c1">// TODO</span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -451,6 +410,7 @@
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The result is: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">evaluate_suffix</span><span class="p">(</span><span class="n">output</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
+</div>
 </div>
 </section>
 </section>
@@ -471,8 +431,8 @@
 <h3>A Toy Calculator Generated by <cite>flex</cite> and <cite>bison</cite><a class="headerlink" href="#a-toy-calculator-generated-by-flex-and-bison" title="Permalink to this heading">#</a></h3>
 <p>(Source code based on <a class="reference external" href="https://github.com/azartech/Flex-Bison-Calculator.git">this Github Repo</a>)</p>
 <p>Copy the following code to <code class="docutils literal notranslate"><span class="pre">calc.y</span></code>:</p>
-<div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-text">calc.y</span><a class="headerlink" href="#id8" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">calc.y</span><a class="headerlink" href="#id9" title="Permalink to this code">#</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>%{
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
@@ -637,8 +597,8 @@ int yywrap()
 </pre></div>
 </div>
 <p>Create a file named <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> and copy the following code in it:</p>
-<div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-text">Makefile</span><a class="headerlink" href="#id9" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">Makefile</span><a class="headerlink" href="#id10" title="Permalink to this code">#</a></div>
 <div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nv">.PHONY</span><span class="o">=</span>all
 
 <span class="nf">all</span><span class="o">:</span> <span class="n">calc</span> <span class="n">run</span>
@@ -670,10 +630,10 @@ int yywrap()
 <section id="what-is-lexer-and-parser">
 <h4>What is Lexer and Parser?<a class="headerlink" href="#what-is-lexer-and-parser" title="Permalink to this heading">#</a></h4>
 <p>In computer science, <cite>lexical analysis</cite>, lexing or tokenization is the process of converting a sequence of characters (such as in a computer program or web page) into a sequence of lexical tokens (strings with an assigned and thus identified meaning). <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
-<figure class="align-default" id="id10">
+<figure class="align-default" id="id11">
 <a class="reference internal image-reference" href="../_images/lexer-parser.png"><img alt="../_images/lexer-parser.png" src="../_images/lexer-parser.png" style="width: 660.0px; height: 120.0px;" /></a>
 <figcaption>
-<p><span class="caption-text">Lexer and Parser</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Lexer and Parser</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>A lexical token or simply <cite>token</cite> is a string with an assigned and thus identified meaning. It is structured as a pair consisting of a token name and an optional token value. The token name is a category of lexical unit.</p>
@@ -684,10 +644,10 @@ int yywrap()
 <p>We often use <cite>regular expression</cite> to describe the lexer rules. Regular expression is a sequence of characters that define a search pattern.</p>
 <p>Parser is often more complicated than lexer. We have to first define the grammar of the language, and then use the grammar to generate the parser. The parser is used to parse the tokens and generate the syntax tree. Regular expressions are often not good enough to describe the language, so we often use a more powerful tool called <cite>context-free grammar</cite> to describe the language. Context-free grammar is a formal grammar which describes all possible strings in a given formal language. It is a type of formal grammar, the set of strings which can be generated by the grammar is called the <cite>language</cite> of the grammar.</p>
 <p>Lexical analysis and parsing (syntax analysis) are often the first two steps of compilation.</p>
-<figure class="align-default" id="id11">
+<figure class="align-default" id="id12">
 <a class="reference internal image-reference" href="../_images/compile.png"><img alt="../_images/compile.png" src="../_images/compile.png" style="width: 246.4px; height: 535.2px;" /></a>
 <figcaption>
-<p><span class="caption-text">Compilation Diagram <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Compilation Diagram <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -809,7 +769,7 @@ int yywrap()
 <li><a class="reference internal" href="#stack-based-calculator">Stack-based Calculator</a><ul>
 <li><a class="reference internal" href="#simplified-version-of-shunting-yard-algorithm">Simplified version of <cite>Shunting Yard Algorithm</cite></a></li>
 <li><a class="reference internal" href="#suffix-expression-evaluation">Suffix Expression evaluation</a></li>
-<li><a class="reference internal" href="#reference-c-code">Reference C++ Code</a></li>
+<li><a class="reference internal" href="#fill-all-the-todos-to-complete-the-calculator">Fill all the TODOs to complete the calculator</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#advanced-calculator">Advanced Calculator</a><ul>
