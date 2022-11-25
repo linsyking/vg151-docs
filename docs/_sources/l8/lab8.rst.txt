@@ -1,5 +1,5 @@
-ENGR151 Lab 8: OpenGL
-=====================
+Introduction to OpenGL
+======================
 
 .. role:: cpp(code)
    :language: c++

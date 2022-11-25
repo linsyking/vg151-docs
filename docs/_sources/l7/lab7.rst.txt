@@ -1,5 +1,5 @@
-ENGR151 Lab 7: Trees
-====================
+Introduction to Trees
+=====================
 
 Group Presentation
 ------------------
