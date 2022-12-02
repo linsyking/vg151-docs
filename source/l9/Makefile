@@ -9,7 +9,7 @@ calc.tab.c: calc.y
 	bison -d calc.y
 
 calc: calc.tab.c lex.yy.c
-	gcc -o calc calc.tab.c lex.yy.c -lm
+	g++ -o calc calc.tab.c lex.yy.c -lm
 
 run: calc
 	./calc

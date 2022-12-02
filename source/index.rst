@@ -10,4 +10,6 @@ Welcome to the VG151 Documentation!
    Mid 2 RC (Part 3) <mid2/rc_part3>
    Mid 2 RC (Part 6) <mid2/rc_part6>
    Lab 9 <l9/lab9>
+   Lab 10 <l10/lab10>
+   Git Revisit <l10/git>
    Code Check <unfiled/codecheck>
