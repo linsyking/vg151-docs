@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Git Revisit" href="../l10/git.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Code Check" href="../unfiled/codecheck.html" /><link rel="prev" title="Zombies in JI" href="lab10.html" />
 
     <meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
-        <title>Code Check - VG151 documentation</title>
+        <title>Git Revisit - VG151 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -156,15 +156,15 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unfiled/introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../l7/lab7.html">Lab 7</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../l8/lab8.html">Lab 8</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mid2/rc_part3.html">Mid 2 RC (Part 3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mid2/rc_part6.html">Mid 2 RC (Part 6)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../l9/lab9.html">Lab 9</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../l10/lab10.html">Lab 10</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../l10/git.html">Git Revisit</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Code Check</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab10.html">Lab 10</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Git Revisit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unfiled/codecheck.html">Code Check</a></li>
 </ul>
 
 </div>
@@ -199,37 +199,62 @@
           </label>
         </div>
         <article role="main">
-          <section id="code-check">
-<h1>Code Check<a class="headerlink" href="#code-check" title="Permalink to this heading">#</a></h1>
-<section id="introduction-to-clang-tidy">
-<h2>Introduction to <code class="docutils literal notranslate"><span class="pre">clang-tidy</span></code><a class="headerlink" href="#introduction-to-clang-tidy" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="https://clang.llvm.org/extra/clang-tidy/index.html">clang-tidy</a> is a static analyzer for C and C++.</p>
-<p>It has many checks and can help us find some potential bugs.</p>
-</section>
-<section id="vg151-code-quality-checks">
-<h2>VG151 code quality checks<a class="headerlink" href="#vg151-code-quality-checks" title="Permalink to this heading">#</a></h2>
-<p>Originally, I wrote a <strong class="program">python</strong> script to perform the checks. It works quite good, but it fails for complicated cases.</p>
-<p>Therefore, I spent some time writing a plugin for <code class="docutils literal notranslate"><span class="pre">clang-tidy</span></code>, and it works very well. It enables me to get <code class="docutils literal notranslate"><span class="pre">AST</span></code> of the code and I can match some specific code and traverse the tree.</p>
-</section>
-<section id="run-checks-on-your-program">
-<h2>Run checks on your program<a class="headerlink" href="#run-checks-on-your-program" title="Permalink to this heading">#</a></h2>
-<p>You can log into manuel’s server and we have already installed <strong class="program">clang-tidy</strong> and my plugin for you.</p>
-<p>Simply type:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>clang-tidy --load<span class="o">=</span>/usr/local/lib/libcodequality.so <span class="c1"># add your source code</span>
+          <section id="git-revisit">
+<h1>Git Revisit<a class="headerlink" href="#git-revisit" title="Permalink to this heading">#</a></h1>
+<p>In the first lab, you have learned how to use Git to manage your code.</p>
+<p>You should have a basic understanding of the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git init
+git add
+git commit
+git push
+git pull
 </pre></div>
 </div>
+<p>However, you may have already noticed that there is “branches” in your Git repository. What is a branch and how can we take advantage of it?</p>
+<p>In homework repository, you have one <code class="docutils literal notranslate"><span class="pre">master</span></code> branch and one <code class="docutils literal notranslate"><span class="pre">group</span></code> branch. Moreover, you have several individual branches.</p>
+<p>Today, we will learn how to use branches in a more professional way to manage your code.</p>
+<section id="what-is-commit-and-branch">
+<h2>What is <code class="docutils literal notranslate"><span class="pre">commit</span></code> and <code class="docutils literal notranslate"><span class="pre">branch</span></code>?<a class="headerlink" href="#what-is-commit-and-branch" title="Permalink to this heading">#</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">commit</span></code> is a snapshot of your code. It is a version of your code. You can think of it as a “checkpoint” in your code.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">branch</span></code> is a pointer to a <code class="docutils literal notranslate"><span class="pre">commit</span></code>. It is a <cite>pointer</cite> to a specific version of your code. You can think of it as a “branch” in your code.</p>
 </section>
-<section id="checks-we-enabled">
-<h2>Checks we enabled<a class="headerlink" href="#checks-we-enabled" title="Permalink to this heading">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">.clang-tidy</span></code> file we enabled is included in the <code class="docutils literal notranslate"><span class="pre">drone</span></code> branch, <code class="docutils literal notranslate"><span class="pre">materials</span></code> repository.</p>
+<section id="toy-git-playground">
+<h2>Toy Git Playground<a class="headerlink" href="#toy-git-playground" title="Permalink to this heading">#</a></h2>
+<p>Goto this website <a class="reference external" href="https://learngitbranching.js.org/">learn git branching</a> and unlock all levels in <cite>Introduction to Git Commits</cite>, <cite>Ramping Up</cite> and <cite>Moving Work Around</cite>.</p>
+<p>Have fun and play it!</p>
+<p>You should at least know the following things after playing:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HEAD^</span></code> and <code class="docutils literal notranslate"><span class="pre">HEAD~1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">cherry-pick</span></code></p></li>
+</ul>
 </section>
-<section id="run-clang-tidy-with-our-checks-locally">
-<h2>Run <code class="docutils literal notranslate"><span class="pre">clang-tidy</span></code> with our checks locally<a class="headerlink" href="#run-clang-tidy-with-our-checks-locally" title="Permalink to this heading">#</a></h2>
-<p>If you want to perform the checks locally, you can use the prebuilt plugin on the <a class="reference external" href="https://github.com/linsyking/vg151-codequality/releases">Release page</a>.</p>
+<section id="real-git">
+<h2>Real Git<a class="headerlink" href="#real-git" title="Permalink to this heading">#</a></h2>
+<p>In reality, Git is <strong>much more complicated</strong> than the toy playground. However, the basic idea is the same. You should remember those commonly-used commands and workflow.</p>
 </section>
-<section id="contribution">
-<h2>Contribution<a class="headerlink" href="#contribution" title="Permalink to this heading">#</a></h2>
-<p>Go to <a class="reference external" href="https://github.com/linsyking/vg151-codequality">Github repository</a>, you can open PRs and issues.</p>
+<section id="some-useful-commands">
+<h2>Some Useful Commands<a class="headerlink" href="#some-useful-commands" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>: show the commit history</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code>: show the difference between two commits</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clean</span> <span class="pre">-df</span></code>: remove untracked files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-A</span></code>: add all files to the staging area</p></li>
+</ul>
+</section>
+<section id="solving-conflicts">
+<h2>Solving Conflicts<a class="headerlink" href="#solving-conflicts" title="Permalink to this heading">#</a></h2>
+<p>When you merge two branches, you may encounter conflicts. You can solve the conflicts by editing the files and then commit the changes. Or, if you use VS Code, it has a built-in Git GUI to help you solve the conflicts. Other IDE/Editors may have similar tools.</p>
+</section>
+<section id="good-bye">
+<h2>Good Bye<a class="headerlink" href="#good-bye" title="Permalink to this heading">#</a></h2>
+<p>This is the last lab in ENGR1510J.</p>
+<p>My initial idea is to introduce the <cite>beauty of programming and computer science</cite> to you. Don’t feel disappointed if you cannot understand the concepts in this course. There are many fields other than programming. You can still be successful in your life.</p>
+<p>I hope that you all learned something useful in my lab. I wish you all the best in your future studies and career.</p>
+<p>Thanks for your attention. Bye! (If you are interested in <cite>software engineering</cite>, please enroll in the manuel’s section of VG100, <strong>greatest programming experience in JI</strong>)</p>
 </section>
 </section>
 
@@ -238,15 +263,23 @@
       <footer>
         
         <div class="related-pages">
-          
-          <a class="prev-page" href="../l10/git.html">
+          <a class="next-page" href="../unfiled/codecheck.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Code Check</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="lab10.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Git Revisit</div>
+                <div class="title">Zombies in JI</div>
                 
               </div>
             </a>
@@ -282,13 +315,13 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Code Check</a><ul>
-<li><a class="reference internal" href="#introduction-to-clang-tidy">Introduction to <code class="docutils literal notranslate"><span class="pre">clang-tidy</span></code></a></li>
-<li><a class="reference internal" href="#vg151-code-quality-checks">VG151 code quality checks</a></li>
-<li><a class="reference internal" href="#run-checks-on-your-program">Run checks on your program</a></li>
-<li><a class="reference internal" href="#checks-we-enabled">Checks we enabled</a></li>
-<li><a class="reference internal" href="#run-clang-tidy-with-our-checks-locally">Run <code class="docutils literal notranslate"><span class="pre">clang-tidy</span></code> with our checks locally</a></li>
-<li><a class="reference internal" href="#contribution">Contribution</a></li>
+<li><a class="reference internal" href="#">Git Revisit</a><ul>
+<li><a class="reference internal" href="#what-is-commit-and-branch">What is <code class="docutils literal notranslate"><span class="pre">commit</span></code> and <code class="docutils literal notranslate"><span class="pre">branch</span></code>?</a></li>
+<li><a class="reference internal" href="#toy-git-playground">Toy Git Playground</a></li>
+<li><a class="reference internal" href="#real-git">Real Git</a></li>
+<li><a class="reference internal" href="#some-useful-commands">Some Useful Commands</a></li>
+<li><a class="reference internal" href="#solving-conflicts">Solving Conflicts</a></li>
+<li><a class="reference internal" href="#good-bye">Good Bye</a></li>
 </ul>
 </li>
 </ul>

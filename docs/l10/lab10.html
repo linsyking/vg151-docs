@@ -1,0 +1,497 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Git Revisit" href="git.html" /><link rel="prev" title="A Toy Calculator" href="../l9/lab9.html" />
+
+    <meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
+        <title>Zombies in JI - VG151 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">VG151  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">VG151  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../unfiled/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../l7/lab7.html">Lab 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../l8/lab8.html">Lab 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mid2/rc_part3.html">Mid 2 RC (Part 3)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mid2/rc_part6.html">Mid 2 RC (Part 6)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../l9/lab9.html">Lab 9</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Lab 10</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">Git Revisit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unfiled/codecheck.html">Code Check</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="zombies-in-ji">
+<h1>Zombies in JI<a class="headerlink" href="#zombies-in-ji" title="Permalink to this heading">#</a></h1>
+<section id="more-about-project-3">
+<h2>More About Project 3<a class="headerlink" href="#more-about-project-3" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Please download the latest <code class="docutils literal notranslate"><span class="pre">p3.pdf</span></code> from canvas. We have updated some requirements in it.</p></li>
+<li><p>You can choose either CMake or Makefile to build p3. However, please use the templates in <a class="reference external" href="https://focs.ji.sjtu.edu.cn/git/ENGR151-22/materials/src/branch/master/templates/p3">materials repository</a>. The default build system is CMake.</p></li>
+<li><p>In p3, you will pass drone even though you don’t pass code quality and runtime checks. Only compile test is necessary to pass drone and merge into master branch.</p></li>
+<li><p>However, you might get some deductions if you cannot pass those “optional” checks. Hence, you should check the details of drone even if it is a green badge.</p></li>
+<li><p>The code check in p3 is less strict than p2 and you should at least read those errors from code check (some rules have been set to warnings rather than errors)</p></li>
+<li><p>You should add some code around all OpenGL-related code to pass test on drone. The detailed requirements are written in the part 2 of p3.pdf.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">include</span></code> folder in your p3 repo is used to store all header files, <code class="docutils literal notranslate"><span class="pre">pms</span></code> is used to store cpp code for the first part of p3 while <code class="docutils literal notranslate"><span class="pre">ipa</span></code> is used for part 2.</p></li>
+<li><p>If you want to do bonus, please contact us first.</p></li>
+</ul>
+</section>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>Read the <strong>fun</strong> story in the lab manual. It’s fun.</p>
+</div></blockquote>
+</section>
+<section id="objects">
+<h2>Objects<a class="headerlink" href="#objects" title="Permalink to this heading">#</a></h2>
+<p>In OOP(Object Oriented Programming), the first things we need to do is to define the objects we want to use in our program.</p>
+<p>Recall the <cite>Zombie</cite> story. Where does it happen? In the <cite>Long Bing building</cite>. Therefore, we need to describe the building structure in our program.</p>
+<p>What is necessary in the building to describe the game? One building, some floors, rooms and creatures.</p>
+<p>The whole building contains several floors. Floor contains rooms. Room contains creatures. For simplicity, creatures can only be in the rooms (rather than in the corridors), and there is only one kind of floor and room.</p>
+<p>Assume the structure of the building looks like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Building</span>
+<span class="o">|---------------------------------------------------|</span>
+<span class="o">|</span> <span class="n">Floor4</span> <span class="p">:</span><span class="o">|</span> <span class="mi">401</span> <span class="o">|</span> <span class="mi">402</span> <span class="o">|</span> <span class="mi">403</span> <span class="o">|</span> <span class="mi">404</span> <span class="o">|</span>
+<span class="o">|----------+++++------------------------------------|</span>
+<span class="o">|</span> <span class="n">Floor3</span> <span class="p">:</span><span class="o">|</span> <span class="mi">301</span> <span class="o">|</span> <span class="mi">302</span> <span class="o">|</span> <span class="mi">303</span> <span class="o">|</span> <span class="mi">404</span> <span class="o">|</span> <span class="mi">305</span> <span class="o">|</span> <span class="mi">306</span> <span class="o">|</span> <span class="mi">307</span> <span class="o">|</span>
+<span class="o">|----------+++++------------------------------------|</span>
+<span class="o">|</span> <span class="n">Floor2</span> <span class="p">:</span><span class="o">|</span> <span class="mi">201</span> <span class="o">|</span> <span class="mi">202</span> <span class="o">|</span> <span class="mi">203</span> <span class="o">|</span> <span class="mi">204</span> <span class="o">|</span> <span class="mi">205</span> <span class="o">|</span> <span class="mi">206</span> <span class="o">|</span> <span class="mi">207</span> <span class="o">|</span>
+<span class="o">|----------+++++------------------------------------|</span>
+<span class="o">|</span> <span class="n">Floor1</span> <span class="p">:</span><span class="o">|</span> <span class="mi">101</span> <span class="o">|</span> <span class="mi">102</span> <span class="o">|</span> <span class="mi">103</span> <span class="o">|</span> <span class="mi">104</span> <span class="o">|</span> <span class="mi">105</span> <span class="o">|</span> <span class="mi">106</span> <span class="o">|</span> <span class="mi">107</span> <span class="o">|</span>
+<span class="o">|---------------------------------------------------|</span>
+
+<span class="c1"># +++++ means the stairs between floors</span>
+</pre></div>
+</div>
+<p>Now, we have to define the member functions and attributes of each class. Think from the bottom to the top!</p>
+<p><cite>(A draft)</cite></p>
+<p>Member functions of <code class="docutils literal notranslate"><span class="pre">creature</span></code>:</p>
+<ul class="simple">
+<li><p>Get the position of the creature.</p></li>
+<li><p>Get the type of the creature.</p></li>
+<li><p>Get the (the pointer to) current room.</p></li>
+<li><p>Get the type of the creature (zombie or human).</p></li>
+<li><p>Move to a given direction.</p></li>
+<li><p>Move to a room. (?)</p></li>
+<li><p>(TBD)</p></li>
+</ul>
+<p>Member functions of <code class="docutils literal notranslate"><span class="pre">room</span></code>:</p>
+<ul class="simple">
+<li><p><cite>ctor</cite>: create an empty room.</p></li>
+<li><p>Add a creature to this room.</p></li>
+<li><p>Get all the creatures (pointers) in this room.</p></li>
+<li><p>Get the room number.</p></li>
+<li><p>Get the neighbors of a room.</p></li>
+<li><p>Get (the pointer to) the floor</p></li>
+<li><p>Remove one creature in this room.</p></li>
+</ul>
+<p>Member functions of <code class="docutils literal notranslate"><span class="pre">floor</span></code>:</p>
+<ul class="simple">
+<li><p><cite>ctor</cite>: create a floor with a given number of rooms. Each room is empty.</p></li>
+<li><p>Add a creature to this floor (need to specify the room number).</p></li>
+<li><p>Get the rooms of this floor.</p></li>
+<li><p>Get the neighbors of the floor.</p></li>
+<li><p>Get the floor number.</p></li>
+<li><p>Get the building.</p></li>
+<li><p>Get all the creatures in this floor. (?)</p></li>
+</ul>
+<p>Member functions of <code class="docutils literal notranslate"><span class="pre">building</span></code>:</p>
+<ul class="simple">
+<li><p><cite>ctor</cite>: initialize the building with the given number of floors, rooms and creatures.</p></li>
+<li><p>Get all the floors.</p></li>
+<li><p>Get all the creatures in the building.</p></li>
+</ul>
+<p>Member functions of <code class="docutils literal notranslate"><span class="pre">game</span></code> (implemented by a <cite>singleton</cite>):</p>
+<ul class="simple">
+<li><p><cite>ctor</cite>: initialize the game (the building) with the given number of floors, rooms and creatures.</p></li>
+<li><p>Run the game by one step.</p></li>
+</ul>
+<div class="admonition-think admonition">
+<p class="admonition-title">Think</p>
+<p>Which member functions should be <code class="code highlight cpp docutils literal highlight-cpp"><span class="k">public</span><span class="w"></span></code>, which should be <code class="code highlight cpp docutils literal highlight-cpp"><span class="k">private</span><span class="w"></span></code> (no inheritance is involved in this case)?</p>
+</div>
+<p>After determining the member functions, you can define the attributes!</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Always</strong> use <cite>setters</cite> and <cite>getters</cite> to access the attributes of the classes. Do not access the attributes directly. The attributes should be only accessed by the member functions of the class (either <code class="code highlight cpp docutils literal highlight-cpp"><span class="k">private</span><span class="w"></span></code> or <code class="code highlight cpp docutils literal highlight-cpp"><span class="k">protected</span><span class="w"></span></code>, <code class="code highlight cpp docutils literal highlight-cpp"><span class="k">private</span><span class="w"></span></code> is preferred).</p>
+</div>
+</section>
+<section id="creatures">
+<h2>Creatures<a class="headerlink" href="#creatures" title="Permalink to this heading">#</a></h2>
+<p>Creatures are more complicated. The relations we talked about above are all <cite>“has-a”</cite> relationship. Creatures can be described as below:</p>
+<ul class="simple">
+<li><p>Creature can be the type of <cite>human</cite> or <cite>zombie</cite>.</p></li>
+<li><p>Creatures can either be teachers, students or staffs.</p></li>
+<li><p>TAs are both students and teachers.</p></li>
+</ul>
+<p>What’s the difference between a zombie and a human? Well, zombies can bite humans and turn them into zombies (or simply kill them). Humans can only move to a given direction (different types of people will have different strategies).</p>
+<p>First, design a hierarchy diagram. The basic requirements are: <strong>no diamond problem</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>No diamond problem should appear in the hierarchy diagram. If you have a diamond problem, you should think about the relationship between the classes again.</p>
+</div>
+<p>There are two ways to implement the hierarchy:</p>
+<section id="solution-1">
+<h3>Solution 1<a class="headerlink" href="#solution-1" title="Permalink to this heading">#</a></h3>
+<p>OOP sucks, let’s use <cite>enum</cite> to represent the type of creatures.</p>
+<p>Here we use a special technique called <cite>bitmask</cite>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span><span class="w"> </span><span class="nc">CreatureIdentity</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">ZOMBIE</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">HUMAN</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">STAFF</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">TEACHER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">TA</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="p">};</span><span class="w">  </span><span class="c1">// enum CreatureIdentity</span>
+<span class="c1">// You can also use enum class/namespace to avoid name conflicts</span>
+
+<span class="c1">// Example usage:</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">student1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">TA</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Zombie</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">teacher2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Teacher</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Human</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">student1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Zombie</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// if student1 is a zombie</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>However, to take advantage of inheritance, we can define <code class="docutils literal notranslate"><span class="pre">creature</span></code> as an abstract class and define <code class="docutils literal notranslate"><span class="pre">human</span></code> and <code class="docutils literal notranslate"><span class="pre">zombie</span></code> as derived classes. (of course this will not cause any diamond problem)</p>
+<p>here is the hierarchy diagram:</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/first_solution.png"><img alt="../_images/first_solution.png" src="../_images/first_solution.png" style="width: 172.0px; height: 88.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Simple Hierarchy Diagram</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solution-2">
+<h3>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this heading">#</a></h3>
+<p>I like design complicated hierarchy diagram! Multiple inheritance is the best!</p>
+<p>However, you have to solve the basic problem: <strong>diamond problem</strong>. Since TA is both a student and a teacher, what should we do? We have to change our diagram based on the special characters we want to differentiate teachers/student and TAs.</p>
+<p>For example, if TA is more like a student, we can remove the relationship between TA and teacher. If TA is more like a teacher, we can remove the relationship between TA and student. Then, we can use multiple inheritance to implement the hierarchy. To be more specific, say the main difference between a TA and a normal student is that TA can get money (which is the same as a teacher). Then we create a new class called “SalaryMan” and make TA and teacher inherit from it.</p>
+<p>If in our game we want teachers and TAs protect their students, we can add a new class called “Protector” and make teacher and TA inherit from it. This can simply solve the diamond problem.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/second_solution.png"><img alt="../_images/second_solution.png" src="../_images/second_solution.png" style="width: 334.0px; height: 183.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Complicated Hierarchy Diagram</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Note: The <cite>Identity</cite> should be a member attribute of a <cite>Creature</cite>.</p>
+<hr class="docutils" />
+<p>However, as the situation may become more complicated, it’s <strong>recommended</strong> to use the first solution. The second solution is more complicated and may cause some problems. In reality, if your game has many characters and many special superpowers, the hierarchy diagram often becomes a mess and cannot describe the relationship well. In this case, we often use a <cite>database</cite> to store the information of each character and superpowers (which will be much faster and clearer).</p>
+</section>
+<section id="what-to-add-for-each-class">
+<h3>What to Add for Each Class?<a class="headerlink" href="#what-to-add-for-each-class" title="Permalink to this heading">#</a></h3>
+<p>It depends on your needs. You can decide your game rules and write different implementations of the classes.</p>
+</section>
+</section>
+<section id="how-to-code">
+<h2>How to Code?<a class="headerlink" href="#how-to-code" title="Permalink to this heading">#</a></h2>
+<p>Due to time limit, we won’t show you how to code (in the lab manual, it also didn’t ask you to code, only designing the game is necessary).</p>
+<p>However, when you are implementing the inheritance, you should at least know the following concepts:</p>
+<ul class="simple">
+<li><p><cite>virtual</cite> functions</p></li>
+<li><p>Constructors and destructors</p></li>
+<li><p>Different types of inheritance</p></li>
+<li><p>Memory management (especially <code class="code highlight cpp docutils literal highlight-cpp"><span class="k">new</span><span class="w"></span></code> and <code class="code highlight cpp docutils literal highlight-cpp"><span class="k">delete</span><span class="w"></span></code>, but if you know <cite>smart pointers</cite>, that’s a better choice)</p></li>
+<li><p>Multiple inheritance (optional)</p></li>
+<li><p>Abstract class (pure virtual functions)</p></li>
+<li><p>Downcast and upcast (if you know how, it’s better to use <code class="code highlight cpp docutils literal highlight-cpp"><span class="k">dynamic_cast</span><span class="w"></span></code>)</p></li>
+<li><p>Basic usage of <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="w"></span></code> (should be mentioned in the course)</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If time permits, I can do some demonstrations in the lab.</p>
+</div>
+</section>
+<section id="singleton">
+<h2>Singleton<a class="headerlink" href="#singleton" title="Permalink to this heading">#</a></h2>
+<p>In <code class="docutils literal notranslate"><span class="pre">p3.pdf</span></code>, we provide you with a singleton template:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Singleton</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">Singleton</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Add your member attributes</span>
+
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">Singleton</span><span class="w"> </span><span class="o">&amp;</span><span class="n">getInstance</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="n">Singleton</span><span class="w"> </span><span class="n">instance</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">instance</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Singleton</span><span class="p">(</span><span class="n">Singleton</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">Singleton</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Add your member functions</span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>How to use it?</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="git.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Git Revisit</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../l9/lab9.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">A Toy Calculator</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, Linsy King
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Zombies in JI</a><ul>
+<li><a class="reference internal" href="#more-about-project-3">More About Project 3</a></li>
+<li><a class="reference internal" href="#background">Background</a></li>
+<li><a class="reference internal" href="#objects">Objects</a></li>
+<li><a class="reference internal" href="#creatures">Creatures</a><ul>
+<li><a class="reference internal" href="#solution-1">Solution 1</a></li>
+<li><a class="reference internal" href="#solution-2">Solution 2</a></li>
+<li><a class="reference internal" href="#what-to-add-for-each-class">What to Add for Each Class?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#how-to-code">How to Code?</a></li>
+<li><a class="reference internal" href="#singleton">Singleton</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    </body>
+</html>
