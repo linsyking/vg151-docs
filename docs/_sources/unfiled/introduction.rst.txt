@@ -25,4 +25,4 @@ Basically, I want the slides/docs to have the following properties:
 
 .. _Revealjs: https://revealjs.com/
    
-.. [1] Web book: https://linsyking.github.io/vg151-docs/index.html
+.. [1] Web book is deployed on `github pages <https://linsyking.github.io/vg151-docs/index.html>`_ and `firebase web app <https://vg151-docs.web.app/>`_.
