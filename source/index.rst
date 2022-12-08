@@ -12,4 +12,6 @@ Welcome to the VG151 Documentation!
    Lab 9 <l9/lab9>
    Lab 10 <l10/lab10>
    Git Revisit <l10/git>
+   Final RC (Part 1) <final/part1>
+   Final RC (Part 1.5) <final/part1-2>
    Code Check <unfiled/codecheck>

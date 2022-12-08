@@ -69,4 +69,4 @@ My initial idea is to introduce the `beauty of programming and computer science`
 
 I hope that you all learned something useful in my lab. I wish you all the best in your future studies and career.
 
-Thanks for your attention. Bye! (If you are interested in `software engineering`, please enroll in the manuel's section of VG100, **greatest programming experience in JI**)
+Thanks for your attention. Bye! (If you are interested in `software engineering`, please enroll in the manuel's section of VG100, one of the **greatest programming experience in JI**)

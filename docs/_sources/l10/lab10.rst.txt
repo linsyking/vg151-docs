@@ -123,6 +123,8 @@ First, design a hierarchy diagram. The basic requirements are: **no diamond prob
 
 There are two ways to implement the hierarchy:
 
+.. _diamond_sol:
+
 Solution 1
 ^^^^^^^^^^
 

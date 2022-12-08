@@ -20,7 +20,7 @@ Project 3 is a team project. You have already been divided into several pgroups.
 - Beginners must ensure they understand what more advanced students are doing
 - P3 grade will be based on the final submission, a self evaluation survey, git commits, help provided to or asked by beginners
 
-**for future disucssions you can use your private channel, but we want to ensure all students are present and ready to work**
+**for future discussions you can use your private channel, but we want to ensure all students are present and ready to work**
 
 Stack-based Calculator
 ----------------------
