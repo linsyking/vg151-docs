@@ -111,9 +111,7 @@ Here are some questions you should think:
 - What is `abstract class` in C++?
 - What is `virtual function` in C++? What is `virtual destructor` and when to use it?
   
-    .. hint:: 
-    
-        See `this answer <https://stackoverflow.com/questions/461203/when-to-use-virtual-destructors>`_.
+    See `this answer <https://stackoverflow.com/questions/461203/when-to-use-virtual-destructors>`_.
 
 - What are the common containers in STL? How to use them?
 
