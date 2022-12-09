@@ -268,6 +268,7 @@ Overall, the use of inheritance and polymorphism can make your code more efficie
 
 What is the diamond problem?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 The diamond problem is a situation that can arise in object-oriented programming when a class inherits from multiple classes that have a common ancestor. This can cause ambiguity and lead to unexpected behavior in the program.
 
 The diamond problem is named after the diagram that is often used to illustrate the situation. In this diagram, a class "D" inherits from two classes, "B" and "C", which in turn both inherit from a common ancestor class, "A". This creates a diamond-shaped inheritance hierarchy, with "A" at the top, and "B" and "C" on the bottom left and right, respectively, and "D" in the middle.
@@ -279,6 +280,8 @@ To avoid the diamond problem, many programming languages, including C++, provide
 .. warning::
 
     It's better to avoid diamond problem when your are designing the hierarchy diagram.
+
+You can see :ref:`multiple-inheritance` for one example to deal with diamond problems.
 
 How to use a template?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

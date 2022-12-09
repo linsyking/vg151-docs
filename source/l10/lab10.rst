@@ -160,6 +160,8 @@ here is the hierarchy diagram:
   
   Simple Hierarchy Diagram
 
+.. _multiple-inheritance:
+
 Solution 2
 ^^^^^^^^^^
 

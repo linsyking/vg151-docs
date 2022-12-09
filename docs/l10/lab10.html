@@ -343,7 +343,7 @@
 </figure>
 </section>
 <section id="solution-2">
-<h3>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this heading">#</a></h3>
+<span id="multiple-inheritance"></span><h3>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this heading">#</a></h3>
 <p>I like design complicated hierarchy diagram! Multiple inheritance is the best!</p>
 <p>However, you have to solve the basic problem: <strong>diamond problem</strong>. Since TA is both a student and a teacher, what should we do? We have to change our diagram based on the special characters we want to differentiate teachers/student and TAs.</p>
 <p>For example, if TA is more like a student, we can remove the relationship between TA and teacher. If TA is more like a teacher, we can remove the relationship between TA and student. Then, we can use multiple inheritance to implement the hierarchy. To be more specific, say the main difference between a TA and a normal student is that TA can get money (which is the same as a teacher). Then we create a new class called “SalaryMan” and make TA and teacher inherit from it.</p>

@@ -5,7 +5,6 @@
 #include <queue>
 #include <iostream>
 
-
 using namespace std;
 
 void ex1_reverse_array() {

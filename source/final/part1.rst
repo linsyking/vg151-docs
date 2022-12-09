@@ -110,6 +110,11 @@ Here are some questions you should think:
 - What are the three characteristics of OOP?
 - What is `abstract class` in C++?
 - What is `virtual function` in C++? What is `virtual destructor` and when to use it?
+  
+    .. hint:: 
+    
+        See `this answer <https://stackoverflow.com/questions/461203/when-to-use-virtual-destructors>`_.
+
 - What are the common containers in STL? How to use them?
 
 **A Class is a user defined data-type which has data members and member functions.**
