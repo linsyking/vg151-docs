@@ -186,7 +186,7 @@ l10
   - Hierarchy (`public`, `protected`, `private`)
   - Abstract class (virtual functions)
 
-- Some Design patterns (`advanced`)
+- Some design patterns (`advanced`)
   
   - `Singleton`
   - `Factory Method`
